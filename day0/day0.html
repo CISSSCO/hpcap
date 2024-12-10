@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-09 Mon 17:29 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day0</title>
+<meta name="author" content="Abhishek Raj" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Day0</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org2e8a153">1. Compiler Optimization Demo</a>
+<ul>
+<li><a href="#orgb9ff802">1.1. demo1.c</a>
+<ul>
+<li><a href="#org94172cc">1.1.1. code</a></li>
+<li><a href="#org43c5d1c">1.1.2. compile</a></li>
+<li><a href="#org93a2035">1.1.3. run</a></li>
+</ul>
+</li>
+<li><a href="#org3e1c8b6">1.2. demo2.c</a>
+<ul>
+<li><a href="#orgaee4efa">1.2.1. code</a></li>
+<li><a href="#org3a7c3f7">1.2.2. compile</a></li>
+<li><a href="#orgc5b15d9">1.2.3. run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgaaaf4bb">2. Arithmetic Optimizations</a>
+<ul>
+<li><a href="#org5f595eb">2.1. Constant folding</a></li>
+<li><a href="#orge002e50">2.2. Constant Propagation</a></li>
+<li><a href="#orgb352854">2.3. Strength Reduction</a>
+<ul>
+<li><a href="#org1f5cfa3">2.3.1. Multiplication to Bitwise</a></li>
+<li><a href="#orga3f545a">2.3.2. Division to Multiplication</a></li>
+</ul>
+</li>
+<li><a href="#org5fa1345">2.4. Algebraic Simplifications</a>
+<ul>
+<li><a href="#orgfbc7d62">2.4.1. Removing Common Subexpressions</a></li>
+<li><a href="#org3186d52">2.4.2. Simplifying Arithmetic</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga6fe171">3. Loop Optimizations</a>
+<ul>
+<li><a href="#orgc700117">3.1. Loop Unrolling</a>
+<ul>
+<li><a href="#org8fac7ad">3.1.1. Example 1</a></li>
+<li><a href="#orgd31e4e7">3.1.2. Example 2</a></li>
+</ul>
+</li>
+<li><a href="#org4773855">3.2. Loop Fusion</a></li>
+<li><a href="#org141b1eb">3.3. Loop Interchange</a></li>
+<li><a href="#orgc26fdcd">3.4. Loop Invariant Code Motion</a></li>
+</ul>
+</li>
+<li><a href="#orgcae6d2f">4. Function Inlining</a></li>
+<li><a href="#orge741a47">5. Dead Code Elimination</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2e8a153" class="outline-2">
+<h2 id="org2e8a153"><span class="section-number-2">1.</span> Compiler Optimization Demo</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgb9ff802" class="outline-3">
+<h3 id="orgb9ff802"><span class="section-number-3">1.1.</span> demo1.c</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org94172cc" class="outline-4">
+<h4 id="org94172cc"><span class="section-number-4">1.1.1.</span> code</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<div class="org-src-container">
+<pre class="src src-C" id="org971735f"><span style="color: #89DDFF; font-weight: bold;">#include</span><span style="color: #c3e88d;">&lt;stdio.h&gt;</span>
+<span style="color: #c792ea;">int</span> <span style="color: #82aaff;">main</span>(){
+    <span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">y</span> = <span style="color: #f78c6c; font-weight: bold;">3</span>;
+    <span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = y + <span style="color: #f78c6c; font-weight: bold;">6</span>;
+    printf(<span style="color: #c3e88d;">"x = %d\n"</span>, x);
+    <span style="color: #89DDFF;">return</span> <span style="color: #f78c6c; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org43c5d1c" class="outline-4">
+<h4 id="org43c5d1c"><span class="section-number-4">1.1.2.</span> compile</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-bash" id="org99f9893"><span style="color: #ffcb6b;">file</span>=demo1
+gcc $<span style="color: #ffcb6b;">file</span>.c -O2 -o $<span style="color: #ffcb6b;">file</span>.out
+<span style="color: #676E95;">#</span><span style="color: #676E95;">gcc -E $file.c &gt; "$file_generated".c</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org816af27"><span style="color: #ffcb6b;">file</span>=demo1
+<span style="color: #676E95;">#</span><span style="color: #676E95;">gcc $file.c -O2 -fdump-tree-all -o $file.out</span>
+gcc $<span style="color: #ffcb6b;">file</span>.c -O2 -fdump-tree-optimized
+<span style="color: #c792ea;">cat</span> a-$<span style="color: #ffcb6b;">file</span>*.optimized
+<span style="color: #676E95;">#</span><span style="color: #676E95;">gcc -E $file.c &gt; "$file_generated".c</span>
+</pre>
+</div>
+
+<pre class="example" id="org20b5863">
+
+;; Function main (main, funcdef_no=23, decl_uid=3375, cgraph_uid=24, symbol_order=23) (executed once)
+
+int main ()
+{
+  &lt;bb 2&gt; [local count: 1073741824]:
+  __printf_chk (2, "x = %d\n", 9);
+  return 0;
+
+}
+
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org93a2035" class="outline-4">
+<h4 id="org93a2035"><span class="section-number-4">1.1.3.</span> run</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<div class="org-src-container">
+<pre class="src src-bash" id="org3296639"><span style="color: #ffcb6b;">file</span>=demo1
+./$<span style="color: #ffcb6b;">file</span>.out
+</pre>
+</div>
+
+<pre class="example">
+x = 9
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3e1c8b6" class="outline-3">
+<h3 id="org3e1c8b6"><span class="section-number-3">1.2.</span> demo2.c</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-orgaee4efa" class="outline-4">
+<h4 id="orgaee4efa"><span class="section-number-4">1.2.1.</span> code</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<div class="org-src-container">
+<pre class="src src-C" id="org379b564"><span style="color: #89DDFF; font-weight: bold;">#include</span><span style="color: #c3e88d;">&lt;stdio.h&gt;</span>
+<span style="color: #89DDFF;">inline</span> <span style="color: #c792ea;">int</span> <span style="color: #82aaff;">square</span>(<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span>) {
+    <span style="color: #89DDFF;">return</span> x * x;
+}
+<span style="color: #c792ea;">int</span> <span style="color: #82aaff;">main</span>(){
+    <span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">10</span>;
+    <span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">y</span> = square(x);
+    printf(<span style="color: #c3e88d;">"Square of %d : %d\n"</span>, x, y);
+    <span style="color: #89DDFF;">return</span> <span style="color: #f78c6c; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3a7c3f7" class="outline-4">
+<h4 id="org3a7c3f7"><span class="section-number-4">1.2.2.</span> compile</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<div class="org-src-container">
+<pre class="src src-bash" id="org191fb07"><span style="color: #ffcb6b;">file</span>=demo2
+gcc -O2 $<span style="color: #ffcb6b;">file</span>.c -o $<span style="color: #ffcb6b;">file</span>.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash" id="org52a1a6f"><span style="color: #ffcb6b;">file</span>=demo2
+<span style="color: #676E95;">#</span><span style="color: #676E95;">gcc $file.c -O2 -o $file.out</span>
+gcc $<span style="color: #ffcb6b;">file</span>.c -O2 -fdump-tree-optimized
+<span style="color: #c792ea;">cat</span> a-$<span style="color: #ffcb6b;">file</span>*.optimized
+</pre>
+</div>
+
+<pre class="example" id="org3b48dce">
+
+;; Function main (main, funcdef_no=24, decl_uid=3378, cgraph_uid=25, symbol_order=24) (executed once)
+
+int main ()
+{
+  &lt;bb 2&gt; [local count: 1073741824]:
+  __printf_chk (2, "Square of %d : %d\n", 10, 100);
+  return 0;
+
+}
+
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orgc5b15d9" class="outline-4">
+<h4 id="orgc5b15d9"><span class="section-number-4">1.2.3.</span> run</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<div class="org-src-container">
+<pre class="src src-bash" id="org02bed11"><span style="color: #ffcb6b;">file</span>=demo2
+./$<span style="color: #ffcb6b;">file</span>.out
+</pre>
+</div>
+
+<pre class="example">
+Square of 10 : 100
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaaaf4bb" class="outline-2">
+<h2 id="orgaaaf4bb"><span class="section-number-2">2.</span> Arithmetic Optimizations</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org5f595eb" class="outline-3">
+<h3 id="org5f595eb"><span class="section-number-3">2.1.</span> Constant folding</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Simplifies constant expressions at compile time, reducing runtime calculations.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org8ab8d72"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">3</span> + <span style="color: #f78c6c; font-weight: bold;">10</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="orgeb7140c"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">13</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge002e50" class="outline-3">
+<h3 id="orge002e50"><span class="section-number-3">2.2.</span> Constant Propagation</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Replaces variables with constant values if they are known at compile time, enabling further optimizations.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org7e4c096"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">10</span>;
+<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">y</span> = x + <span style="color: #f78c6c; font-weight: bold;">3</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="org1d601ee"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">10</span>;
+<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">y</span> = <span style="color: #f78c6c; font-weight: bold;">10</span> + <span style="color: #f78c6c; font-weight: bold;">3</span>;
+<span style="color: #676E95;">// </span><span style="color: #676E95;">which eventually will become</span>
+<span style="color: #676E95;">// </span><span style="color: #676E95;">int y = 13;</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb352854" class="outline-3">
+<h3 id="orgb352854"><span class="section-number-3">2.3.</span> Strength Reduction</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Replaces expensive operations with cheaper ones.
+</p>
+</div>
+<div id="outline-container-org1f5cfa3" class="outline-4">
+<h4 id="org1f5cfa3"><span class="section-number-4">2.3.1.</span> Multiplication to Bitwise</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<div class="org-src-container">
+<pre class="src src-C" id="org4e6ea9d"><span style="color: #c792ea;">x</span> * <span style="color: #f78c6c; font-weight: bold;">8</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="org5843e92">x &lt;&lt; <span style="color: #f78c6c; font-weight: bold;">3</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga3f545a" class="outline-4">
+<h4 id="orga3f545a"><span class="section-number-4">2.3.2.</span> Division to Multiplication</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<div class="org-src-container">
+<pre class="src src-nil" id="orgdc9099f">x / 2;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-nil" id="orgcbc7be7">x * 0.5;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org5fa1345" class="outline-3">
+<h3 id="org5fa1345"><span class="section-number-3">2.4.</span> Algebraic Simplifications</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Simplifies algebraic expressions to more efficient forms.
+</p>
+</div>
+<div id="outline-container-orgfbc7d62" class="outline-4">
+<h4 id="orgfbc7d62"><span class="section-number-4">2.4.1.</span> Removing Common Subexpressions</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<div class="org-src-container">
+<pre class="src src-C" id="org61ed057">a * (b + c) + d * (b + c);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="org4ca76e3">(a + d) * (b + c);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3186d52" class="outline-4">
+<h4 id="org3186d52"><span class="section-number-4">2.4.2.</span> Simplifying Arithmetic</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<div class="org-src-container">
+<pre class="src src-C" id="org010fb33">x + <span style="color: #f78c6c; font-weight: bold;">0</span>;
+<span style="color: #c792ea;">y</span> * <span style="color: #f78c6c; font-weight: bold;">1</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="orgdcf4492">x;
+y;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orga6fe171" class="outline-2">
+<h2 id="orga6fe171"><span class="section-number-2">3.</span> Loop Optimizations</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgc700117" class="outline-3">
+<h3 id="orgc700117"><span class="section-number-3">3.1.</span> Loop Unrolling</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Increases the loop body size by replicating it multiple times, reducing the overhead of loop control.
+</p>
+</div>
+<div id="outline-container-org8fac7ad" class="outline-4">
+<h4 id="org8fac7ad"><span class="section-number-4">3.1.1.</span> Example 1</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<div class="org-src-container">
+<pre class="src src-C" id="org8caecb6"><span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; <span style="color: #f78c6c; font-weight: bold;">4</span>; i++) {
+    <span style="color: #676E95;">// </span><span style="color: #676E95;">Loop body</span>
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="orge5ecfb0"><span style="color: #676E95;">//</span><span style="color: #676E95;">Loop body</span>
+<span style="color: #676E95;">//</span><span style="color: #676E95;">Loop body</span>
+<span style="color: #676E95;">//</span><span style="color: #676E95;">Loop body</span>
+<span style="color: #676E95;">//</span><span style="color: #676E95;">Loop body</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd31e4e7" class="outline-4">
+<h4 id="orgd31e4e7"><span class="section-number-4">3.1.2.</span> Example 2</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<div class="org-src-container">
+<pre class="src src-C" id="org61570c5"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">arr</span>[N];
+<span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; N; i++) {
+    sum += arr[i];
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li>N iterations required</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-C" id="orgdb91a71"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">arr</span>[N];
+<span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; N - <span style="color: #f78c6c; font-weight: bold;">1</span>; i+=<span style="color: #f78c6c; font-weight: bold;">2</span>) {
+    sum += arr[i];
+    sum += arr[i + <span style="color: #f78c6c; font-weight: bold;">1</span>];
+}
+</pre>
+</div>
+<ul class="org-ul">
+<li>N/2 iterations required</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org4773855" class="outline-3">
+<h3 id="org4773855"><span class="section-number-3">3.2.</span> Loop Fusion</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Merges adjacent loops with the same iteration range into a single loop.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="orgfd5a844"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>;
+<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">y</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>;
+<span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; n; i++) {
+    x++;
+}
+<span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; n; i++) {
+    y++;
+}
+printf(<span style="color: #c3e88d;">"x = %d\n"</span>, x);
+printf(<span style="color: #c3e88d;">"y = %d\n"</span>, y);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="orge2b24c3"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>;
+<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">y</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>;
+<span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; n; i++) {
+    x++;
+    y++;
+}
+printf(<span style="color: #c3e88d;">"x = %d\n"</span>, x);
+printf(<span style="color: #c3e88d;">"y = %d\n"</span>, y);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org141b1eb" class="outline-3">
+<h3 id="org141b1eb"><span class="section-number-3">3.3.</span> Loop Interchange</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Swaps inner and outer loops to improve cache performance.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org7e5c26e"><span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; n; i++) {
+    <span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">j</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; j &lt; m; j++) {
+        <span style="color: #676E95;">// </span><span style="color: #676E95;">Loop body</span>
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="org8457063"><span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">j</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; j &lt; m; j++) {
+    <span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; n; i++) {
+        <span style="color: #676E95;">// </span><span style="color: #676E95;">Loop body</span>
+    }
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc26fdcd" class="outline-3">
+<h3 id="orgc26fdcd"><span class="section-number-3">3.4.</span> Loop Invariant Code Motion</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Moves code that does not change within the loop outside of the loop.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org39f4cc5"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">y</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>;
+<span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; n; i++) {
+    <span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">5</span>; <span style="color: #676E95;">// </span><span style="color: #676E95;">Invariant code</span>
+    y+= x;
+}
+printf(<span style="color: #c3e88d;">"y = %d\n"</span>, y);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="org66ddd78"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">5</span>;
+<span style="color: #89DDFF;">for</span> (<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">i</span> = <span style="color: #f78c6c; font-weight: bold;">0</span>; i &lt; n; i++) {
+    y+= x;
+}
+printf(<span style="color: #c3e88d;">"y = %d\n"</span>, y);
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcae6d2f" class="outline-2">
+<h2 id="orgcae6d2f"><span class="section-number-2">4.</span> Function Inlining</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Replaces a function call with the function&rsquo;s code to avoid the overhead of a call and return.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org7eb6096"><span style="color: #89DDFF;">inline</span> <span style="color: #c792ea;">int</span> <span style="color: #82aaff;">square</span>(<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span>) {
+    <span style="color: #89DDFF;">return</span> x * x;
+}
+
+<span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">y</span> = square(<span style="color: #f78c6c; font-weight: bold;">5</span>);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="orga973a4c"><span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">y</span> = <span style="color: #f78c6c; font-weight: bold;">5</span> * <span style="color: #f78c6c; font-weight: bold;">5</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge741a47" class="outline-2">
+<h2 id="orge741a47"><span class="section-number-2">5.</span> Dead Code Elimination</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Removes code that will never be executed or whose results are never used.
+</p>
+<div class="org-src-container">
+<pre class="src src-C" id="org360df37"><span style="color: #c792ea;">int</span> <span style="color: #82aaff;">main</span>(){
+    <span style="color: #89DDFF;">if</span> (<span style="color: #f78c6c;">false</span>) {
+    <span style="color: #676E95;">// </span><span style="color: #676E95;">Dead code</span>
+    }
+    <span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">10</span>;
+    printf(<span style="color: #c3e88d;">"x = %d\n"</span>,x);
+    <span style="color: #89DDFF;">return</span> x;
+    x = <span style="color: #f78c6c; font-weight: bold;">20</span>; <span style="color: #676E95;">// </span><span style="color: #676E95;">Dead code</span>
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C" id="orgf6b4cdf"><span style="color: #c792ea;">int</span> <span style="color: #82aaff;">main</span>(){
+    <span style="color: #c792ea;">int</span> <span style="color: #ffcb6b;">x</span> = <span style="color: #f78c6c; font-weight: bold;">10</span>;
+    printf(<span style="color: #c3e88d;">"x = %d\n"</span>,x);
+    <span style="color: #89DDFF;">return</span> x;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Abhishek Raj</p>
+<p class="date">Created: 2024-12-09 Mon 17:29</p>
+</div>
+</body>
+</html>
