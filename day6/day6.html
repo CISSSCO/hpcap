@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-18 Wed 17:16 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day6</title>
+<meta name="author" content="Abhishek Raj" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Day6</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd15f5f8">1. Agenda</a></li>
+<li><a href="#org3e0bb27">2. Perform manual reduction on your data</a></li>
+<li><a href="#org52c0525">3. conversion1</a></li>
+<li><a href="#orgd131f04">4. conversion2</a></li>
+<li><a href="#org54ff232">5. Measuring Time</a></li>
+<li><a href="#orgff55253">6. Array Addition</a></li>
+<li><a href="#orgaaacd21">7. Serial and parallel code in same file _OPENMP</a></li>
+<li><a href="#orga27c8e6">8. Perform matrix addition</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd15f5f8" class="outline-2">
+<h2 id="orgd15f5f8"><span class="section-number-2">1.</span> Agenda</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Manual Reduction</li>
+<li>Reduction</li>
+<li>Array Addition</li>
+<li>Measuring time</li>
+<li>Error checking</li>
+<li>Dealing with larger data in a parallel program</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3e0bb27" class="outline-2">
+<h2 id="org3e0bb27"><span class="section-number-2">2.</span> Perform manual reduction on your data</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">1000000000</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">13</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = N / T;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">sum</span>[T];
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel num_threads(T)
+    {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">tid</span> = omp_get_thread_num();
+        <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">localsum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">start</span> = tid * chunksize;
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">end</span> = start + chunksize;
+        <span style="color: #e45649;">if</span>(tid == T - <span style="color: #da8548; font-weight: bold;">1</span>) end = N;
+        <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = start; i &lt; end; i++){
+            localsum += i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+        sum[tid] = localsum;
+    }
+
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">totalSum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; T; i++) totalSum += sum[i];
+
+    printf(<span style="color: #50a14f;">"Calculated sum = %lld\n"</span>, totalSum);
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">expectedSum</span> = (N * ((N + <span style="color: #da8548; font-weight: bold;">1</span>) * <span style="color: #da8548; font-weight: bold;">1L</span>) / <span style="color: #da8548; font-weight: bold;">2</span>);
+    printf(<span style="color: #50a14f;">"Expected sum = %lld\n"</span>, expectedSum);
+    <span style="color: #e45649;">if</span>(totalSum == expectedSum){
+        printf(<span style="color: #50a14f;">"_____Passed_____\n"</span>);
+    }
+    <span style="color: #e45649;">else</span> printf(<span style="color: #50a14f;">"_____Failed_____\n"</span>);
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc manualReduction.c -fopenmp -o manualReduction.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./manualReduction.out
+</pre>
+</div>
+
+<pre class="example">
+Calculated sum = 500000000500000000
+Expected sum = 500000000500000000
+_____Passed_____
+</pre>
+</div>
+</div>
+<div id="outline-container-org52c0525" class="outline-2">
+<h2 id="org52c0525"><span class="section-number-2">3.</span> conversion1</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">1000000000</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">13</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">sum</span>[T];
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel num_threads(T)
+    {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">tid</span> = omp_get_thread_num();
+        <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">localsum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+<span style="color: #4078f2; font-weight: bold;">        #pragma</span> omp <span style="color: #e45649;">for</span>
+        <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+            localsum += i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+        sum[tid] = localsum;
+    }
+
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">totalSum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; T; i++) totalSum += sum[i];
+
+    printf(<span style="color: #50a14f;">"Calculated sum = %lld\n"</span>, totalSum);
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">expectedSum</span> = (N * ((N + <span style="color: #da8548; font-weight: bold;">1</span>) * <span style="color: #da8548; font-weight: bold;">1L</span>) / <span style="color: #da8548; font-weight: bold;">2</span>);
+    printf(<span style="color: #50a14f;">"Expected sum = %lld\n"</span>, expectedSum);
+    <span style="color: #e45649;">if</span>(totalSum == expectedSum){
+        printf(<span style="color: #50a14f;">"_____Passed_____\n"</span>);
+    }
+    <span style="color: #e45649;">else</span> printf(<span style="color: #50a14f;">"_____Failed_____\n"</span>);
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc manualReduction1.c -fopenmp -o manualReduction1.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./manualReduction1.out
+</pre>
+</div>
+
+<pre class="example">
+Calculated sum = 500000000500000000
+Expected sum = 500000000500000000
+_____Passed_____
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd131f04" class="outline-2">
+<h2 id="orgd131f04"><span class="section-number-2">4.</span> conversion2</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">1000000000</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">13</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> reduction(+ : sum) num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        sum += i + <span style="color: #da8548; font-weight: bold;">1</span>;
+    }
+
+    printf(<span style="color: #50a14f;">"Calculated sum = %lld\n"</span>, sum);
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">expectedSum</span> = (N * ((N + <span style="color: #da8548; font-weight: bold;">1</span>) * <span style="color: #da8548; font-weight: bold;">1L</span>) / <span style="color: #da8548; font-weight: bold;">2</span>);
+    printf(<span style="color: #50a14f;">"Expected sum = %lld\n"</span>, expectedSum);
+    <span style="color: #e45649;">if</span>(sum == expectedSum){
+        printf(<span style="color: #50a14f;">"_____Passed_____\n"</span>);
+    }
+    <span style="color: #e45649;">else</span> printf(<span style="color: #50a14f;">"_____Failed_____\n"</span>);
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc reduction.c -fopenmp -o reduction.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./reduction.out
+</pre>
+</div>
+
+<pre class="example">
+Calculated sum = 500000000500000000
+Expected sum = 500000000500000000
+_____Passed_____
+</pre>
+</div>
+</div>
+<div id="outline-container-org54ff232" class="outline-2">
+<h2 id="org54ff232"><span class="section-number-2">5.</span> Measuring Time</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">1000000000</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">13</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">parallelTime</span>, <span style="color: #6a1868;">serialTime</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">startTime</span> = omp_get_wtime();
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> reduction(+ : sum) num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        sum += i + <span style="color: #da8548; font-weight: bold;">1</span>;
+    }
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">endTime</span> = omp_get_wtime();
+    parallelTime = endTime - startTime;
+
+    startTime = omp_get_wtime();
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">serialsum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        serialsum += i + <span style="color: #da8548; font-weight: bold;">1</span>;
+    }
+    endTime = omp_get_wtime();
+    serialTime = endTime - startTime;
+    printf(<span style="color: #50a14f;">"Calculated sum = %lld\n"</span>, sum);
+    printf(<span style="color: #50a14f;">"Time taken by parallel = %lf\n"</span>, parallelTime);
+    printf(<span style="color: #50a14f;">"Time taken by serial = %lf\n"</span>, serialTime);
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">expectedSum</span> = (N * ((N + <span style="color: #da8548; font-weight: bold;">1</span>) * <span style="color: #da8548; font-weight: bold;">1L</span>) / <span style="color: #da8548; font-weight: bold;">2</span>);
+    printf(<span style="color: #50a14f;">"Expected sum = %lld\n"</span>, expectedSum);
+    <span style="color: #e45649;">if</span>(sum == expectedSum){
+        printf(<span style="color: #50a14f;">"_____Passed_____\n"</span>);
+    }
+    <span style="color: #e45649;">else</span> printf(<span style="color: #50a14f;">"_____Failed_____\n"</span>);
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc measuringTime.c -fopenmp -o measuringTime.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./measuringTime.out
+</pre>
+</div>
+
+<pre class="example">
+Calculated sum = 500000000500000000
+Time taken by parallel = 0.323162
+Time taken by serial = 2.913337
+Expected sum = 500000000500000000
+_____Passed_____
+</pre>
+</div>
+</div>
+<div id="outline-container-orgff55253" class="outline-2">
+<h2 id="orgff55253"><span class="section-number-2">6.</span> Array Addition</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">100000000</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">13</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    <span style="color: #986801;">int</span> *<span style="color: #6a1868;">a</span>, *<span style="color: #6a1868;">b</span>, *<span style="color: #6a1868;">c</span>, *<span style="color: #6a1868;">cs</span>;
+    a = (<span style="color: #986801;">int</span> *) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+    b = (<span style="color: #986801;">int</span> *) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+    c = (<span style="color: #986801;">int</span> *) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+    cs = (<span style="color: #986801;">int</span> *) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        a[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        b[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        c[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        cs[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+    }
+
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">startTime</span> = omp_get_wtime();
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        c[i] = a[i] + b[i];
+    }
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">endTime</span> = omp_get_wtime();
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">parallelTime</span> = endTime - startTime;
+
+    startTime = omp_get_wtime();
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        cs[i] = a[i] + b[i];
+    }
+    endTime = omp_get_wtime();
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">serialTime</span> = endTime - startTime;
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = N - <span style="color: #da8548; font-weight: bold;">5</span>; i &lt; N; i++){
+        printf(<span style="color: #50a14f;">"%d "</span>, c[i]);
+    }
+    printf(<span style="color: #50a14f;">"\nSerial time = %lf\n"</span>, serialTime);
+    printf(<span style="color: #50a14f;">"\nParallel time = %lf\n"</span>, parallelTime);
+
+    free(a);
+    free(b);
+    free(c);
+    free(cs);
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc arrayAddition.c -fopenmp -o arrayAddition.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./arrayAddition.out
+</pre>
+</div>
+
+<pre class="example">
+199999992 199999994 199999996 199999998 200000000 
+Serial time = 0.213609
+
+Parallel time = 0.061018
+</pre>
+</div>
+</div>
+<div id="outline-container-orgaaacd21" class="outline-2">
+<h2 id="orgaaacd21"><span class="section-number-2">7.</span> Serial and parallel code in same file _OPENMP</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#ifdef</span> _OPENMP
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#endif</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">100000000</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">13</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    <span style="color: #986801;">int</span> *<span style="color: #6a1868;">a</span>, *<span style="color: #6a1868;">b</span>, *<span style="color: #6a1868;">c</span>, *<span style="color: #6a1868;">cs</span>;
+    a = (<span style="color: #986801;">int</span> *) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+    b = (<span style="color: #986801;">int</span> *) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+    c = (<span style="color: #986801;">int</span> *) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+    cs = (<span style="color: #986801;">int</span> *) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        a[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        b[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        c[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        cs[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+    }
+
+<span style="color: #4078f2; font-weight: bold;">    #ifdef</span> _OPENMP
+    omp_set_num_threads(T);
+<span style="color: #4078f2; font-weight: bold;">    #endif</span>
+
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span>
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        c[i] = a[i] + b[i];
+    }
+
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = N - <span style="color: #da8548; font-weight: bold;">5</span>; i &lt; N; i++){
+        printf(<span style="color: #50a14f;">"%d "</span>, c[i]);
+    }
+
+    free(a);
+    free(b);
+    free(c);
+    free(cs);
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc errorChecking.c -fopenmp -o errorChecking.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./errorChecking.out
+</pre>
+</div>
+
+<pre class="example">
+199999992 199999994 199999996 199999998 200000000 
+</pre>
+</div>
+</div>
+<div id="outline-container-orga27c8e6" class="outline-2">
+<h2 id="orga27c8e6"><span class="section-number-2">8.</span> Perform matrix addition</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Abhishek Raj</p>
+<p class="date">Created: 2024-12-18 Wed 17:16</p>
+</div>
+</body>
+</html>
