@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-01-03 Fri 12:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day8</title>
+<meta name="author" content="Abhishek Raj" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Day8</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org40c535b">1. matrix addition</a></li>
+<li><a href="#org3c47d2e">2. scheduling</a></li>
+<li><a href="#org95dd322">3. static</a></li>
+<li><a href="#org12f88a8">4. dynamic</a></li>
+<li><a href="#org4872bb2">5. dynamic2</a></li>
+<li><a href="#org7ed4d32">6. guided</a></li>
+<li><a href="#org61faac6">7. guided2</a></li>
+<li><a href="#org4833d4b">8. runtime</a></li>
+<li><a href="#orgd60923f">9. omp_set_schedule</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org40c535b" class="outline-2">
+<h2 id="org40c535b"><span class="section-number-2">1.</span> matrix addition</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">10000</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">13</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">a</span>, **<span style="color: #6a1868;">b</span>, **<span style="color: #6a1868;">c</span>;
+    a = (<span style="color: #986801;">int</span>**) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * N);
+    b = (<span style="color: #986801;">int</span>**) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * N);
+    c = (<span style="color: #986801;">int</span>**) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * N);
+
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        a[i] = (<span style="color: #986801;">int</span>*) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+        b[i] = (<span style="color: #986801;">int</span>*) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+        c[i] = (<span style="color: #986801;">int</span>*) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * N);
+    }
+
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++){
+            a[i][j] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+            b[i][j] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+            c[i][j] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+    }
+
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">startTime</span> = omp_get_wtime();
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++){
+            c[i][j] = a[i][j] + b[i][j];
+        }
+    }
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">endTime</span> = omp_get_wtime();
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">parallelTime</span> = endTime - startTime;
+
+    <span style="color: #9ca0a4;">/*</span>
+<span style="color: #9ca0a4;">    for(int i = N - 1; i &lt; N; i++){</span>
+<span style="color: #9ca0a4;">        for(int j = N - 50; j &lt; N; j++){</span>
+<span style="color: #9ca0a4;">            printf("%d\t", c[i][j]);</span>
+<span style="color: #9ca0a4;">        }</span>
+<span style="color: #9ca0a4;">        printf("\n");</span>
+<span style="color: #9ca0a4;">    }</span>
+<span style="color: #9ca0a4;">    */</span>
+
+    printf(<span style="color: #50a14f;">"%lf\n"</span>, parallelTime);
+
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        free(a[i]);
+        free(b[i]);
+        free(c[i]);
+    }
+    free(a);
+    free(b);
+    free(c);
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc matrixAddition.c -fopenmp -o matrixAddition.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">./matrixAddition.out &gt; output1.txt</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">echo</span><span style="color: #9ca0a4;"> "check output1.txt"</span>
+./matrixAddition.out
+</pre>
+</div>
+
+<pre class="example">
+0.059650
+</pre>
+</div>
+</div>
+<div id="outline-container-org3c47d2e" class="outline-2">
+<h2 id="org3c47d2e"><span class="section-number-2">2.</span> scheduling</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>static</li>
+<li>dynamic</li>
+<li>guided</li>
+<li>auto</li>
+<li>runtime</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org95dd322" class="outline-2">
+<h2 id="org95dd322"><span class="section-number-2">3.</span> static</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(<span style="color: #e45649;">static</span>, chunksize)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">20</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">6</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(<span style="color: #e45649;">static</span>, <span style="color: #da8548; font-weight: bold;">3</span>) num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        printf(<span style="color: #50a14f;">"thread\t%d\t:\ti\t%d\n"</span>, omp_get_thread_num(), i);
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc static.c -fopenmp -o static.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./static.out
+</pre>
+</div>
+
+<pre class="example" id="org6841637">
+thread	5	:	i	15
+thread	5	:	i	16
+thread	5	:	i	17
+thread	4	:	i	12
+thread	4	:	i	13
+thread	3	:	i	9
+thread	3	:	i	10
+thread	3	:	i	11
+thread	4	:	i	14
+thread	2	:	i	6
+thread	0	:	i	0
+thread	0	:	i	1
+thread	0	:	i	2
+thread	0	:	i	18
+thread	0	:	i	19
+thread	2	:	i	7
+thread	2	:	i	8
+thread	1	:	i	3
+thread	1	:	i	4
+thread	1	:	i	5
+</pre>
+</div>
+</div>
+<div id="outline-container-org12f88a8" class="outline-2">
+<h2 id="org12f88a8"><span class="section-number-2">4.</span> dynamic</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(dynamic, chunksize)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">20</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">6</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(dynamic, <span style="color: #da8548; font-weight: bold;">3</span>) num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        printf(<span style="color: #50a14f;">"thread\t%d\t:\ti\t%d\n"</span>, omp_get_thread_num(), i);
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc dynamic.c -fopenmp -o dynamic.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./dynamic.out
+</pre>
+</div>
+
+<pre class="example" id="orgd7ce195">
+thread	2	:	i	0
+thread	2	:	i	1
+thread	2	:	i	2
+thread	2	:	i	9
+thread	2	:	i	10
+thread	2	:	i	11
+thread	2	:	i	12
+thread	2	:	i	13
+thread	2	:	i	14
+thread	2	:	i	15
+thread	2	:	i	16
+thread	2	:	i	17
+thread	2	:	i	18
+thread	2	:	i	19
+thread	1	:	i	3
+thread	1	:	i	4
+thread	1	:	i	5
+thread	4	:	i	6
+thread	4	:	i	7
+thread	4	:	i	8
+</pre>
+</div>
+</div>
+<div id="outline-container-org4872bb2" class="outline-2">
+<h2 id="org4872bb2"><span class="section-number-2">5.</span> dynamic2</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">10</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">5</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">a</span>[N] = {<span style="color: #da8548; font-weight: bold;">1343</span>, <span style="color: #da8548; font-weight: bold;">100</span>, <span style="color: #da8548; font-weight: bold;">500000</span>, <span style="color: #da8548; font-weight: bold;">322</span>, <span style="color: #da8548; font-weight: bold;">4444</span>, <span style="color: #da8548; font-weight: bold;">544</span>, <span style="color: #da8548; font-weight: bold;">300</span>, <span style="color: #da8548; font-weight: bold;">70000000</span>, <span style="color: #da8548; font-weight: bold;">400</span>, <span style="color: #da8548; font-weight: bold;">3244</span>};
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(dynamic, <span style="color: #da8548; font-weight: bold;">1</span>) num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        printf(<span style="color: #50a14f;">"iteration i = %d is assigned to %d\n"</span>, i, omp_get_thread_num());
+        <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; a[i]; j++);
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc dynamic2.c -fopenmp -o dynamic2.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./dynamic2.out
+</pre>
+</div>
+
+<pre class="example" id="orgee22528">
+iteration i = 0 is assigned to 4
+iteration i = 4 is assigned to 2
+iteration i = 5 is assigned to 4
+iteration i = 6 is assigned to 4
+iteration i = 1 is assigned to 1
+iteration i = 8 is assigned to 2
+iteration i = 9 is assigned to 2
+iteration i = 2 is assigned to 0
+iteration i = 3 is assigned to 3
+iteration i = 7 is assigned to 4
+</pre>
+</div>
+</div>
+<div id="outline-container-org7ed4d32" class="outline-2">
+<h2 id="org7ed4d32"><span class="section-number-2">6.</span> guided</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(guided, chunksize)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">20</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">3</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(guided, <span style="color: #da8548; font-weight: bold;">3</span>) num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        printf(<span style="color: #50a14f;">"thread\t%d\t:\ti\t%d\n"</span>, omp_get_thread_num(), i);
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc guided.c -fopenmp -o guided.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./guided.out
+</pre>
+</div>
+
+<pre class="example" id="orgbb4ae5b">
+thread	1	:	i	0
+thread	1	:	i	1
+thread	1	:	i	2
+thread	1	:	i	3
+thread	1	:	i	4
+thread	1	:	i	5
+thread	1	:	i	6
+thread	1	:	i	15
+thread	2	:	i	12
+thread	0	:	i	7
+thread	0	:	i	8
+thread	0	:	i	9
+thread	0	:	i	10
+thread	0	:	i	11
+thread	0	:	i	18
+thread	0	:	i	19
+thread	2	:	i	13
+thread	2	:	i	14
+thread	1	:	i	16
+thread	1	:	i	17
+</pre>
+</div>
+</div>
+<div id="outline-container-org61faac6" class="outline-2">
+<h2 id="org61faac6"><span class="section-number-2">7.</span> guided2</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">10</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">5</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">a</span>[N] = {<span style="color: #da8548; font-weight: bold;">1343</span>, <span style="color: #da8548; font-weight: bold;">100</span>, <span style="color: #da8548; font-weight: bold;">500000</span>, <span style="color: #da8548; font-weight: bold;">322</span>, <span style="color: #da8548; font-weight: bold;">4444</span>, <span style="color: #da8548; font-weight: bold;">544</span>, <span style="color: #da8548; font-weight: bold;">300</span>, <span style="color: #da8548; font-weight: bold;">70000000</span>, <span style="color: #da8548; font-weight: bold;">400</span>, <span style="color: #da8548; font-weight: bold;">3244</span>};
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(dynamic, <span style="color: #da8548; font-weight: bold;">1</span>) num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        printf(<span style="color: #50a14f;">"iteration i = %d is assigned to %d\n"</span>, i, omp_get_thread_num());
+        <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; a[i]; j++);
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc guided2.c -fopenmp -o guided2.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./guided2.out
+</pre>
+</div>
+
+<pre class="example" id="orge990b3d">
+iteration i = 0 is assigned to 3
+iteration i = 3 is assigned to 3
+iteration i = 4 is assigned to 3
+iteration i = 1 is assigned to 1
+iteration i = 5 is assigned to 1
+iteration i = 6 is assigned to 1
+iteration i = 7 is assigned to 1
+iteration i = 8 is assigned to 3
+iteration i = 9 is assigned to 3
+iteration i = 2 is assigned to 0
+</pre>
+</div>
+</div>
+<div id="outline-container-org4833d4b" class="outline-2">
+<h2 id="org4833d4b"><span class="section-number-2">8.</span> runtime</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(runtime)
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">20</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">6</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(runtime) num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        printf(<span style="color: #50a14f;">"thread\t%d\t:\ti\t%d\n"</span>, omp_get_thread_num(), i);
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc runtime.c -fopenmp -o runtime.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #a626a4;">export</span> <span style="color: #6a1868;">OMP_SCHEDULE</span>=<span style="color: #50a14f;">"dynamic,3"</span>
+./runtime.out
+</pre>
+</div>
+
+<pre class="example" id="org5a5a972">
+thread	5	:	i	0
+thread	5	:	i	1
+thread	5	:	i	2
+thread	5	:	i	3
+thread	5	:	i	4
+thread	5	:	i	5
+thread	5	:	i	6
+thread	5	:	i	7
+thread	5	:	i	8
+thread	5	:	i	9
+thread	5	:	i	10
+thread	5	:	i	11
+thread	5	:	i	12
+thread	5	:	i	13
+thread	5	:	i	14
+thread	5	:	i	15
+thread	5	:	i	16
+thread	5	:	i	17
+thread	5	:	i	18
+thread	5	:	i	19
+</pre>
+</div>
+</div>
+<div id="outline-container-orgd60923f" class="outline-2">
+<h2 id="orgd60923f"><span class="section-number-2">9.</span> omp_set_schedule</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">To use this function we need to use schedule(runtime) clause</span>
+<span style="color: #b751b6;">type</span> : omp_sched_static, omp_sched_dynamic, <span style="color: #986801;">omp_sched_guided</span>
+<span style="color: #a626a4;">omp_set_schedule</span>(type, chunksize);
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">20</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">T</span> <span style="color: #da8548; font-weight: bold;">6</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(){
+    omp_set_schedule(omp_sched_dynamic, <span style="color: #da8548; font-weight: bold;">8</span>);
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> schedule(runtime) num_threads(T)
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++){
+        printf(<span style="color: #50a14f;">"thread\t%d\t:\ti\t%d\n"</span>, omp_get_thread_num(), i);
+    }
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc sched.c -fopenmp -o sched.out
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./sched.out
+</pre>
+</div>
+
+<pre class="example" id="org77337f2">
+thread	5	:	i	0
+thread	5	:	i	1
+thread	5	:	i	2
+thread	5	:	i	3
+thread	5	:	i	4
+thread	5	:	i	5
+thread	5	:	i	6
+thread	5	:	i	7
+thread	3	:	i	16
+thread	3	:	i	17
+thread	3	:	i	18
+thread	3	:	i	19
+thread	0	:	i	8
+thread	0	:	i	9
+thread	0	:	i	10
+thread	0	:	i	11
+thread	0	:	i	12
+thread	0	:	i	13
+thread	0	:	i	14
+thread	0	:	i	15
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Abhishek Raj</p>
+<p class="date">Created: 2025-01-03 Fri 12:03</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-01-03 Fri 13:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day14</title>
+<meta name="author" content="Abhishek Raj" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Day14</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgbb91545">1. Scripts</a>
+<ul>
+<li><a href="#orgc1092bc">1.1. compile script</a></li>
+<li><a href="#orgfe194e3">1.2. run script</a></li>
+</ul>
+</li>
+<li><a href="#org9912299">2. Array sum</a></li>
+<li><a href="#org571b130">3. Array sum with Reduce</a></li>
+<li><a href="#org97dfa62">4. Array sum with and broadcasting the total sum to all the process</a></li>
+<li><a href="#org8a76497">5. Array sum with all reduce</a></li>
+<li><a href="#org9a97006">6. allgather</a></li>
+<li><a href="#orgdc4938d">7. MPI Array Sum Calculation with Timing</a>
+<ul>
+<li><a href="#orgbd6f28e">7.1. Introduction to MPI_Wtime</a></li>
+<li><a href="#org4f7412b">7.2. Syntax</a></li>
+<li><a href="#org842b1e3">7.3. mpi_array_sum_timed.c</a></li>
+<li><a href="#orgf511f7b">7.4. Compilation and Execution</a></li>
+<li><a href="#org382a20a">7.5. Explanation of Timing</a></li>
+</ul>
+</li>
+<li><a href="#orgcbd5abc">8. Array sum with timing</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbb91545" class="outline-2">
+<h2 id="orgbb91545"><span class="section-number-2">1.</span> Scripts</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgc1092bc" class="outline-3">
+<h3 id="orgc1092bc"><span class="section-number-3">1.1.</span> compile script</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
+
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">source /opt/ohpc/pub/apps/spack/share/spack/setup-env.sh</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load gcc/5i5y5cb</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load openmpi/c7kvqyq</span>
+<span style="color: #a626a4;">source</span> ~/git/spack/share/spack/setup-env.sh
+spack load openmpi
+
+<span style="color: #6a1868;">inputFile</span>=$<span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #6a1868;">outputFile</span>=<span style="color: #50a14f;">"</span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">{1%.*}</span><span style="color: #50a14f;">.out"</span>      <span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">extract the name of the file without extension and adding extension .out</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">cmd=`mpicc $inputFile -o $outputFile`</span>
+<span style="color: #6a1868;">cmd</span>=<span style="color: #50a14f;">"mpicc </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">inputFile</span><span style="color: #50a14f;"> -o </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">outputFile</span><span style="color: #50a14f;">"</span>     <span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">running code using MPI</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Command executed: </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">cmd</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+$<span style="color: #6a1868;">cmd</span>
+
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Compilation successful. Check at </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">outputFile</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfe194e3" class="outline-3">
+<h3 id="orgfe194e3"><span class="section-number-3">1.2.</span> run script</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
+
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">source /opt/ohpc/pub/apps/spack/share/spack/setup-env.sh</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load gcc/5i5y5cbc</span>
+<span style="color: #a626a4;">source</span> ~/git/spack/share/spack/setup-env.sh
+spack load openmpi
+
+<span style="color: #6a1868;">cmd</span>=<span style="color: #50a14f;">"mpirun -np </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">2</span><span style="color: #50a14f;"> </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">1</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Command executed: </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">cmd</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##########                    OUTPUT                    ##########"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span>
+mpirun -np $<span style="color: #da8548; font-weight: bold;">2</span> $<span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #986801;">echo</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##########                     DONE                     ##########"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9912299" class="outline-2">
+<h2 id="org9912299"><span class="section-number-2">2.</span> Array sum</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">100</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = N / size;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">global_arr</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">local_arr</span> = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        global_arr = (<span style="color: #986801;">int</span>*)malloc(N * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            global_arr[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+
+    MPI_Scatter(global_arr, chunksize, MPI_INT, local_arr, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">local_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++) {
+        local_sum += local_arr[i];
+    }
+
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">global_sums</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        global_sums = (<span style="color: #986801;">int</span>*)malloc(size * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    }
+
+    MPI_Gather(&amp;local_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_INT, global_sums, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">total_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+        printf (<span style="color: #50a14f;">"Array of local sums: \n"</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; size; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, global_sums[i]);
+            total_sum += global_sums[i];
+        }
+        printf(<span style="color: #50a14f;">"\nTotal sum = %d\n"</span>, total_sum);
+        free(global_arr);
+        free(global_sums);
+    }
+
+    free(local_arr);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash compile.sh arrSum.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc arrSum.c -o arrSum.out
+------------------------------------------------------------------
+Compilation successful. Check at arrSum.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-bash">bash run.sh ./arrSum.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="org54935ed">
+------------------------------------------------------------------
+Command executed: mpirun -np 10 ./arrSum.out
+------------------------------------------------------------------
+##################################################################
+##########                    OUTPUT                    ##########
+##################################################################
+
+Array of local sums: 
+55 155 255 355 455 555 655 755 855 955 
+Total sum = 5050
+
+##################################################################
+##########                     DONE                     ##########
+##################################################################
+</pre>
+</div>
+</div>
+<div id="outline-container-org571b130" class="outline-2">
+<h2 id="org571b130"><span class="section-number-2">3.</span> Array sum with Reduce</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">100</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = N / size;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">global_arr</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">local_arr</span> = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        global_arr = (<span style="color: #986801;">int</span>*)malloc(N * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            global_arr[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+    MPI_Scatter(global_arr, chunksize, MPI_INT, local_arr, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">local_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++) {
+        local_sum += local_arr[i];
+    }
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">final_sum</span>;
+    MPI_Reduce(&amp;local_sum, &amp;final_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_INT, MPI_SUM, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    printf(<span style="color: #50a14f;">"rank = %d\ttotal sum = %d\n"</span>, rank, final_sum);
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>){
+        free(global_arr);
+    }
+    free(local_arr);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash compile.sh arrSum_reduce.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc arrSum_reduce.c -o arrSum_reduce.out
+------------------------------------------------------------------
+Compilation successful. Check at arrSum_reduce.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-bash">bash run.sh ./arrSum_reduce.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="org7a86c77">
+------------------------------------------------------------------
+Command executed: mpirun -np 10 ./arrSum_reduce.out
+------------------------------------------------------------------
+##################################################################
+##########                    OUTPUT                    ##########
+##################################################################
+
+rank = 6	total sum = 0
+rank = 8	total sum = 0
+rank = 9	total sum = 0
+rank = 2	total sum = 0
+rank = 4	total sum = 0
+rank = 3	total sum = 0
+rank = 5	total sum = 0
+rank = 7	total sum = 0
+rank = 1	total sum = 0
+rank = 0	total sum = 5050
+
+##################################################################
+##########                     DONE                     ##########
+##################################################################
+</pre>
+</div>
+</div>
+<div id="outline-container-org97dfa62" class="outline-2">
+<h2 id="org97dfa62"><span class="section-number-2">4.</span> Array sum with and broadcasting the total sum to all the process</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">10000</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = N / size;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">global_arr</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">local_arr</span> = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        global_arr = (<span style="color: #986801;">int</span>*)malloc(N * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            global_arr[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+    MPI_Scatter(global_arr, chunksize, MPI_INT, local_arr, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">local_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++) {
+        local_sum += local_arr[i];
+    }
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">final_sum</span>;
+    MPI_Reduce(&amp;local_sum, &amp;final_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_INT, MPI_SUM, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    MPI_Bcast(&amp;final_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    printf(<span style="color: #50a14f;">"rank = %d\ttotal sum = %d\n"</span>, rank, final_sum);
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>){
+        free(global_arr);
+    }
+    free(local_arr);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash compile.sh arrSum_reduce1.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc arrSum_reduce1.c -o arrSum_reduce1.out
+------------------------------------------------------------------
+Compilation successful. Check at arrSum_reduce1.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-bash">bash run.sh ./arrSum_reduce1.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="orged7119a">
+------------------------------------------------------------------
+Command executed: mpirun -np 10 ./arrSum_reduce1.out
+------------------------------------------------------------------
+##################################################################
+##########                    OUTPUT                    ##########
+##################################################################
+
+rank = 1	total sum = 50005000
+rank = 0	total sum = 50005000
+rank = 5	total sum = 50005000
+rank = 2	total sum = 50005000
+rank = 4	total sum = 50005000
+rank = 3	total sum = 50005000
+rank = 8	total sum = 50005000
+rank = 6	total sum = 50005000
+rank = 7	total sum = 50005000
+rank = 9	total sum = 50005000
+
+##################################################################
+##########                     DONE                     ##########
+##################################################################
+</pre>
+</div>
+</div>
+<div id="outline-container-org8a76497" class="outline-2">
+<h2 id="org8a76497"><span class="section-number-2">5.</span> Array sum with all reduce</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">10000</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = N / size;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">global_arr</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">local_arr</span> = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        global_arr = (<span style="color: #986801;">int</span>*)malloc(N * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            global_arr[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+    MPI_Scatter(global_arr, chunksize, MPI_INT, local_arr, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">local_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++) {
+        local_sum += local_arr[i];
+    }
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">final_sum</span>;
+    MPI_Allreduce(&amp;local_sum, &amp;final_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+
+    printf(<span style="color: #50a14f;">"rank = %d\ttotal sum = %d\n"</span>, rank, final_sum);
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>){
+        free(global_arr);
+    }
+    free(local_arr);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash compile.sh arrSum_allreduce.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc arrSum_allreduce.c -o arrSum_allreduce.out
+------------------------------------------------------------------
+Compilation successful. Check at arrSum_allreduce.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-bash">bash run.sh ./arrSum_allreduce.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="orgd5879c2">
+------------------------------------------------------------------
+Command executed: mpirun -np 10 ./arrSum_allreduce.out
+------------------------------------------------------------------
+##################################################################
+##########                    OUTPUT                    ##########
+##################################################################
+
+rank = 1	total sum = 50005000
+rank = 3	total sum = 50005000
+rank = 7	total sum = 50005000
+rank = 9	total sum = 50005000
+rank = 5	total sum = 50005000
+rank = 2	total sum = 50005000
+rank = 6	total sum = 50005000
+rank = 0	total sum = 50005000
+rank = 4	total sum = 50005000
+rank = 8	total sum = 50005000
+
+##################################################################
+##########                     DONE                     ##########
+##################################################################
+</pre>
+</div>
+</div>
+<div id="outline-container-org9a97006" class="outline-2">
+<h2 id="org9a97006"><span class="section-number-2">6.</span> allgather</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">100</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = N / size;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">global_arr</span>;
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">local_arr</span> = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        global_arr = (<span style="color: #986801;">int</span>*)malloc(N * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            global_arr[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+
+    MPI_Scatter(global_arr, chunksize, MPI_INT, local_arr, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">local_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++) {
+        local_sum += local_arr[i];
+    }
+
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">global_sums</span> = <span style="color: #b751b6;">NULL</span>;
+    global_sums = (<span style="color: #986801;">int</span>*)malloc(size * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+
+    MPI_Allgather(&amp;local_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_INT, global_sums, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_INT, MPI_COMM_WORLD);
+
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; size; i++) {
+        printf(<span style="color: #50a14f;">"%d "</span>, global_sums[i]);
+    }
+    printf(<span style="color: #50a14f;">"\n"</span>);
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>) free(global_arr);
+    free(global_sums);
+
+    free(local_arr);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash compile.sh task3.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc task3.c -o task3.out
+------------------------------------------------------------------
+Compilation successful. Check at task3.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-bash">bash run.sh ./task3.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="orga3d42e4">
+------------------------------------------------------------------
+Command executed: mpirun -np 10 ./task3.out
+------------------------------------------------------------------
+##################################################################
+##########                    OUTPUT                    ##########
+##################################################################
+
+55 155 255 355 455 555 655 755 855 955 
+55 155 255 355 455 555 655 755 855 955 
+55 155 255 355 455 555 655 755 855 955 
+55 155 255 355 455 555 655 755 855 955 
+55 155 255 355 455 555 655 755 855 955 
+55 155 255 355 455 555 655 755 855 955 
+55 155 255 355 455 555 655 755 855 955 
+55 155 255 355 455 555 655 755 855 955 
+55 155 255 355 455 555 655 755 855 955 
+55 155 255 355 455 555 655 755 855 955 
+
+##################################################################
+##########                     DONE                     ##########
+##################################################################
+</pre>
+</div>
+</div>
+<div id="outline-container-orgdc4938d" class="outline-2">
+<h2 id="orgdc4938d"><span class="section-number-2">7.</span> MPI Array Sum Calculation with Timing</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgbd6f28e" class="outline-3">
+<h3 id="orgbd6f28e"><span class="section-number-3">7.1.</span> Introduction to MPI_Wtime</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+`MPI_Wtime` is a function in MPI that returns the elapsed wall-clock time in seconds since an arbitrary point in the past. It is used to measure the performance and execution time of parallel programs.
+</p>
+</div>
+</div>
+<div id="outline-container-org4f7412b" class="outline-3">
+<h3 id="org4f7412b"><span class="section-number-3">7.2.</span> Syntax</h3>
+<div class="outline-text-3" id="text-7-2">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #986801;">double</span> <span style="color: #a626a4;">MPI_Wtime</span>(<span style="color: #986801;">void</span>);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org842b1e3" class="outline-3">
+<h3 id="org842b1e3"><span class="section-number-3">7.3.</span> mpi_array_sum_timed.c</h3>
+<div class="outline-text-3" id="text-7-3">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">size</span>;
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #986801;">long</span> <span style="color: #6a1868;">n</span> = <span style="color: #da8548; font-weight: bold;">10000000000</span>; <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Size of the array</span>
+    <span style="color: #986801;">long</span> *<span style="color: #6a1868;">array</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunk_size</span> = n / size;
+    <span style="color: #986801;">long</span> *<span style="color: #6a1868;">sub_array</span> = (<span style="color: #986801;">long</span>*)malloc(chunk_size * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">long</span>));
+
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">start_time</span>, <span style="color: #6a1868;">end_time</span>;
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        array = (<span style="color: #986801;">long</span>*)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">long</span>));
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+            array[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>; <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the array with values 1 to n</span>
+        }
+
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Start timing the computation</span>
+        start_time = MPI_Wtime();
+
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Distribute chunks of the array to other processes</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">1</span>; i &lt; size; i++) {
+            MPI_Send(array + i * chunk_size, chunk_size, MPI_LONG, i, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        }
+
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Copy the first chunk to sub_array</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunk_size; i++) {
+            sub_array[i] = array[i];
+        }
+    } <span style="color: #e45649;">else</span> {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Receive chunk of the array</span>
+        MPI_Recv(sub_array, chunk_size, MPI_LONG, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Compute the local sum</span>
+    <span style="color: #986801;">long</span> <span style="color: #6a1868;">local_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunk_size; i++) {
+        local_sum += sub_array[i];
+    }
+
+    <span style="color: #e45649;">if</span> (rank != <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Send local sum to process 0</span>
+        MPI_Send(&amp;local_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_LONG, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    } <span style="color: #e45649;">else</span> {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Process 0 receives the local sums and computes the final sum</span>
+        <span style="color: #986801;">long</span> <span style="color: #6a1868;">final_sum</span> = local_sum;
+        <span style="color: #986801;">long</span> <span style="color: #6a1868;">temp_sum</span>;
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">1</span>; i &lt; size; i++) {
+            MPI_Recv(&amp;temp_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_LONG, i, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            final_sum += temp_sum;
+        }
+
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Stop timing the computation</span>
+        end_time = MPI_Wtime();
+        printf(<span style="color: #50a14f;">"The total sum of array elements is %ld\n"</span>, final_sum);
+        printf(<span style="color: #50a14f;">"Time taken: %f seconds\n"</span>, end_time - start_time);
+
+        free(array);
+    }
+
+    free(sub_array);
+
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf511f7b" class="outline-3">
+<h3 id="orgf511f7b"><span class="section-number-3">7.4.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh mpi_array_sum_timed.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_array_sum_timed.c -o mpi_array_sum_timed.out
+------------------------------------------------------------------
+Compilation successful. Check at mpi_array_sum_timed.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./mpi_array_sum_timed.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="org7e38188">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 10 ./mpi_array_sum_timed.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org382a20a" class="outline-3">
+<h3 id="org382a20a"><span class="section-number-3">7.5.</span> Explanation of Timing</h3>
+<div class="outline-text-3" id="text-7-5">
+<ul class="org-ul">
+<li>`MPI_Wtime()`: Returns the current time in seconds. It is called before and after the computation to measure the elapsed time.</li>
+<li>`start_time = MPI_Wtime();`: Captures the start time before distributing the array.</li>
+<li>`end_time = MPI_Wtime();`: Captures the end time after collecting the local sums and computing the final sum.</li>
+<li>`printf(&ldquo;Time taken: %f seconds\n&rdquo;, end_time - start_time);`: Prints the total time taken for the computation.</li>
+</ul>
+
+<p>
+This updated program measures the time taken to distribute the array, compute local sums, gather the results, and compute the final sum. The timing information helps in evaluating the performance of the parallel program.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcbd5abc" class="outline-2">
+<h2 id="orgcbd5abc"><span class="section-number-2">8.</span> Array sum with timing</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">N</span> = <span style="color: #da8548; font-weight: bold;">1000000000</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">startTime</span>, <span style="color: #6a1868;">endTime</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">chunksize</span> = N / size;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span>* <span style="color: #6a1868;">global_arr</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span>* <span style="color: #6a1868;">local_arr</span> = (<span style="color: #986801;">long</span> <span style="color: #986801;">long</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">long</span> <span style="color: #986801;">long</span>));
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        global_arr = (<span style="color: #986801;">long</span> <span style="color: #986801;">long</span>*)malloc(N * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">long</span> <span style="color: #986801;">long</span>));
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            global_arr[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>) startTime = MPI_Wtime();
+    MPI_Scatter(global_arr, chunksize, MPI_LONG_LONG_INT, local_arr, chunksize, MPI_LONG_LONG_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">local_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++) {
+        local_sum += local_arr[i];
+    }
+
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span>* <span style="color: #6a1868;">global_sums</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        global_sums = (<span style="color: #986801;">long</span> <span style="color: #986801;">long</span>*)malloc(size * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">long</span> <span style="color: #986801;">long</span>));
+    }
+
+    MPI_Gather(&amp;local_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_LONG_LONG_INT, global_sums, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_LONG_LONG_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">total_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+
+        printf (<span style="color: #50a14f;">"Array of local sums: \n"</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; size; i++) {
+            <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">printf("%d ", global_sums[i]);</span>
+            total_sum += global_sums[i];
+        }
+        endTime = MPI_Wtime();
+        printf(<span style="color: #50a14f;">"rank %d : timing %lf\n"</span>, rank, endTime - startTime);
+        printf(<span style="color: #50a14f;">"\nTotal sum = %lld\n"</span>, total_sum);
+        free(global_arr);
+        free(global_sums);
+    }
+
+    free(local_arr);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash compile.sh arrSum1.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc arrSum1.c -o arrSum1.out
+------------------------------------------------------------------
+Compilation successful. Check at arrSum1.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-bash">bash run.sh ./arrSum1.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="org0dbf896">
+------------------------------------------------------------------
+Command executed: mpirun -np 10 ./arrSum1.out
+------------------------------------------------------------------
+##################################################################
+##########                    OUTPUT                    ##########
+##################################################################
+
+Array of local sums: 
+rank 0 : timing 4.847307
+
+Total sum = 500000000500000000
+
+##################################################################
+##########                     DONE                     ##########
+##################################################################
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Abhishek Raj</p>
+<p class="date">Created: 2025-01-03 Fri 13:59</p>
+</div>
+</body>
+</html>
