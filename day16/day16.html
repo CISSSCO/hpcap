@@ -1,0 +1,2084 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-01-13 Mon 17:23 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day16</title>
+<meta name="author" content="Abhishek Raj" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Day16</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6255553">1. Scripts</a>
+<ul>
+<li><a href="#org04ec236">1.1. compile script</a></li>
+<li><a href="#org762e126">1.2. run script</a></li>
+</ul>
+</li>
+<li><a href="#orgf17d88a">2. MPI Premitive Data Types</a></li>
+<li><a href="#org22d737a">3. MPI Derived Data Types</a></li>
+<li><a href="#orgd95aff6">4. MPI_Type_contiguous</a>
+<ul>
+<li><a href="#orgab069be">4.1. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#org4830138">5. MPI_Type_vector</a>
+<ul>
+<li><a href="#org3f99e1e">5.1. Syntax</a></li>
+<li><a href="#org36ef45c">5.2. Example Code</a></li>
+<li><a href="#org17687cf">5.3. Explanation</a></li>
+<li><a href="#orgd63c77a">5.4. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#orgb458277">6. MPI_Type_vector Example2</a>
+<ul>
+<li><a href="#orgeb91d12">6.1. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#org9602875">7. MPI_Type_indexed</a>
+<ul>
+<li><a href="#orgfc50579">7.1. Syntax</a></li>
+<li><a href="#orgc485719">7.2. Example Code</a></li>
+<li><a href="#orgbf01b81">7.3. Explanation</a></li>
+<li><a href="#orgc5f080b">7.4. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#org23fe983">8. MPI_Type_struct</a>
+<ul>
+<li><a href="#org56cd401">8.1. Syntax (Deprecated)</a></li>
+<li><a href="#org6c1c7d7">8.2. Syntax (Current)</a></li>
+<li><a href="#org77386af">8.3. Example Code</a></li>
+<li><a href="#orge6f1bd9">8.4. Explanation</a></li>
+<li><a href="#org57a2a4f">8.5. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#org2ec15d9">9. MPI Type Struct with different blocklength</a>
+<ul>
+<li><a href="#org8e746ba">9.1. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#orga6b0e53">10. Reference</a>
+<ul>
+<li><a href="#orge78ef92">10.1. MPI Type contigous</a></li>
+<li><a href="#orgbb4c5eb">10.2. MPI Type vector</a></li>
+<li><a href="#orgfb20af1">10.3. MPI Type indexed</a></li>
+<li><a href="#orga5a07c1">10.4. MPI Type struct</a></li>
+</ul>
+</li>
+<li><a href="#orgd5a09d1">11. task1</a>
+<ul>
+<li><a href="#org102e2bf">11.1. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#orgcef5888">12. task2</a>
+<ul>
+<li><a href="#orgc3d3e69">12.1. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#org50c0ee9">13. task2 with MPI_Type_contiguous</a>
+<ul>
+<li><a href="#org554999f">13.1. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#org2a378f7">14. task3</a>
+<ul>
+<li><a href="#org353f374">14.1. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#orgc30e3e8">15. task4 (transfer 3rd column to process 1)</a>
+<ul>
+<li><a href="#orgefb8d9a">15.1. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#orgfd6aa10">16. Implement vector using indexed</a>
+<ul>
+<li><a href="#org591eceb">16.1. Compilation and Execution</a></li>
+</ul>
+</li>
+<li><a href="#orgdfdee4d">17. Implement contiguous using indexed</a>
+<ul>
+<li><a href="#org062d5d5">17.1. Compilation and Execution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6255553" class="outline-2">
+<h2 id="org6255553"><span class="section-number-2">1.</span> Scripts</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org04ec236" class="outline-3">
+<h3 id="org04ec236"><span class="section-number-3">1.1.</span> compile script</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
+
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">source /opt/ohpc/pub/apps/spack/share/spack/setup-env.sh</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load gcc/5i5y5cb</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load openmpi/c7kvqyq</span>
+<span style="color: #a626a4;">source</span> ~/git/spack/share/spack/setup-env.sh
+spack load openmpi
+
+<span style="color: #6a1868;">inputFile</span>=$<span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #6a1868;">outputFile</span>=<span style="color: #50a14f;">"</span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">{1%.*}</span><span style="color: #50a14f;">.out"</span>      <span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">extract the name of the file without extension and adding extension .out</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">cmd=`mpicc $inputFile -o $outputFile`</span>
+<span style="color: #6a1868;">cmd</span>=<span style="color: #50a14f;">"mpicc </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">inputFile</span><span style="color: #50a14f;"> -o </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">outputFile</span><span style="color: #50a14f;">"</span>     <span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">running code using MPI</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Command executed: </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">cmd</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+$<span style="color: #6a1868;">cmd</span>
+
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Compilation successful. Check at </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">outputFile</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org762e126" class="outline-3">
+<h3 id="org762e126"><span class="section-number-3">1.2.</span> run script</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
+
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">source /opt/ohpc/pub/apps/spack/share/spack/setup-env.sh</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load gcc/5i5y5cbc</span>
+<span style="color: #a626a4;">source</span> ~/git/spack/share/spack/setup-env.sh
+spack load openmpi
+
+<span style="color: #6a1868;">cmd</span>=<span style="color: #50a14f;">"mpirun -np </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">2</span><span style="color: #50a14f;"> </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">1</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Command executed: </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">cmd</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##########                    OUTPUT                    ##########"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span>
+mpirun -np $<span style="color: #da8548; font-weight: bold;">2</span> $<span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #986801;">echo</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##########                     DONE                     ##########"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf17d88a" class="outline-2">
+<h2 id="orgf17d88a"><span class="section-number-2">2.</span> MPI Premitive Data Types</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>MPI_CHAR</li>
+<li>MPI_WCHAR</li>
+<li>MPI_SHORT</li>
+<li>MPI_INT</li>
+<li>MPI_LONG</li>
+<li>MPI_LONG_LONG_INT</li>
+<li>MPI_LONG_LONG</li>
+<li>MPI_SIGNED_CHAR</li>
+<li>MPI_UNSIGNED_CHAR</li>
+<li>MPI_UNSIGNED_SHORT</li>
+<li>MPI_UNSIGNED_LONG</li>
+<li>MPI_UNSIGNED</li>
+<li>MPI_FLOAT</li>
+<li>MPI_DOUBLE</li>
+<li>MPI_LONG_DOUBLE</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org22d737a" class="outline-2">
+<h2 id="org22d737a"><span class="section-number-2">3.</span> MPI Derived Data Types</h2>
+<div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>Contiguous</li>
+<li>Vector</li>
+<li>Indexed</li>
+<li>Struct</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd95aff6" class="outline-2">
+<h2 id="orgd95aff6"><span class="section-number-2">4.</span> MPI_Type_contiguous</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+`MPI_Type_contiguous` creates a new MPI datatype that represents a contiguous block of elements. This is useful when you want to send or receive a block of the same datatype as a single message.
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">20</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span> = <span style="color: #da8548; font-weight: bold;">5</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[N];
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">contiguous_type</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Create a contiguous datatype</span>
+    MPI_Type_contiguous(count, MPI_INT, &amp;contiguous_type);
+    MPI_Type_commit(&amp;contiguous_type);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array with some values</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            data[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+
+        MPI_Send(data, <span style="color: #da8548; font-weight: bold;">4</span>, contiguous_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        MPI_Recv(data, <span style="color: #da8548; font-weight: bold;">4</span>, contiguous_type, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+
+    MPI_Type_free(&amp;contiguous_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-orgab069be" class="outline-3">
+<h3 id="orgab069be"><span class="section-number-3">4.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh mpi_type_contiguous.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_type_contiguous.c -o mpi_type_contiguous.out
+------------------------------------------------------------------
+Compilation successful. Check at mpi_type_contiguous.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./mpi_type_contiguous.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="org3dd5c4b">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./mpi_type_contiguous.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+  Process 1 received data: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+
+<p>
+In this example, `MPI_Type_contiguous` is used to create a contiguous datatype that represents an array of integers. This datatype is then used to send and receive the array between processes.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4830138" class="outline-2">
+<h2 id="org4830138"><span class="section-number-2">5.</span> MPI_Type_vector</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+`MPI_Type_vector` creates a new MPI datatype that represents a pattern of regularly spaced blocks of data. This is useful for sending or receiving non-contiguous data with a regular pattern, such as columns of a matrix or every nth element of an array.
+</p>
+</div>
+<div id="outline-container-org3f99e1e" class="outline-3">
+<h3 id="org3f99e1e"><span class="section-number-3">5.1.</span> Syntax</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #986801;">int</span> <span style="color: #a626a4;">MPI_Type_vector</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklength</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">stride</span>, <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">oldtype</span>, <span style="color: #986801;">MPI_Datatype</span> *<span style="color: #6a1868;">newtype</span>);
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>`count`: Number of blocks.</li>
+<li>`blocklength`: Number of elements in each block.</li>
+<li>`stride`: Number of elements between the start of each block.</li>
+<li>`oldtype`: Datatype of each element in the block.</li>
+<li>`newtype`: New datatype representing the vector.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org36ef45c" class="outline-3">
+<h3 id="org36ef45c"><span class="section-number-3">5.2.</span> Example Code</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span> = <span style="color: #da8548; font-weight: bold;">3</span>;       <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of blocks</span>
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklength</span> = <span style="color: #da8548; font-weight: bold;">3</span>; <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of elements in each block</span>
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">stride</span> = <span style="color: #da8548; font-weight: bold;">6</span>;      <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of elements between the start of each block</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[<span style="color: #da8548; font-weight: bold;">15</span>];              <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Array to send/receive</span>
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">vector_type</span>;
+    MPI_Type_vector(count, blocklength, stride, MPI_INT, &amp;vector_type);
+    MPI_Type_commit(&amp;vector_type);
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">15</span>; i++) {
+            data[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+
+        MPI_Send(data, <span style="color: #da8548; font-weight: bold;">1</span>, vector_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">15</span>; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">15</span>; i++) {
+            data[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+        MPI_Recv(data, <span style="color: #da8548; font-weight: bold;">1</span>, vector_type, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">15</span>; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+    MPI_Type_free(&amp;vector_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org17687cf" class="outline-3">
+<h3 id="org17687cf"><span class="section-number-3">5.3.</span> Explanation</h3>
+<div class="outline-text-3" id="text-5-3">
+<ul class="org-ul">
+<li><b><b>Initialization</b></b>: Initialize MPI, get the rank and size of the communicator.</li>
+<li><b><b>Datatype Creation</b></b>: `MPI_Type_vector` creates a new datatype `vector_type` representing 3 blocks of 1 integer each, with a stride of 5 integers between the start of each block.</li>
+<li><b><b>Process 0</b></b>:
+<ul class="org-ul">
+<li>Initializes the `data` array with values from 1 to 15.</li>
+<li>Sends the `data` array using the `vector_type` to process 1.</li>
+<li>Prints the `data` array.</li>
+</ul></li>
+<li><b><b>Process 1</b></b>:
+<ul class="org-ul">
+<li>Initializes the `data` array to zero.</li>
+<li>Receives the data from process 0 into the `data` array using the `vector_type`.</li>
+<li>Prints the `data` array after receiving.</li>
+</ul></li>
+<li><b><b>Datatype Cleanup</b></b>: Free the `vector_type` with `MPI_Type_free`.</li>
+<li><b><b>Finalize</b></b>: Finalize the MPI environment.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd63c77a" class="outline-3">
+<h3 id="orgd63c77a"><span class="section-number-3">5.4.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh mpi_type_vector.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_type_vector.c -o mpi_type_vector.out
+------------------------------------------------------------------
+Compilation successful. Check at mpi_type_vector.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./mpi_type_vector.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="orgc27072d">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./mpi_type_vector.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+  Process 1 received data: 1 2 3 0 0 0 7 8 9 0 0 0 13 14 15 
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+
+<p>
+This example demonstrates how to use `MPI_Type_vector` to communicate non-contiguous data with a regular pattern in MPI.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb458277" class="outline-2">
+<h2 id="orgb458277"><span class="section-number-2">6.</span> MPI_Type_vector Example2</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span> = <span style="color: #da8548; font-weight: bold;">3</span>;       <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of blocks</span>
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklength</span> = <span style="color: #da8548; font-weight: bold;">2</span>; <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of elements in each block</span>
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">stride</span> = <span style="color: #da8548; font-weight: bold;">5</span>;      <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of elements between the start of each block</span>
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">vector_type</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Create a vector datatype</span>
+    MPI_Type_vector(count, blocklength, stride, MPI_INT, &amp;vector_type);
+    MPI_Type_commit(&amp;vector_type);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[<span style="color: #da8548; font-weight: bold;">15</span>];              <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Array to send/receive</span>
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array with some values</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">15</span>; i++) {
+            data[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+
+        MPI_Send(data, <span style="color: #da8548; font-weight: bold;">1</span>, vector_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">15</span>; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">data1</span>[<span style="color: #da8548; font-weight: bold;">6</span>];
+
+        MPI_Recv(data1, count * blocklength, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">6</span>; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data1[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+
+    MPI_Type_free(&amp;vector_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-orgeb91d12" class="outline-3">
+<h3 id="orgeb91d12"><span class="section-number-3">6.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh mpi_type_vector1.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_type_vector1.c -o mpi_type_vector1.out
+------------------------------------------------------------------
+Compilation successful. Check at mpi_type_vector1.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./mpi_type_vector1.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="orgfc7bcdb">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./mpi_type_vector1.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+  Process 1 received data: 1 2 6 7 11 12 
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+
+<p>
+This example demonstrates how to use `MPI_Type_vector` to communicate non-contiguous data with a regular pattern in MPI.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org9602875" class="outline-2">
+<h2 id="org9602875"><span class="section-number-2">7.</span> MPI_Type_indexed</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+`MPI_Type_indexed` creates a new MPI datatype that represents an irregularly spaced set of blocks of data. This is useful for sending or receiving non-contiguous data with an irregular pattern.
+</p>
+</div>
+<div id="outline-container-orgfc50579" class="outline-3">
+<h3 id="orgfc50579"><span class="section-number-3">7.1.</span> Syntax</h3>
+<div class="outline-text-3" id="text-7-1">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #986801;">int</span> <span style="color: #a626a4;">MPI_Type_indexed</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">array_of_blocklengths</span>[], <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">array_of_displacements</span>[], <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">oldtype</span>, <span style="color: #986801;">MPI_Datatype</span> *<span style="color: #6a1868;">newtype</span>);
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>`count`: Number of blocks.</li>
+<li>`array_of_blocklengths`: Array specifying the number of elements in each block.</li>
+<li>`array_of_displacements`: Array specifying the displacement of each block from the start.</li>
+<li>`oldtype`: Datatype of each element in the blocks.</li>
+<li>`newtype`: New datatype representing the indexed pattern.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc485719" class="outline-3">
+<h3 id="orgc485719"><span class="section-number-3">7.2.</span> Example Code</h3>
+<div class="outline-text-3" id="text-7-2">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span> = <span style="color: #da8548; font-weight: bold;">3</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklengths</span>[<span style="color: #da8548; font-weight: bold;">3</span>] = {<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">1</span>};
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">displacements</span>[<span style="color: #da8548; font-weight: bold;">3</span>] = {<span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">3</span>, <span style="color: #da8548; font-weight: bold;">7</span>};
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[<span style="color: #da8548; font-weight: bold;">10</span>];
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">indexed_type</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Create an indexed datatype</span>
+    MPI_Type_indexed(count, blocklengths, displacements, MPI_INT, &amp;indexed_type);
+    MPI_Type_commit(&amp;indexed_type);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array with some values</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">10</span>; i++) {
+            data[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+
+        MPI_Send(data, <span style="color: #da8548; font-weight: bold;">1</span>, indexed_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">10</span>; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array to zero</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">10</span>; i++) {
+            data[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+
+        MPI_Recv(data, <span style="color: #da8548; font-weight: bold;">1</span>, indexed_type, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">10</span>; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+
+    MPI_Type_free(&amp;indexed_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbf01b81" class="outline-3">
+<h3 id="orgbf01b81"><span class="section-number-3">7.3.</span> Explanation</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li><b><b>Initialization</b></b>: Initialize MPI, get the rank and size of the communicator.</li>
+<li><b><b>Datatype Creation</b></b>:
+<ul class="org-ul">
+<li>`blocklengths` specifies the number of elements in each block: {1, 2, 1}.</li>
+<li>`displacements` specifies the starting indices of each block: {0, 3, 7}.</li>
+<li>`MPI_Type_indexed` creates a new datatype `indexed_type` representing these blocks.</li>
+</ul></li>
+<li><b><b>Process 0</b></b>:
+<ul class="org-ul">
+<li>Initializes the `data` array with values from 1 to 10.</li>
+<li>Sends the `data` array using the `indexed_type` to process 1.</li>
+<li>Prints the `data` array.</li>
+</ul></li>
+<li><b><b>Process 1</b></b>:
+<ul class="org-ul">
+<li>Initializes the `data` array to zero.</li>
+<li>Receives the data from process 0 into the `data` array using the `indexed_type`.</li>
+<li>Prints the `data` array after receiving.</li>
+</ul></li>
+<li><b><b>Datatype Cleanup</b></b>: Free the `indexed_type` with `MPI_Type_free`.</li>
+<li><b><b>Finalize</b></b>: Finalize the MPI environment.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc5f080b" class="outline-3">
+<h3 id="orgc5f080b"><span class="section-number-3">7.4.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh mpi_type_indexed.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_type_indexed.c -o mpi_type_indexed.out
+------------------------------------------------------------------
+Compilation successful. Check at mpi_type_indexed.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./mpi_type_indexed.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="org1bb3971">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./mpi_type_indexed.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 1 2 3 4 5 6 7 8 9 10 
+  Process 1 received data: 1 0 0 4 5 0 0 8 0 0 
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+
+<p>
+This example demonstrates how to use `MPI_Type_indexed` to communicate non-contiguous data with an irregular pattern in MPI.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org23fe983" class="outline-2">
+<h2 id="org23fe983"><span class="section-number-2">8.</span> MPI_Type_struct</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+`MPI_Type_struct` (now deprecated and replaced by `MPI_Type_create_struct`) allows you to create a new MPI datatype that consists of a sequence of blocks, each with potentially different types and sizes. This is useful for sending or receiving complex data structures, such as structs in C.
+</p>
+</div>
+<div id="outline-container-org56cd401" class="outline-3">
+<h3 id="org56cd401"><span class="section-number-3">8.1.</span> Syntax (Deprecated)</h3>
+<div class="outline-text-3" id="text-8-1">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #986801;">int</span> <span style="color: #a626a4;">MPI_Type_struct</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">array_of_blocklengths</span>[], <span style="color: #e45649;">const</span> <span style="color: #986801;">MPI_Aint</span> <span style="color: #6a1868;">array_of_displacements</span>[], <span style="color: #e45649;">const</span> <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">array_of_types</span>[], <span style="color: #986801;">MPI_Datatype</span> *<span style="color: #6a1868;">newtype</span>);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6c1c7d7" class="outline-3">
+<h3 id="org6c1c7d7"><span class="section-number-3">8.2.</span> Syntax (Current)</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #986801;">int</span> <span style="color: #a626a4;">MPI_Type_create_struct</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">array_of_blocklengths</span>[], <span style="color: #e45649;">const</span> <span style="color: #986801;">MPI_Aint</span> <span style="color: #6a1868;">array_of_displacements</span>[], <span style="color: #e45649;">const</span> <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">array_of_types</span>[], <span style="color: #986801;">MPI_Datatype</span> *<span style="color: #6a1868;">newtype</span>);
+</pre>
+</div>
+
+<ul class="org-ul">
+<li>`count`: Number of blocks.</li>
+<li>`array_of_blocklengths`: Array specifying the number of elements in each block.</li>
+<li>`array_of_displacements`: Array specifying the byte displacement of each block from the start.</li>
+<li>`array_of_types`: Array specifying the datatype of each block.</li>
+<li>`newtype`: New datatype representing the struct.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org77386af" class="outline-3">
+<h3 id="org77386af"><span class="section-number-3">8.3.</span> Example Code</h3>
+<div class="outline-text-3" id="text-8-3">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #e45649;">typedef</span> <span style="color: #e45649;">struct</span> {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">a</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">b</span>;
+    <span style="color: #986801;">char</span> <span style="color: #6a1868;">c</span>;
+} <span style="color: #986801;">my_struct</span>;
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+
+    <span style="color: #986801;">my_struct</span> <span style="color: #6a1868;">data</span>;
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">struct_type</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Create the datatype for my_struct</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklengths</span>[<span style="color: #da8548; font-weight: bold;">3</span>] = {<span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">1</span>};
+    <span style="color: #986801;">MPI_Aint</span> <span style="color: #6a1868;">displacements</span>[<span style="color: #da8548; font-weight: bold;">3</span>];
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">types</span>[<span style="color: #da8548; font-weight: bold;">3</span>] = {MPI_INT, MPI_DOUBLE, MPI_CHAR};
+
+    displacements[<span style="color: #da8548; font-weight: bold;">0</span>] = offsetof(my_struct, a);
+    displacements[<span style="color: #da8548; font-weight: bold;">1</span>] = offsetof(my_struct, b);
+    displacements[<span style="color: #da8548; font-weight: bold;">2</span>] = offsetof(my_struct, c);
+
+    MPI_Type_create_struct(<span style="color: #da8548; font-weight: bold;">3</span>, blocklengths, displacements, types, &amp;struct_type);
+    MPI_Type_commit(&amp;struct_type);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        data.a = <span style="color: #da8548; font-weight: bold;">42</span>;
+        data.b = <span style="color: #da8548; font-weight: bold;">3.14</span>;
+        data.c = <span style="color: #50a14f;">'A'</span>;
+
+        MPI_Send(&amp;data, <span style="color: #da8548; font-weight: bold;">1</span>, struct_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent struct: {a = %d, b = %.2f, c = %c}\n"</span>, data.a, data.b, data.c);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        MPI_Recv(&amp;data, <span style="color: #da8548; font-weight: bold;">1</span>, struct_type, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received struct: {a = %d, b = %.2f, c = %c}\n"</span>, data.a, data.b, data.c);
+    }
+
+    MPI_Type_free(&amp;struct_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge6f1bd9" class="outline-3">
+<h3 id="orge6f1bd9"><span class="section-number-3">8.4.</span> Explanation</h3>
+<div class="outline-text-3" id="text-8-4">
+<ul class="org-ul">
+<li><b><b>Initialization</b></b>: Initialize MPI, get the rank and size of the communicator.</li>
+<li><b><b>Datatype Creation</b></b>:
+<ul class="org-ul">
+<li>`blocklengths` specifies the number of elements in each block: {1, 1, 1}.</li>
+<li>`displacements` specifies the byte offsets of each block within the struct: calculated using `offsetof`.</li>
+<li>`types` specifies the datatype of each block: {MPI_INT, MPI_DOUBLE, MPI_CHAR}.</li>
+<li>`MPI_Type_create_struct` creates a new datatype `struct_type` representing the `my_struct`.</li>
+</ul></li>
+<li><b><b>Process 0</b></b>:
+<ul class="org-ul">
+<li>Initializes the `data` struct with values.</li>
+<li>Sends the `data` struct using the `struct_type` to process 1.</li>
+<li>Prints the `data` struct.</li>
+</ul></li>
+<li><b><b>Process 1</b></b>:
+<ul class="org-ul">
+<li>Receives the struct from process 0 into the `data` struct using the `struct_type`.</li>
+<li>Prints the `data` struct after receiving.</li>
+</ul></li>
+<li><b><b>Datatype Cleanup</b></b>: Free the `struct_type` with `MPI_Type_free`.</li>
+<li><b><b>Finalize</b></b>: Finalize the MPI environment.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org57a2a4f" class="outline-3">
+<h3 id="org57a2a4f"><span class="section-number-3">8.5.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-8-5">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh mpi_type_struct.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_type_struct.c -o mpi_type_struct.out
+------------------------------------------------------------------
+Compilation successful. Check at mpi_type_struct.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./mpi_type_struct.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="orgdacbff1">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./mpi_type_struct.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent struct: {a = 42, b = 3.14, c = A}
+  Process 1 received struct: {a = 42, b = 3.14, c = A}
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+
+<p>
+This example demonstrates how to use `MPI_Type_create_struct` to communicate complex data structures in MPI.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2ec15d9" class="outline-2">
+<h2 id="org2ec15d9"><span class="section-number-2">9.</span> MPI Type Struct with different blocklength</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stddef.h&gt;</span>
+
+<span style="color: #e45649;">typedef</span> <span style="color: #e45649;">struct</span> {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">arr</span>[<span style="color: #da8548; font-weight: bold;">3</span>];
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">b</span>;
+    <span style="color: #986801;">char</span> <span style="color: #6a1868;">c</span>;
+} <span style="color: #986801;">my_struct</span>;
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+
+    <span style="color: #986801;">my_struct</span> <span style="color: #6a1868;">data</span>;
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">struct_type</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Create the datatype for my_struct</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklengths</span>[<span style="color: #da8548; font-weight: bold;">3</span>] = {<span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">1</span>};  <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Sending part of the array, the double, and the char</span>
+    <span style="color: #986801;">MPI_Aint</span> <span style="color: #6a1868;">displacements</span>[<span style="color: #da8548; font-weight: bold;">3</span>];
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">types</span>[<span style="color: #da8548; font-weight: bold;">3</span>] = {MPI_INT, MPI_DOUBLE, MPI_CHAR};
+
+    displacements[<span style="color: #da8548; font-weight: bold;">0</span>] = offsetof(my_struct, arr);
+    displacements[<span style="color: #da8548; font-weight: bold;">1</span>] = offsetof(my_struct, b);
+    displacements[<span style="color: #da8548; font-weight: bold;">2</span>] = offsetof(my_struct, c);
+
+    MPI_Type_create_struct(<span style="color: #da8548; font-weight: bold;">3</span>, blocklengths, displacements, types, &amp;struct_type);
+    MPI_Type_commit(&amp;struct_type);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        data.arr[<span style="color: #da8548; font-weight: bold;">0</span>] = <span style="color: #da8548; font-weight: bold;">1</span>;
+        data.arr[<span style="color: #da8548; font-weight: bold;">1</span>] = <span style="color: #da8548; font-weight: bold;">2</span>;
+        data.arr[<span style="color: #da8548; font-weight: bold;">2</span>] = <span style="color: #da8548; font-weight: bold;">3</span>;
+        data.b = <span style="color: #da8548; font-weight: bold;">3.14</span>;
+        data.c = <span style="color: #50a14f;">'A'</span>;
+
+        MPI_Send(&amp;data, <span style="color: #da8548; font-weight: bold;">1</span>, struct_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 has struct: {arr = [%d, %d, %d], b = %.2f, c = %c}\n"</span>, data.arr[<span style="color: #da8548; font-weight: bold;">0</span>], data.arr[<span style="color: #da8548; font-weight: bold;">1</span>], data.arr[<span style="color: #da8548; font-weight: bold;">2</span>], data.b, data.c);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the struct to zero</span>
+        data.arr[<span style="color: #da8548; font-weight: bold;">0</span>] = data.arr[<span style="color: #da8548; font-weight: bold;">1</span>] = data.arr[<span style="color: #da8548; font-weight: bold;">2</span>] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        data.b = <span style="color: #da8548; font-weight: bold;">0.0</span>;
+        data.c = <span style="color: #50a14f;">'0'</span>;
+
+        MPI_Recv(&amp;data, <span style="color: #da8548; font-weight: bold;">1</span>, struct_type, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received struct: {arr = [%d, %d, %d], b = %.2f, c = %c}\n"</span>, data.arr[<span style="color: #da8548; font-weight: bold;">0</span>], data.arr[<span style="color: #da8548; font-weight: bold;">1</span>], data.arr[<span style="color: #da8548; font-weight: bold;">2</span>], data.b, data.c);
+    }
+
+    MPI_Type_free(&amp;struct_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-org8e746ba" class="outline-3">
+<h3 id="org8e746ba"><span class="section-number-3">9.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh mpi_type_struct2.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_type_struct2.c -o mpi_type_struct2.out
+------------------------------------------------------------------
+Compilation successful. Check at mpi_type_struct2.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./mpi_type_struct2.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="org73f71cc">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./mpi_type_struct2.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 has struct: {arr = [1, 2, 3], b = 3.14, c = A}
+  Process 1 received struct: {arr = [1, 2, 0], b = 3.14, c = A}
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+
+<p>
+This example demonstrates how to use `MPI_Type_create_struct` to communicate complex data structures in MPI, specifically how to send parts of an array along with other fields.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga6b0e53" class="outline-2">
+<h2 id="orga6b0e53"><span class="section-number-2">10.</span> Reference</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+These images are for your reference. <a href="https://hpc-tutorials.llnl.gov/mpi/derived_data_type/">Link for your reference</a> if you want to learn more about it.
+</p>
+</div>
+<div id="outline-container-orge78ef92" class="outline-3">
+<h3 id="orge78ef92"><span class="section-number-3">10.1.</span> MPI Type contigous</h3>
+<div class="outline-text-3" id="text-10-1">
+
+<div id="org9eafe66" class="figure">
+<p><img src="https://hpc-tutorials.llnl.gov/mpi/derived_data_types/images/MPI_Type_contiguous.gif" alt="MPI_Type_contiguous.gif" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbb4c5eb" class="outline-3">
+<h3 id="orgbb4c5eb"><span class="section-number-3">10.2.</span> MPI Type vector</h3>
+<div class="outline-text-3" id="text-10-2">
+
+<div id="org2e3133a" class="figure">
+<p><img src="https://hpc-tutorials.llnl.gov/mpi/derived_data_types/images/MPI_Type_vector.gif" alt="MPI_Type_vector.gif" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfb20af1" class="outline-3">
+<h3 id="orgfb20af1"><span class="section-number-3">10.3.</span> MPI Type indexed</h3>
+<div class="outline-text-3" id="text-10-3">
+
+<div id="orgb4de747" class="figure">
+<p><img src="https://hpc-tutorials.llnl.gov/mpi/derived_data_types/images/MPI_Type_indexed.gif" alt="MPI_Type_indexed.gif" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga5a07c1" class="outline-3">
+<h3 id="orga5a07c1"><span class="section-number-3">10.4.</span> MPI Type struct</h3>
+<div class="outline-text-3" id="text-10-4">
+
+<div id="orgc0d61a5" class="figure">
+<p><img src="https://hpc-tutorials.llnl.gov/mpi/derived_data_types/images/MPI_Type_struct.gif" alt="MPI_Type_struct.gif" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd5a09d1" class="outline-2">
+<h2 id="orgd5a09d1"><span class="section-number-2">11.</span> task1</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">5</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[N];
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array with some values</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            data[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+
+        MPI_Send(data, N, MPI_INT, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        MPI_Recv(data, N, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-org102e2bf" class="outline-3">
+<h3 id="org102e2bf"><span class="section-number-3">11.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-11-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh task1.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc task1.c -o task1.out
+------------------------------------------------------------------
+Compilation successful. Check at task1.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./task1.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="org5021c38">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./task1.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 1 2 3 4 5 
+  Process 1 received data: 1 2 3 4 5 
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcef5888" class="outline-2">
+<h2 id="orgcef5888"><span class="section-number-2">12.</span> task2</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Transfer a matrix of size N * N.
+</p>
+<ul class="org-ul">
+<li>Initialize a matrix for both process</li>
+<li>Allow only one process to create whole matrix</li>
+<li>That process will transfer the matrix to another process</li>
+<li>Print the matrix received.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">5</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[N][N];
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">temp</span> = <span style="color: #da8548; font-weight: bold;">1</span>;
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array with some values</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++) {
+                data[i][j] = temp;
+                temp++;
+            }
+        }
+
+        MPI_Send(data, N * N, MPI_INT, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: \n"</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++) {
+                printf(<span style="color: #50a14f;">"%d\t"</span>, data[i][j]);
+            }
+            printf(<span style="color: #50a14f;">"\n"</span>);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        MPI_Recv(data, N * N, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: \n"</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++) {
+                printf(<span style="color: #50a14f;">"%d\t"</span>, data[i][j]);
+            }
+            printf(<span style="color: #50a14f;">"\n"</span>);
+        }
+    }
+
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-orgc3d3e69" class="outline-3">
+<h3 id="orgc3d3e69"><span class="section-number-3">12.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh task2.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc task2.c -o task2.out
+------------------------------------------------------------------
+Compilation successful. Check at task2.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./task2.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="org0365037">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./task2.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 
+  1	2	3	4	5	
+  6	7	8	9	10	
+  11	12	13	14	15	
+  16	17	18	19	20	
+  21	22	23	24	25	
+
+  Process 1 received data: 
+  1	2	3	4	5	
+  6	7	8	9	10	
+  11	12	13	14	15	
+  16	17	18	19	20	
+  21	22	23	24	25	
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org50c0ee9" class="outline-2">
+<h2 id="org50c0ee9"><span class="section-number-2">13.</span> task2 with MPI_Type_contiguous</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+Transfer a matrix of size N * N.
+</p>
+<ul class="org-ul">
+<li>Initialize a matrix for both process</li>
+<li>Allow only one process to create whole matrix</li>
+<li>That process will transfer the matrix to another process</li>
+<li>Print the matrix received.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">5</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[N][N];
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">contiguous_type</span>;
+    MPI_Type_contiguous(N, MPI_INT, &amp;contiguous_type);
+    MPI_Type_commit(&amp;contiguous_type);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">temp</span> = <span style="color: #da8548; font-weight: bold;">1</span>;
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array with some values</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++) {
+                data[i][j] = temp;
+                temp++;
+            }
+        }
+
+        MPI_Send(data[<span style="color: #da8548; font-weight: bold;">3</span>], <span style="color: #da8548; font-weight: bold;">2</span>, contiguous_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: \n"</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++) {
+                printf(<span style="color: #50a14f;">"%d\t"</span>, data[i][j]);
+            }
+            printf(<span style="color: #50a14f;">"\n"</span>);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        MPI_Recv(data[<span style="color: #da8548; font-weight: bold;">3</span>], <span style="color: #da8548; font-weight: bold;">2</span>, contiguous_type, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: \n"</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++) {
+                printf(<span style="color: #50a14f;">"%d\t"</span>, data[i][j]);
+            }
+            printf(<span style="color: #50a14f;">"\n"</span>);
+        }
+    }
+
+    MPI_Type_free(&amp;contiguous_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-org554999f" class="outline-3">
+<h3 id="org554999f"><span class="section-number-3">13.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-13-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh task2_contiguous.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc task2_contiguous.c -o task2_contiguous.out
+------------------------------------------------------------------
+Compilation successful. Check at task2_contiguous.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./task2_contiguous.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="orgcc5054e">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./task2_contiguous.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 
+  1	2	3	4	5	
+  6	7	8	9	10	
+  11	12	13	14	15	
+  16	17	18	19	20	
+  21	22	23	24	25	
+
+  Process 1 received data: 
+  49152	0	-1630691416	32767	6	
+  154	0	0	0	0	
+  0	0	0	0	0	
+  16	17	18	19	20	
+  21	22	23	24	25	
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org2a378f7" class="outline-2">
+<h2 id="org2a378f7"><span class="section-number-2">14.</span> task3</h2>
+<div class="outline-text-2" id="text-14">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span> = <span style="color: #da8548; font-weight: bold;">3</span>;       <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of blocks</span>
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklength</span> = <span style="color: #da8548; font-weight: bold;">4</span>; <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of elements in each block</span>
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">stride</span> = <span style="color: #da8548; font-weight: bold;">6</span>;      <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of elements between the start of each block</span>
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">vector_type</span>;
+    MPI_Type_vector(count, blocklength, stride, MPI_INT, &amp;vector_type);
+    MPI_Type_commit(&amp;vector_type);
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[<span style="color: #da8548; font-weight: bold;">20</span>];              <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Array to send/receive</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">20</span>; i++) {
+            data[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+        MPI_Send(data, <span style="color: #da8548; font-weight: bold;">1</span>, vector_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">20</span>; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">size</span> = count * blocklength;
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[size];
+        MPI_Recv(data, size, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; size; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+    MPI_Type_free(&amp;vector_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-org353f374" class="outline-3">
+<h3 id="org353f374"><span class="section-number-3">14.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-14-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh task3.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc task3.c -o task3.out
+------------------------------------------------------------------
+Compilation successful. Check at task3.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./task3.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="orgcf46e47">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./task3.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+  Process 1 received data: 1 2 3 4 7 8 9 10 13 14 15 16 
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc30e3e8" class="outline-2">
+<h2 id="orgc30e3e8"><span class="section-number-2">15.</span> task4 (transfer 3rd column to process 1)</h2>
+<div class="outline-text-2" id="text-15">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">8</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span> = N;       <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of blocks</span>
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklength</span> = <span style="color: #da8548; font-weight: bold;">1</span>; <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of elements in each block</span>
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">stride</span> = N;      <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Number of elements between the start of each block</span>
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">vector_type</span>;
+    MPI_Type_vector(count, blocklength, stride, MPI_INT, &amp;vector_type);
+    MPI_Type_commit(&amp;vector_type);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[N][N];              <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Array to send/receive</span>
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++){
+                data[i][j] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+            }
+        }
+        MPI_Send(&amp;data[<span style="color: #da8548; font-weight: bold;">0</span>][<span style="color: #da8548; font-weight: bold;">2</span>], <span style="color: #da8548; font-weight: bold;">1</span>, vector_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: \n"</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++){
+                printf(<span style="color: #50a14f;">"%d "</span>, data[i][j]);
+            }
+            printf(<span style="color: #50a14f;">"\n"</span>);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++){
+                data[i][j] = <span style="color: #da8548; font-weight: bold;">0</span>;
+            }
+        }
+        MPI_Recv(&amp;data[<span style="color: #da8548; font-weight: bold;">0</span>][<span style="color: #da8548; font-weight: bold;">2</span>], <span style="color: #da8548; font-weight: bold;">1</span>, vector_type, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: \n"</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++){
+                printf(<span style="color: #50a14f;">"%d "</span>, data[i][j]);
+            }
+            printf(<span style="color: #50a14f;">"\n"</span>);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+    MPI_Type_free(&amp;vector_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-orgefb8d9a" class="outline-3">
+<h3 id="orgefb8d9a"><span class="section-number-3">15.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-15-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh task4.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc task4.c -o task4.out
+------------------------------------------------------------------
+Compilation successful. Check at task4.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./task4.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="org14d4fda">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./task4.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 
+  1 1 1 1 1 1 1 1 
+  2 2 2 2 2 2 2 2 
+  3 3 3 3 3 3 3 3 
+  4 4 4 4 4 4 4 4 
+  5 5 5 5 5 5 5 5 
+  6 6 6 6 6 6 6 6 
+  7 7 7 7 7 7 7 7 
+  8 8 8 8 8 8 8 8 
+
+  Process 1 received data: 
+  0 0 1 0 0 0 0 0 
+  0 0 2 0 0 0 0 0 
+  0 0 3 0 0 0 0 0 
+  0 0 4 0 0 0 0 0 
+  0 0 5 0 0 0 0 0 
+  0 0 6 0 0 0 0 0 
+  0 0 7 0 0 0 0 0 
+  0 0 8 0 0 0 0 0 
+
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfd6aa10" class="outline-2">
+<h2 id="orgfd6aa10"><span class="section-number-2">16.</span> Implement vector using indexed</h2>
+<div class="outline-text-2" id="text-16">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">20</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span> = <span style="color: #da8548; font-weight: bold;">4</span>;
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">sl</span> = <span style="color: #da8548; font-weight: bold;">5</span>;                 <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">sl = stridelength</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklengths</span>[<span style="color: #da8548; font-weight: bold;">4</span>] = {<span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">2</span>, <span style="color: #da8548; font-weight: bold;">2</span>};
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">displacements</span>[<span style="color: #da8548; font-weight: bold;">4</span>] = {<span style="color: #da8548; font-weight: bold;">0</span> * sl, <span style="color: #da8548; font-weight: bold;">1</span> * sl, <span style="color: #da8548; font-weight: bold;">2</span> * sl, <span style="color: #da8548; font-weight: bold;">3</span> * sl};
+    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">int displacements[3] = {0, 5, 10};</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[N];
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">indexed_type</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Create an indexed datatype</span>
+    MPI_Type_indexed(count, blocklengths, displacements, MPI_INT, &amp;indexed_type);
+    MPI_Type_commit(&amp;indexed_type);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array with some values</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            data[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+
+        MPI_Send(data, <span style="color: #da8548; font-weight: bold;">1</span>, indexed_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array to zero</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            data[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+
+        MPI_Recv(data, <span style="color: #da8548; font-weight: bold;">1</span>, indexed_type, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+
+    MPI_Type_free(&amp;indexed_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-org591eceb" class="outline-3">
+<h3 id="org591eceb"><span class="section-number-3">16.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-16-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh task5.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc task5.c -o task5.out
+------------------------------------------------------------------
+Compilation successful. Check at task5.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./task5.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="org4e6f8d2">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./task5.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+  Process 1 received data: 1 2 0 0 0 6 7 0 0 0 11 12 0 0 0 16 17 0 0 0 
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdfdee4d" class="outline-2">
+<h2 id="orgdfdee4d"><span class="section-number-2">17.</span> Implement contiguous using indexed</h2>
+<div class="outline-text-2" id="text-17">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">20</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (size &lt; <span style="color: #da8548; font-weight: bold;">2</span>) {
+        fprintf(stderr, <span style="color: #50a14f;">"World size must be greater than 1 for this example\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span> = <span style="color: #da8548; font-weight: bold;">4</span>;
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">sl</span> = <span style="color: #da8548; font-weight: bold;">5</span>;                 <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">sl = stridelength</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">blocklengths</span>[<span style="color: #da8548; font-weight: bold;">4</span>] = {sl, sl, sl, sl};     <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">need to have stride length equal to block length to make it contiguous</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">displacements</span>[<span style="color: #da8548; font-weight: bold;">4</span>] = {<span style="color: #da8548; font-weight: bold;">0</span> * sl, <span style="color: #da8548; font-weight: bold;">1</span> * sl, <span style="color: #da8548; font-weight: bold;">2</span> * sl, <span style="color: #da8548; font-weight: bold;">3</span> * sl};
+    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">int displacements[3] = {0, 5, 10};</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span>[N];
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">indexed_type</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Create an indexed datatype</span>
+    MPI_Type_indexed(count, blocklengths, displacements, MPI_INT, &amp;indexed_type);
+    MPI_Type_commit(&amp;indexed_type);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array with some values</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            data[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+
+        MPI_Send(data, <span style="color: #da8548; font-weight: bold;">1</span>, indexed_type, <span style="color: #da8548; font-weight: bold;">1</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        printf(<span style="color: #50a14f;">"Process 0 sent data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    } <span style="color: #e45649;">else</span> <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">1</span>) {
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the data array to zero</span>
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            data[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+
+        MPI_Recv(data, <span style="color: #da8548; font-weight: bold;">1</span>, indexed_type, <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        printf(<span style="color: #50a14f;">"Process 1 received data: "</span>);
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, data[i]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+
+    MPI_Type_free(&amp;indexed_type);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+<div id="outline-container-org062d5d5" class="outline-3">
+<h3 id="org062d5d5"><span class="section-number-3">17.1.</span> Compilation and Execution</h3>
+<div class="outline-text-3" id="text-17-1">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash compile.sh task6.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc task6.c -o task6.out
+------------------------------------------------------------------
+Compilation successful. Check at task6.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./task6.out <span style="color: #da8548; font-weight: bold;">2</span>
+</pre>
+</div>
+
+<pre class="example" id="org5884fbe">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 2 ./task6.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Process 0 sent data: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+  Process 1 received data: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Abhishek Raj</p>
+<p class="date">Created: 2025-01-13 Mon 17:23</p>
+</div>
+</body>
+</html>

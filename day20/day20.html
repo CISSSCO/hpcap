@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-01-10 Fri 09:33 -->
+<!-- 2025-01-13 Mon 17:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Day20</title>
@@ -233,56 +233,95 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga479079">1. Scripts</a>
+<li><a href="#org3429568">1. Scripts</a>
 <ul>
-<li><a href="#org5360f73">1.1. compile script</a></li>
-<li><a href="#org604d535">1.2. run script</a></li>
+<li><a href="#org0ea8872">1.1. compile script</a></li>
+<li><a href="#org63a9004">1.2. run script</a></li>
 </ul>
 </li>
-<li><a href="#orgf0be400">2. Speedup, Amdahl&rsquo;s Law, and Performance Metrics in MPI</a>
+<li><a href="#orga02c00b">2. Speedup, Amdahl&rsquo;s Law, and Performance Metrics in MPI</a>
 <ul>
-<li><a href="#org2cdd0bc">2.1. Performance Metrics</a></li>
-<li><a href="#org7c965f8">2.2. Speedup</a></li>
-<li><a href="#orgce114f6">2.3. Amdahl&rsquo;s Law</a></li>
-<li><a href="#org7a5d59b">2.4. Measuring Performance in MPI</a></li>
+<li><a href="#org863eec9">2.1. Performance Metrics</a></li>
+<li><a href="#orgf364bd0">2.2. Speedup</a></li>
+<li><a href="#org01b0aca">2.3. Amdahl&rsquo;s Law</a></li>
+<li><a href="#org6d74838">2.4. Measuring Performance in MPI</a></li>
 </ul>
 </li>
-<li><a href="#org5b636d0">3. Benchmarking in MPI</a>
+<li><a href="#orgc928e5a">3. Benchmarking in MPI</a>
 <ul>
-<li><a href="#org36f59bc">3.1. Benchmarking</a></li>
-<li><a href="#org3b1690c">3.2. Microbenchmarking</a></li>
-<li><a href="#org676ef05">3.3. Macrobenchmarking</a></li>
-<li><a href="#org32123e3">3.4. How Benchmarking is Done</a></li>
-<li><a href="#orga8daa5a">3.5. Benchmarking Tools</a></li>
+<li><a href="#org993a6bd">3.1. Benchmarking</a></li>
+<li><a href="#org573a05b">3.2. Microbenchmarking</a></li>
+<li><a href="#orgb589940">3.3. Macrobenchmarking</a></li>
+<li><a href="#orgd041701">3.4. How Benchmarking is Done</a></li>
+<li><a href="#org9b38766">3.5. Benchmarking Tools</a></li>
 </ul>
 </li>
-<li><a href="#org29adee9">4. MPI Topology</a>
+<li><a href="#org8885535">4. MPI Topology</a>
 <ul>
-<li><a href="#org5296108">4.1. Types of Topologies</a></li>
-<li><a href="#org22f5e75">4.2. Cartesian Topologies</a>
+<li><a href="#org27ce1ee">4.1. Types of Topologies</a></li>
+<li><a href="#org2a4305b">4.2. Cartesian Topologies</a>
 <ul>
-<li><a href="#org6ff62aa">4.2.1. Creating a Cartesian Topology</a></li>
+<li><a href="#org16a5def">4.2.1. Creating a Cartesian Topology</a></li>
 </ul>
 </li>
-<li><a href="#orgaeddc9b">4.3. Graph Topologies</a>
+<li><a href="#orgbc39a6b">4.3. Graph Topologies</a>
 <ul>
-<li><a href="#org4d7efd5">4.3.1. Creating a Graph Topology</a></li>
+<li><a href="#org2531169">4.3.1. Creating a Graph Topology</a></li>
 </ul>
 </li>
-<li><a href="#org2624810">4.4. Cartesian Topology Functions</a></li>
-<li><a href="#org650eb78">4.5. Graph Topology Functions</a></li>
-<li><a href="#orgee65db6">4.6. Benefits of Using MPI Topologies</a></li>
+<li><a href="#org59d70ea">4.4. Cartesian Topology Functions</a></li>
+<li><a href="#org90e539d">4.5. Graph Topology Functions</a></li>
+<li><a href="#orge49cd33">4.6. Benefits of Using MPI Topologies</a></li>
 </ul>
 </li>
+<li><a href="#orgcb57a1a">5. MPI I/O:</a>
+<ul>
+<li><a href="#orgdebc044">5.1. Introduction to MPI I/O</a></li>
+<li><a href="#org9b91846">5.2. Key Features of MPI I/O</a></li>
+<li><a href="#org3619de7">5.3. MPI I/O Operations</a>
+<ul>
+<li><a href="#orga8f3907">5.3.1. File Open and Close</a></li>
+<li><a href="#orgcb3534b">5.3.2. Data Access</a></li>
+</ul>
+</li>
+<li><a href="#orgb3b8148">5.4. Example Programs</a>
+<ul>
+<li><a href="#orgbd01182">5.4.1. Example 1: Writing and Reading a Simple File</a></li>
+</ul>
+</li>
+<li><a href="#orgfd286f3">5.5. Best Practices</a></li>
+<li><a href="#orgf53d70b">5.6. Debugging MPI I/O</a></li>
+<li><a href="#orgb720771">5.7. Summary</a></li>
+</ul>
+</li>
+<li><a href="#org9f391c0">6. OpenMP Offloading</a>
+<ul>
+<li><a href="#org8c67f15">6.1. Introduction to OpenMP Offloading</a></li>
+<li><a href="#orgfff20b4">6.2. Why Use Offloading?</a></li>
+<li><a href="#org1bd6684">6.3. Key Concepts</a></li>
+<li><a href="#org3d872ad">6.4. Syntax</a></li>
+<li><a href="#org8c776c7">6.5. Data Mapping</a></li>
+<li><a href="#orga179f95">6.6. Example Programs</a>
+<ul>
+<li><a href="#org3066a9d">6.6.1. Example 1: Vector Addition</a></li>
+<li><a href="#orga795c9f">6.6.2. Example 2: Matrix Multiplication</a></li>
+</ul>
+</li>
+<li><a href="#org2379032">6.7. Advanced Features</a></li>
+<li><a href="#orgec11491">6.8. Best Practices</a></li>
+<li><a href="#org97f1869">6.9. Summary</a></li>
+</ul>
+</li>
+<li><a href="#org9025241">7. MPI_Barrier</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orga479079" class="outline-2">
-<h2 id="orga479079"><span class="section-number-2">1.</span> Scripts</h2>
+<div id="outline-container-org3429568" class="outline-2">
+<h2 id="org3429568"><span class="section-number-2">1.</span> Scripts</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org5360f73" class="outline-3">
-<h3 id="org5360f73"><span class="section-number-3">1.1.</span> compile script</h3>
+<div id="outline-container-org0ea8872" class="outline-3">
+<h3 id="org0ea8872"><span class="section-number-3">1.1.</span> compile script</h3>
 <div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 <pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
@@ -308,8 +347,8 @@ $<span style="color: #6a1868;">cmd</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org604d535" class="outline-3">
-<h3 id="org604d535"><span class="section-number-3">1.2.</span> run script</h3>
+<div id="outline-container-org63a9004" class="outline-3">
+<h3 id="org63a9004"><span class="section-number-3">1.2.</span> run script</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 <pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
@@ -337,12 +376,12 @@ mpirun -np $<span style="color: #da8548; font-weight: bold;">2</span> $<span sty
 </div>
 </div>
 </div>
-<div id="outline-container-orgf0be400" class="outline-2">
-<h2 id="orgf0be400"><span class="section-number-2">2.</span> Speedup, Amdahl&rsquo;s Law, and Performance Metrics in MPI</h2>
+<div id="outline-container-orga02c00b" class="outline-2">
+<h2 id="orga02c00b"><span class="section-number-2">2.</span> Speedup, Amdahl&rsquo;s Law, and Performance Metrics in MPI</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org2cdd0bc" class="outline-3">
-<h3 id="org2cdd0bc"><span class="section-number-3">2.1.</span> Performance Metrics</h3>
+<div id="outline-container-org863eec9" class="outline-3">
+<h3 id="org863eec9"><span class="section-number-3">2.1.</span> Performance Metrics</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 When measuring the performance of MPI programs, several metrics are commonly used:
@@ -387,8 +426,8 @@ Efficiency:
 </ol>
 </div>
 </div>
-<div id="outline-container-org7c965f8" class="outline-3">
-<h3 id="org7c965f8"><span class="section-number-3">2.2.</span> Speedup</h3>
+<div id="outline-container-orgf364bd0" class="outline-3">
+<h3 id="orgf364bd0"><span class="section-number-3">2.2.</span> Speedup</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Speedup measures the improvement in performance of a parallel algorithm over its serial counterpart. It&rsquo;s calculated using the formula:
@@ -407,8 +446,8 @@ where:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgce114f6" class="outline-3">
-<h3 id="orgce114f6"><span class="section-number-3">2.3.</span> Amdahl&rsquo;s Law</h3>
+<div id="outline-container-org01b0aca" class="outline-3">
+<h3 id="org01b0aca"><span class="section-number-3">2.3.</span> Amdahl&rsquo;s Law</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Amdahl&rsquo;s Law provides a theoretical limit on the speedup that can be achieved by parallelizing a portion of an algorithm. It states that if a fraction \( f \) of the algorithm is inherently serial, then the maximum speedup \( S \) using \( p \) processors is:
@@ -440,8 +479,8 @@ This demonstrates that the speedup is limited by the serial portion of the algor
 </p>
 </div>
 </div>
-<div id="outline-container-org7a5d59b" class="outline-3">
-<h3 id="org7a5d59b"><span class="section-number-3">2.4.</span> Measuring Performance in MPI</h3>
+<div id="outline-container-org6d74838" class="outline-3">
+<h3 id="org6d74838"><span class="section-number-3">2.4.</span> Measuring Performance in MPI</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 To measure the performance of MPI programs, you can use the following methods:
@@ -482,36 +521,36 @@ Tools like Paraver, Vampir, HPCToolkit, and Scalasca can be used to visualize an
 </div>
 </div>
 </div>
-<div id="outline-container-org5b636d0" class="outline-2">
-<h2 id="org5b636d0"><span class="section-number-2">3.</span> Benchmarking in MPI</h2>
+<div id="outline-container-orgc928e5a" class="outline-2">
+<h2 id="orgc928e5a"><span class="section-number-2">3.</span> Benchmarking in MPI</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org36f59bc" class="outline-3">
-<h3 id="org36f59bc"><span class="section-number-3">3.1.</span> Benchmarking</h3>
+<div id="outline-container-org993a6bd" class="outline-3">
+<h3 id="org993a6bd"><span class="section-number-3">3.1.</span> Benchmarking</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Benchmarking is the process of measuring the performance of a system or application to evaluate its efficiency and effectiveness. In the context of MPI, benchmarking involves assessing the performance of MPI operations and parallel applications.
 </p>
 </div>
 </div>
-<div id="outline-container-org3b1690c" class="outline-3">
-<h3 id="org3b1690c"><span class="section-number-3">3.2.</span> Microbenchmarking</h3>
+<div id="outline-container-org573a05b" class="outline-3">
+<h3 id="org573a05b"><span class="section-number-3">3.2.</span> Microbenchmarking</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Microbenchmarking focuses on measuring the performance of individual operations or small code segments. In MPI, microbenchmarking typically involves assessing the performance of basic MPI operations such as `MPI_Send`, `MPI_Recv`, `MPI_Bcast`, etc.
 </p>
 </div>
 </div>
-<div id="outline-container-org676ef05" class="outline-3">
-<h3 id="org676ef05"><span class="section-number-3">3.3.</span> Macrobenchmarking</h3>
+<div id="outline-container-orgb589940" class="outline-3">
+<h3 id="orgb589940"><span class="section-number-3">3.3.</span> Macrobenchmarking</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Macrobenchmarking evaluates the performance of entire applications or larger code segments. It considers the overall performance and scalability of parallel applications, including computation, communication, and I/O.
 </p>
 </div>
 </div>
-<div id="outline-container-org32123e3" class="outline-3">
-<h3 id="org32123e3"><span class="section-number-3">3.4.</span> How Benchmarking is Done</h3>
+<div id="outline-container-orgd041701" class="outline-3">
+<h3 id="orgd041701"><span class="section-number-3">3.4.</span> How Benchmarking is Done</h3>
 <div class="outline-text-3" id="text-3-4">
 <ol class="org-ol">
 <li><b><b>Timing Functions</b></b>: Use functions like `MPI_Wtime` to measure execution time.</li>
@@ -520,8 +559,8 @@ Macrobenchmarking evaluates the performance of entire applications or larger cod
 </ol>
 </div>
 </div>
-<div id="outline-container-orga8daa5a" class="outline-3">
-<h3 id="orga8daa5a"><span class="section-number-3">3.5.</span> Benchmarking Tools</h3>
+<div id="outline-container-org9b38766" class="outline-3">
+<h3 id="org9b38766"><span class="section-number-3">3.5.</span> Benchmarking Tools</h3>
 <div class="outline-text-3" id="text-3-5">
 <ol class="org-ol">
 <li><b><b>OSU Micro-Benchmarks (OMB)</b></b>: A suite of benchmarks for measuring MPI performance, focusing on latency, bandwidth, and collective operations.</li>
@@ -532,15 +571,15 @@ Macrobenchmarking evaluates the performance of entire applications or larger cod
 </div>
 </div>
 </div>
-<div id="outline-container-org29adee9" class="outline-2">
-<h2 id="org29adee9"><span class="section-number-2">4.</span> MPI Topology</h2>
+<div id="outline-container-org8885535" class="outline-2">
+<h2 id="org8885535"><span class="section-number-2">4.</span> MPI Topology</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 MPI topologies provide a way to organize the processes in a communicator in a logical structure, which can enhance the performance of parallel applications by optimizing communication patterns.
 </p>
 </div>
-<div id="outline-container-org5296108" class="outline-3">
-<h3 id="org5296108"><span class="section-number-3">4.1.</span> Types of Topologies</h3>
+<div id="outline-container-org27ce1ee" class="outline-3">
+<h3 id="org27ce1ee"><span class="section-number-3">4.1.</span> Types of Topologies</h3>
 <div class="outline-text-3" id="text-4-1">
 <ol class="org-ol">
 <li><b><b>Cartesian Topologies</b></b>: Processes are arranged in a grid-like structure.</li>
@@ -548,22 +587,22 @@ MPI topologies provide a way to organize the processes in a communicator in a lo
 </ol>
 </div>
 </div>
-<div id="outline-container-org22f5e75" class="outline-3">
-<h3 id="org22f5e75"><span class="section-number-3">4.2.</span> Cartesian Topologies</h3>
+<div id="outline-container-org2a4305b" class="outline-3">
+<h3 id="org2a4305b"><span class="section-number-3">4.2.</span> Cartesian Topologies</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Cartesian topologies are useful for problems that have a natural grid structure.
 </p>
 </div>
-<div id="outline-container-org6ff62aa" class="outline-4">
-<h4 id="org6ff62aa"><span class="section-number-4">4.2.1.</span> Creating a Cartesian Topology</h4>
+<div id="outline-container-org16a5def" class="outline-4">
+<h4 id="org16a5def"><span class="section-number-4">4.2.1.</span> Creating a Cartesian Topology</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <p>
 The function `MPI_Cart_create` is used to create a Cartesian topology.
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="org54c8620"></a>Syntax<br />
+<li><a id="org60542dd"></a>Syntax<br />
 <div class="outline-text-5" id="text-4-2-1-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #986801;">int</span> <span style="color: #a626a4;">MPI_Cart_create</span>(<span style="color: #986801;">MPI_Comm</span> <span style="color: #6a1868;">comm_old</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">ndims</span>, <span style="color: #986801;">int</span> *<span style="color: #6a1868;">dims</span>, <span style="color: #986801;">int</span> *<span style="color: #6a1868;">periods</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">reorder</span>, <span style="color: #986801;">MPI_Comm</span> *<span style="color: #6a1868;">comm_cart</span>);
@@ -571,7 +610,7 @@ The function `MPI_Cart_create` is used to create a Cartesian topology.
 </div>
 </div>
 </li>
-<li><a id="orgc38b726"></a>Parameters<br />
+<li><a id="org1249090"></a>Parameters<br />
 <div class="outline-text-5" id="text-4-2-1-2">
 <ul class="org-ul">
 <li>`comm_old`: The original communicator.</li>
@@ -583,7 +622,7 @@ The function `MPI_Cart_create` is used to create a Cartesian topology.
 </ul>
 </div>
 </li>
-<li><a id="org5513cd1"></a>Example Code<br />
+<li><a id="org79c5312"></a>Example Code<br />
 <div class="outline-text-5" id="text-4-2-1-3">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
@@ -634,7 +673,7 @@ Compilation successful. Check at mpi_cart.out
 </pre>
 </div>
 
-<pre class="example" id="orgbacaf2f">
+<pre class="example" id="org1bbd797">
 ------------------------------------------------------------------
 Command executed: mpirun -np 2 ./mpi_cart.out
 ------------------------------------------------------------------
@@ -642,8 +681,8 @@ Command executed: mpirun -np 2 ./mpi_cart.out
 ##########                    OUTPUT                    ##########
 ##################################################################
 
-Rank 1 has coordinates (1, 0)
 Rank 0 has coordinates (0, 0)
+Rank 1 has coordinates (1, 0)
 
 ##################################################################
 ##########                     DONE                     ##########
@@ -654,22 +693,22 @@ Rank 0 has coordinates (0, 0)
 </ol>
 </div>
 </div>
-<div id="outline-container-orgaeddc9b" class="outline-3">
-<h3 id="orgaeddc9b"><span class="section-number-3">4.3.</span> Graph Topologies</h3>
+<div id="outline-container-orgbc39a6b" class="outline-3">
+<h3 id="orgbc39a6b"><span class="section-number-3">4.3.</span> Graph Topologies</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 Graph topologies are useful for problems with irregular communication patterns.
 </p>
 </div>
-<div id="outline-container-org4d7efd5" class="outline-4">
-<h4 id="org4d7efd5"><span class="section-number-4">4.3.1.</span> Creating a Graph Topology</h4>
+<div id="outline-container-org2531169" class="outline-4">
+<h4 id="org2531169"><span class="section-number-4">4.3.1.</span> Creating a Graph Topology</h4>
 <div class="outline-text-4" id="text-4-3-1">
 <p>
 The function `MPI_Graph_create` is used to create a graph topology.
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="org286005a"></a>Syntax<br />
+<li><a id="orgd29c41b"></a>Syntax<br />
 <div class="outline-text-5" id="text-4-3-1-1">
 <div class="org-src-container">
 <pre class="src src-C"><span style="color: #986801;">int</span> <span style="color: #a626a4;">MPI_Graph_create</span>(<span style="color: #986801;">MPI_Comm</span> <span style="color: #6a1868;">comm_old</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">nnodes</span>, <span style="color: #986801;">int</span> *<span style="color: #6a1868;">index</span>, <span style="color: #986801;">int</span> *<span style="color: #6a1868;">edges</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">reorder</span>, <span style="color: #986801;">MPI_Comm</span> *<span style="color: #6a1868;">comm_graph</span>);
@@ -677,7 +716,7 @@ The function `MPI_Graph_create` is used to create a graph topology.
 </div>
 </div>
 </li>
-<li><a id="org43a424c"></a>Parameters<br />
+<li><a id="org8e2bb5a"></a>Parameters<br />
 <div class="outline-text-5" id="text-4-3-1-2">
 <ul class="org-ul">
 <li>`comm_old`: The original communicator.</li>
@@ -692,8 +731,8 @@ The function `MPI_Graph_create` is used to create a graph topology.
 </ol>
 </div>
 </div>
-<div id="outline-container-org2624810" class="outline-3">
-<h3 id="org2624810"><span class="section-number-3">4.4.</span> Cartesian Topology Functions</h3>
+<div id="outline-container-org59d70ea" class="outline-3">
+<h3 id="org59d70ea"><span class="section-number-3">4.4.</span> Cartesian Topology Functions</h3>
 <div class="outline-text-3" id="text-4-4">
 <ul class="org-ul">
 <li>`MPI_Cart_create`: Creates a Cartesian topology.</li>
@@ -703,8 +742,8 @@ The function `MPI_Graph_create` is used to create a graph topology.
 </ul>
 </div>
 </div>
-<div id="outline-container-org650eb78" class="outline-3">
-<h3 id="org650eb78"><span class="section-number-3">4.5.</span> Graph Topology Functions</h3>
+<div id="outline-container-org90e539d" class="outline-3">
+<h3 id="org90e539d"><span class="section-number-3">4.5.</span> Graph Topology Functions</h3>
 <div class="outline-text-3" id="text-4-5">
 <ul class="org-ul">
 <li>`MPI_Graph_create`: Creates a graph topology.</li>
@@ -715,8 +754,8 @@ The function `MPI_Graph_create` is used to create a graph topology.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgee65db6" class="outline-3">
-<h3 id="orgee65db6"><span class="section-number-3">4.6.</span> Benefits of Using MPI Topologies</h3>
+<div id="outline-container-orge49cd33" class="outline-3">
+<h3 id="orge49cd33"><span class="section-number-3">4.6.</span> Benefits of Using MPI Topologies</h3>
 <div class="outline-text-3" id="text-4-6">
 <ol class="org-ol">
 <li><b><b>Optimized Communication</b></b>: By organizing processes in a logical structure, communication can be optimized for better performance.</li>
@@ -726,10 +765,467 @@ The function `MPI_Graph_create` is used to create a graph topology.
 </div>
 </div>
 </div>
+<div id="outline-container-orgcb57a1a" class="outline-2">
+<h2 id="orgcb57a1a"><span class="section-number-2">5.</span> MPI I/O:</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgdebc044" class="outline-3">
+<h3 id="orgdebc044"><span class="section-number-3">5.1.</span> Introduction to MPI I/O</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li><b><b>What is MPI I/O?</b></b>
+<ul class="org-ul">
+<li>A set of routines in MPI designed for parallel file operations.</li>
+<li>Supports both individual and collective I/O.</li>
+</ul></li>
+<li><b><b>Why Use MPI I/O?</b></b>
+<ul class="org-ul">
+<li>Facilitates efficient data access in distributed systems.</li>
+<li>Allows multiple processes to read/write to a single file concurrently.</li>
+<li>Avoids the need for each process to manage separate files.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9b91846" class="outline-3">
+<h3 id="org9b91846"><span class="section-number-3">5.2.</span> Key Features of MPI I/O</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li><b><b>File Partitioning:</b></b> Files can be partitioned into non-overlapping chunks for different processes.</li>
+<li><b><b>Collective I/O:</b></b> Multiple processes cooperate to perform I/O, reducing overhead.</li>
+<li><b><b>Noncontiguous I/O:</b></b> Supports strided or indexed data access.</li>
+<li><b><b>Data Representation:</b></b> Supports native, internal, and external32 data representations for portability.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3619de7" class="outline-3">
+<h3 id="org3619de7"><span class="section-number-3">5.3.</span> MPI I/O Operations</h3>
+<div class="outline-text-3" id="text-5-3">
+</div>
+<div id="outline-container-orga8f3907" class="outline-4">
+<h4 id="orga8f3907"><span class="section-number-4">5.3.1.</span> File Open and Close</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #a626a4;">MPI_File_open</span>(<span style="color: #986801;">MPI_Comm</span> <span style="color: #6a1868;">comm</span>, <span style="color: #e45649;">const</span> <span style="color: #986801;">char</span> *<span style="color: #6a1868;">filename</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">amode</span>, <span style="color: #986801;">MPI_Info</span> <span style="color: #6a1868;">info</span>, <span style="color: #986801;">MPI_File</span> *<span style="color: #6a1868;">fh</span>);
+<span style="color: #a626a4;">MPI_File_close</span>(<span style="color: #986801;">MPI_File</span> *<span style="color: #6a1868;">fh</span>);
+</pre>
+</div>
+<ul class="org-ul">
+<li><b><b>amode:</b></b> File access mode (e.g., `MPI_MODE_RDONLY`, `MPI_MODE_WRONLY`, `MPI_MODE_RDWR`).</li>
+<li><b><b>info:</b></b> Hints for optimization (e.g., striping size, buffering).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcb3534b" class="outline-4">
+<h4 id="orgcb3534b"><span class="section-number-4">5.3.2.</span> Data Access</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<ul class="org-ul">
+<li><b><b>Read and Write Operations:</b></b>
+<ul class="org-ul">
+<li>Individual:</li>
+</ul></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #a626a4;">MPI_File_read</span>(<span style="color: #986801;">MPI_File</span> <span style="color: #6a1868;">fh</span>, <span style="color: #986801;">void</span> *<span style="color: #6a1868;">buf</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">datatype</span>, <span style="color: #986801;">MPI_Status</span> *<span style="color: #6a1868;">status</span>);
+<span style="color: #a626a4;">MPI_File_write</span>(<span style="color: #986801;">MPI_File</span> <span style="color: #6a1868;">fh</span>, <span style="color: #e45649;">const</span> <span style="color: #986801;">void</span> *<span style="color: #6a1868;">buf</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">datatype</span>, <span style="color: #986801;">MPI_Status</span> *<span style="color: #6a1868;">status</span>);
+</pre>
+</div>
+<ul class="org-ul">
+<li>Collective:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #a626a4;">MPI_File_read_all</span>(<span style="color: #986801;">MPI_File</span> <span style="color: #6a1868;">fh</span>, <span style="color: #986801;">void</span> *<span style="color: #6a1868;">buf</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">datatype</span>, <span style="color: #986801;">MPI_Status</span> *<span style="color: #6a1868;">status</span>);
+<span style="color: #a626a4;">MPI_File_write_all</span>(<span style="color: #986801;">MPI_File</span> <span style="color: #6a1868;">fh</span>, <span style="color: #e45649;">const</span> <span style="color: #986801;">void</span> *<span style="color: #6a1868;">buf</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">datatype</span>, <span style="color: #986801;">MPI_Status</span> *<span style="color: #6a1868;">status</span>);
+</pre>
+</div>
+<ul class="org-ul">
+<li><b><b>Position-Based Access:</b></b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #a626a4;">MPI_File_read_at</span>(<span style="color: #986801;">MPI_File</span> <span style="color: #6a1868;">fh</span>, <span style="color: #986801;">MPI_Offset</span> <span style="color: #6a1868;">offset</span>, <span style="color: #986801;">void</span> *<span style="color: #6a1868;">buf</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">datatype</span>, <span style="color: #986801;">MPI_Status</span> *<span style="color: #6a1868;">status</span>);
+<span style="color: #a626a4;">MPI_File_write_at</span>(<span style="color: #986801;">MPI_File</span> <span style="color: #6a1868;">fh</span>, <span style="color: #986801;">MPI_Offset</span> <span style="color: #6a1868;">offset</span>, <span style="color: #e45649;">const</span> <span style="color: #986801;">void</span> *<span style="color: #6a1868;">buf</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">datatype</span>, <span style="color: #986801;">MPI_Status</span> *<span style="color: #6a1868;">status</span>);
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb3b8148" class="outline-3">
+<h3 id="orgb3b8148"><span class="section-number-3">5.4.</span> Example Programs</h3>
+<div class="outline-text-3" id="text-5-4">
+</div>
+<div id="outline-container-orgbd01182" class="outline-4">
+<h4 id="orgbd01182"><span class="section-number-4">5.4.1.</span> Example 1: Writing and Reading a Simple File</h4>
+<div class="outline-text-4" id="text-5-4-1">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span> **<span style="color: #6a1868;">argv</span>) {
+    <span style="color: #986801;">MPI_File</span> <span style="color: #6a1868;">fh</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>, <span style="color: #6a1868;">buf</span>[<span style="color: #da8548; font-weight: bold;">10</span>];
+
+    MPI_Init(&amp;argc, &amp;argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize buffer with rank-specific data</span>
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">10</span>; i++) buf[i] = rank * <span style="color: #da8548; font-weight: bold;">10</span> + i;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Open file for writing</span>
+    MPI_File_open(MPI_COMM_WORLD, <span style="color: #50a14f;">"datafile.dat"</span>, MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &amp;fh);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Write data collectively</span>
+    MPI_File_write_at(fh, rank * <span style="color: #da8548; font-weight: bold;">10</span> * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>), buf, <span style="color: #da8548; font-weight: bold;">10</span>, MPI_INT, MPI_STATUS_IGNORE);
+
+    MPI_File_close(&amp;fh);
+    MPI_Finalize();
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfd286f3" class="outline-3">
+<h3 id="orgfd286f3"><span class="section-number-3">5.5.</span> Best Practices</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li>Use collective I/O operations to optimize file access patterns.</li>
+<li>Minimize the number of file opens/closes to reduce overhead.</li>
+<li>Use file views to efficiently partition data among processes.</li>
+<li>Employ the `MPI_Info` object to pass hints for performance tuning.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf53d70b" class="outline-3">
+<h3 id="orgf53d70b"><span class="section-number-3">5.6.</span> Debugging MPI I/O</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li>Enable I/O profiling with tools such as:
+<ul class="org-ul">
+<li><b><b>Darshan:</b></b> Captures I/O behavior of MPI applications.</li>
+<li><b><b>VampirTrace:</b></b> Visualizes I/O activity.</li>
+</ul></li>
+<li>Verify data consistency using checksum utilities.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb720771" class="outline-3">
+<h3 id="orgb720771"><span class="section-number-3">5.7.</span> Summary</h3>
+<div class="outline-text-3" id="text-5-7">
+<ul class="org-ul">
+<li>MPI I/O provides robust support for parallel file operations.</li>
+<li>Key concepts include collective I/O, file views, and data mappings.</li>
+<li>Efficient use of MPI I/O can significantly improve the scalability of parallel applications.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org9f391c0" class="outline-2">
+<h2 id="org9f391c0"><span class="section-number-2">6.</span> OpenMP Offloading</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org8c67f15" class="outline-3">
+<h3 id="org8c67f15"><span class="section-number-3">6.1.</span> Introduction to OpenMP Offloading</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>OpenMP offloading enables the execution of code on accelerators such as GPUs, FPGAs, or other specialized devices.</li>
+<li>Offloading improves performance by leveraging accelerators for computationally intensive tasks.</li>
+<li>Supported devices include:
+<ul class="org-ul">
+<li>GPUs (NVIDIA, AMD, Intel)</li>
+<li>FPGAs</li>
+<li>Many-core processors</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgfff20b4" class="outline-3">
+<h3 id="orgfff20b4"><span class="section-number-3">6.2.</span> Why Use Offloading?</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Accelerators provide high parallelism.</li>
+<li>Ideal for data-parallel and computationally heavy tasks.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1bd6684" class="outline-3">
+<h3 id="org1bd6684"><span class="section-number-3">6.3.</span> Key Concepts</h3>
+<div class="outline-text-3" id="text-6-3">
+<ul class="org-ul">
+<li><b><b>Target Regions:</b></b> Code to be executed on the device, specified using `#pragma omp target`.</li>
+<li><b><b>Mapping Data:</b></b> Explicitly transfer data between host and device using `map` clauses.
+<ul class="org-ul">
+<li>`to`: Copy data from the host to the device.</li>
+<li>`from`: Copy data from the device to the host.</li>
+<li>`tofrom`: Bi-directional transfer.</li>
+<li>`alloc`: Allocate memory on the device without data transfer.</li>
+</ul></li>
+<li><b><b>Device Selection:</b></b> Specify the device using the `device` clause or environment variables.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3d872ad" class="outline-3">
+<h3 id="org3d872ad"><span class="section-number-3">6.4.</span> Syntax</h3>
+<div class="outline-text-3" id="text-6-4">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp target [clauses]
+{
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Code to execute on the device</span>
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>Clauses:</b></b>
+<ul class="org-ul">
+<li>`map`: Specifies data transfer.</li>
+<li>`device`: Specifies the device to offload to.</li>
+<li>`if`: Conditional offloading.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8c776c7" class="outline-3">
+<h3 id="org8c776c7"><span class="section-number-3">6.5.</span> Data Mapping</h3>
+<div class="outline-text-3" id="text-6-5">
+<ul class="org-ul">
+<li><b><b>Automatic Data Mapping:</b></b> Scalars are automatically shared between host and device.</li>
+<li><b><b>Explicit Data Mapping:</b></b></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp target map(to: a, b) map(from: c)
+{
+    c = a + b;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga179f95" class="outline-3">
+<h3 id="orga179f95"><span class="section-number-3">6.6.</span> Example Programs</h3>
+<div class="outline-text-3" id="text-6-6">
+</div>
+<div id="outline-container-org3066a9d" class="outline-4">
+<h4 id="org3066a9d"><span class="section-number-4">6.6.1.</span> Example 1: Vector Addition</h4>
+<div class="outline-text-4" id="text-6-6-1">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">1000</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">a</span>[N], <span style="color: #6a1868;">b</span>[N], <span style="color: #6a1868;">c</span>[N];
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize arrays</span>
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+        a[i] = i;
+        b[i] = N - i;
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Offload computation to the device</span>
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp target map(to: a, b) map(from: c)
+    {
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            c[i] = a[i] + b[i];
+        }
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Verify results</span>
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+        <span style="color: #e45649;">if</span> (c[i] != N) {
+            printf(<span style="color: #50a14f;">"Error at index %d: %d != %d\n"</span>, i, c[i], N);
+            <span style="color: #e45649;">return</span> -<span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+
+    printf(<span style="color: #50a14f;">"Computation successful!\n"</span>);
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga795c9f" class="outline-4">
+<h4 id="orga795c9f"><span class="section-number-4">6.6.2.</span> Example 2: Matrix Multiplication</h4>
+<div class="outline-text-4" id="text-6-6-2">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">512</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">A</span>[N][N], <span style="color: #6a1868;">B</span>[N][N], <span style="color: #6a1868;">C</span>[N][N];
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize matrices</span>
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++) {
+            A[i][j] = i + j;
+            B[i][j] = i - j;
+            C[i][j] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Offload computation to the device</span>
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp target map(to: A, B) map(from: C)
+    {
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+            <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; N; j++) {
+                <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">k</span> = <span style="color: #da8548; font-weight: bold;">0</span>; k &lt; N; k++) {
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+    }
+
+    printf(<span style="color: #50a14f;">"Matrix multiplication completed!\n"</span>);
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2379032" class="outline-3">
+<h3 id="org2379032"><span class="section-number-3">6.7.</span> Advanced Features</h3>
+<div class="outline-text-3" id="text-6-7">
+<ul class="org-ul">
+<li><b><b>Target Teams:</b></b> Create parallel regions on the device.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp target teams distribute parallel <span style="color: #e45649;">for</span>
+<span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Workload</span>
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>Target Update:</b></b> Explicitly update data between host and device.</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp target update to(data)
+<span style="color: #4078f2; font-weight: bold;">#pragma</span> omp target update from(data)
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>Offloading Control with Environment Variables:</b></b>
+<ul class="org-ul">
+<li>`OMP_DEFAULT_DEVICE`: Specifies the default device.</li>
+<li>`OMP_NUM_TEAMS`: Controls the number of teams.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgec11491" class="outline-3">
+<h3 id="orgec11491"><span class="section-number-3">6.8.</span> Best Practices</h3>
+<div class="outline-text-3" id="text-6-8">
+<ul class="org-ul">
+<li>Minimize data transfer between host and device.</li>
+<li>Use `map` clauses effectively for efficient memory management.</li>
+<li>Use `target teams` for hierarchical parallelism on GPUs.</li>
+<li>Optimize kernel performance with thread and team configurations.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org97f1869" class="outline-3">
+<h3 id="org97f1869"><span class="section-number-3">6.9.</span> Summary</h3>
+<div class="outline-text-3" id="text-6-9">
+<ul class="org-ul">
+<li>OpenMP offloading bridges the gap between multi-core CPUs and accelerators.</li>
+<li>Key constructs include `target`, `teams`, and `map`.</li>
+<li>Use hierarchical parallelism (`teams` and `parallel`) for efficient utilization of accelerators.</li>
+<li>Optimize memory transfers and minimize host-device interactions.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org9025241" class="outline-2">
+<h2 id="org9025241"><span class="section-number-2">7.</span> MPI_Barrier</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;unistd.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        printf(<span style="color: #50a14f;">"Process %d: Preparing data...\n"</span>, rank);
+        sleep(<span style="color: #da8548; font-weight: bold;">2</span>); <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Simulate data preparation</span>
+    }
+
+    printf(<span style="color: #50a14f;">"Process %d: Waiting at the barrier.\n"</span>, rank);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    printf(<span style="color: #50a14f;">"Process %d: Proceeding to next phase.\n"</span>, rank);
+
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash compile.sh barrier.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc barrier.c -o barrier.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at barrier.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-bash">bash run.sh ./barrier.out <span style="color: #da8548; font-weight: bold;">5</span>
+</pre>
+</div>
+
+<pre class="example" id="org8aba8ae">
+------------------------------------------------------------------
+Command executed: mpirun -np 5 ./barrier.out
+------------------------------------------------------------------
+##################################################################
+##########                    OUTPUT                    ##########
+##################################################################
+
+Process 1: Waiting at the barrier.
+Process 2: Waiting at the barrier.
+Process 4: Waiting at the barrier.
+Process 3: Waiting at the barrier.
+Process 0: Preparing data...
+Process 0: Waiting at the barrier.
+Process 0: Proceeding to next phase.
+Process 1: Proceeding to next phase.
+Process 3: Proceeding to next phase.
+Process 2: Proceeding to next phase.
+Process 4: Proceeding to next phase.
+
+##################################################################
+##########                     DONE                     ##########
+##################################################################
+</pre>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Abhishek Raj</p>
-<p class="date">Created: 2025-01-10 Fri 09:33</p>
+<p class="date">Created: 2025-01-13 Mon 17:44</p>
 </div>
 </body>
 </html>

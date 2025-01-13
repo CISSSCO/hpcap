@@ -1,0 +1,1472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-01-13 Mon 17:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day19</title>
+<meta name="author" content="Abhishek Raj" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Day19</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd8a21a8">1. Scripts</a>
+<ul>
+<li><a href="#org3d9955c">1.1. compile script</a></li>
+<li><a href="#org2a94475">1.2. run script</a></li>
+</ul>
+</li>
+<li><a href="#org15ae62b">2. Serial Matrix Multiplication</a></li>
+<li><a href="#org43a47d8">3. Parallel Matrix Multiplication Using MPI</a></li>
+<li><a href="#org4bf7eac">4. OpenMP Tasking</a>
+<ul>
+<li><a href="#org4da025b">4.1. Introduction to OpenMP Tasking</a></li>
+<li><a href="#org1c14354">4.2. Key Concepts</a></li>
+<li><a href="#org83b151d">4.3. When to Use Tasking</a></li>
+<li><a href="#orgadc33d3">4.4. Task Directive: Syntax</a></li>
+<li><a href="#orga2eb159">4.5. Example 1: Simple Task Creation</a></li>
+<li><a href="#org33aa035">4.6. Explanation:</a></li>
+<li><a href="#org54c86d6">4.7. Taskwait Directive</a></li>
+<li><a href="#orgb7f9761">4.8. Example 2: Task Synchronization</a></li>
+<li><a href="#orgb0e9236">4.9. Taskgroup Directive</a></li>
+<li><a href="#org2d8b2ae">4.10. Example 3: Using Taskgroup</a></li>
+<li><a href="#org5e700e0">4.11. Advanced Features</a></li>
+<li><a href="#org7823e20">4.12. Example 4: Task Dependencies</a></li>
+<li><a href="#org80cbd11">4.13. Best Practices</a></li>
+</ul>
+</li>
+<li><a href="#org03fea2f">5. test</a></li>
+<li><a href="#orgbc396c0">6. test2</a></li>
+<li><a href="#orgee45fde">7. MPI Initialization: MPI_Init vs. MPI_Init_thread</a>
+<ul>
+<li><a href="#org8da9e85">7.1. Levels of Thread Support</a></li>
+<li><a href="#orgacb73b2">7.2. MPI_Init Example</a></li>
+<li><a href="#org7b0fd40">7.3. Compilation and Execution (MPI_Init)</a></li>
+<li><a href="#orga5207e9">7.4. MPI_Init_thread Example</a></li>
+<li><a href="#org7a739f9">7.5. Compilation and Execution (MPI_Init_thread)</a></li>
+<li><a href="#orgb30cf50">7.6. Summary</a></li>
+<li><a href="#orgcd84efa">7.7. hybrid</a></li>
+<li><a href="#orgcc186bc">7.8. Compilation and Execution (MPI_Init_thread)</a></li>
+</ul>
+</li>
+<li><a href="#org0b4602a">8. test3</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd8a21a8" class="outline-2">
+<h2 id="orgd8a21a8"><span class="section-number-2">1.</span> Scripts</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org3d9955c" class="outline-3">
+<h3 id="org3d9955c"><span class="section-number-3">1.1.</span> compile script</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
+
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">source /opt/ohpc/pub/apps/spack/share/spack/setup-env.sh</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load gcc/5i5y5cb</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load openmpi/c7kvqyq</span>
+<span style="color: #a626a4;">source</span> ~/git/spack/share/spack/setup-env.sh
+spack load openmpi
+
+<span style="color: #6a1868;">inputFile</span>=$<span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #6a1868;">outputFile</span>=<span style="color: #50a14f;">"</span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">{1%.*}</span><span style="color: #50a14f;">.out"</span>      <span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">extract the name of the file without extension and adding extension .out</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">cmd=`mpicc $inputFile -o $outputFile`</span>
+<span style="color: #6a1868;">cmd</span>=<span style="color: #50a14f;">"mpicc </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">inputFile</span><span style="color: #50a14f;"> -o </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">outputFile</span><span style="color: #50a14f;"> -lm -fopenmp"</span>     <span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">running code using MPI</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Command executed: </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">cmd</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+$<span style="color: #6a1868;">cmd</span>
+
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Compilation successful. Check at </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">outputFile</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2a94475" class="outline-3">
+<h3 id="org2a94475"><span class="section-number-3">1.2.</span> run script</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
+
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">source /opt/ohpc/pub/apps/spack/share/spack/setup-env.sh</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load gcc/5i5y5cbc</span>
+<span style="color: #a626a4;">source</span> ~/git/spack/share/spack/setup-env.sh
+spack load openmpi
+
+<span style="color: #6a1868;">cmd</span>=<span style="color: #50a14f;">"mpirun -np </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">2</span><span style="color: #50a14f;"> </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">1</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Command executed: </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">cmd</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##########                    OUTPUT                    ##########"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span>
+mpirun -np $<span style="color: #da8548; font-weight: bold;">2</span> $<span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #986801;">echo</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##########                     DONE                     ##########"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org15ae62b" class="outline-2">
+<h2 id="org15ae62b"><span class="section-number-2">2.</span> Serial Matrix Multiplication</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">n</span> = <span style="color: #da8548; font-weight: bold;">1000</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>, <span style="color: #6a1868;">k</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Allocate memory for matrices</span>
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">A</span> = (<span style="color: #986801;">int</span> **)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span> *));
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">B</span> = (<span style="color: #986801;">int</span> **)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span> *));
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">C</span> = (<span style="color: #986801;">int</span> **)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span> *));
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        A[i] = (<span style="color: #986801;">int</span> *)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        B[i] = (<span style="color: #986801;">int</span> *)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        C[i] = (<span style="color: #986801;">int</span> *)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize matrices</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        <span style="color: #e45649;">for</span> (j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++) {
+            A[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            B[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            C[i][j] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+    }
+
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">starttime</span> = omp_get_wtime();
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Matrix multiplication</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        <span style="color: #e45649;">for</span> (j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++) {
+            <span style="color: #e45649;">for</span> (k = <span style="color: #da8548; font-weight: bold;">0</span>; k &lt; n; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">endtime</span> = omp_get_wtime();
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Print result</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        <span style="color: #e45649;">for</span> (j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, C[i][j]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+    printf(<span style="color: #50a14f;">"execution time: %lf\n"</span>, endtime - starttime);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Free allocated memory</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        free(A[i]);
+        free(B[i]);
+        free(C[i]);
+    }
+    free(A);
+    free(B);
+    free(C);
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh">bash compile.sh serial_matrix_multiplication.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc serial_matrix_multiplication.c -o serial_matrix_multiplication.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at serial_matrix_multiplication.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-sh">bash run.sh ./serial_matrix_multiplication.out <span style="color: #da8548; font-weight: bold;">10</span> &gt; output.txt
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org43a47d8" class="outline-2">
+<h2 id="org43a47d8"><span class="section-number-2">3.</span> Parallel Matrix Multiplication Using MPI</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This example demonstrates parallel matrix multiplication using `MPI_Scatter` and `MPI_Gather`.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span> **<span style="color: #6a1868;">argv</span>) {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>, <span style="color: #6a1868;">k</span>, <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>, <span style="color: #6a1868;">n</span> = <span style="color: #da8548; font-weight: bold;">400</span>;
+    <span style="color: #986801;">int</span> *<span style="color: #6a1868;">A</span>, *<span style="color: #6a1868;">B</span>, *<span style="color: #6a1868;">C</span>, *<span style="color: #6a1868;">sub_A</span>, *<span style="color: #6a1868;">sub_C</span>;
+
+    MPI_Init(&amp;argc, &amp;argv);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = n * n / size;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Allocate memory for matrices on the root process</span>
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        A = (<span style="color: #986801;">int</span>*)malloc(n * n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        B = (<span style="color: #986801;">int</span>*)malloc(n * n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        C = (<span style="color: #986801;">int</span>*)malloc(n * n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n * n; i++) {
+            A[i] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            B[i] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            C[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+    } <span style="color: #e45649;">else</span> {
+        B = (<span style="color: #986801;">int</span>*)malloc(n * n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Allocate memory for submatrices</span>
+    sub_A = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    sub_C = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++) {
+        sub_C[i] = <span style="color: #da8548; font-weight: bold;">0</span>;
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Broadcast matrix B to all processes</span>
+    MPI_Bcast(B, n * n, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Scatter the rows of matrix A to all processes</span>
+    MPI_Scatter(A, chunksize, MPI_INT, sub_A, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+
+
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Perform the multiplication on the submatrices</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize / n; i++) {
+        <span style="color: #e45649;">for</span> (j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++) {
+            <span style="color: #e45649;">for</span> (k = <span style="color: #da8548; font-weight: bold;">0</span>; k &lt; n; k++) {
+                sub_C[i * n + j] += sub_A[i * n + k] * B[k * n + j];
+            }
+        }
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Gather the results from all processes</span>
+    MPI_Gather(sub_C, chunksize, MPI_INT, C, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Print the result on the root process</span>
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">flag</span> = <span style="color: #da8548; font-weight: bold;">1</span>;
+        <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n * n; i++) {
+            <span style="color: #e45649;">if</span> (C[i] != n) {
+                flag = <span style="color: #da8548; font-weight: bold;">0</span>;
+                <span style="color: #e45649;">break</span>;
+            }
+        }
+        <span style="color: #e45649;">if</span> (flag) printf(<span style="color: #50a14f;">"_____PASS_____\n"</span>);
+        <span style="color: #e45649;">else</span> printf(<span style="color: #50a14f;">"_____FAIL_____\n"</span>);
+
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Free allocated memory</span>
+        free(A);
+        free(B);
+        free(C);
+    } <span style="color: #e45649;">else</span> {
+        free(B);
+    }
+
+    free(sub_A);
+    free(sub_C);
+
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh">bash compile.sh parallel_matrix_multiplication.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc parallel_matrix_multiplication.c -o parallel_matrix_multiplication.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at parallel_matrix_multiplication.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-sh">bash run.sh ./parallel_matrix_multiplication.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="org347c042">
+------------------------------------------------------------------
+Command executed: mpirun -np 10 ./parallel_matrix_multiplication.out
+------------------------------------------------------------------
+##################################################################
+##########                    OUTPUT                    ##########
+##################################################################
+
+_____PASS_____
+
+##################################################################
+##########                     DONE                     ##########
+##################################################################
+</pre>
+
+<p>
+<b><b>Explanation:</b></b>
+</p>
+<ol class="org-ol">
+<li>The program initializes the MPI environment and retrieves the rank and size of the processes.</li>
+<li>Memory for the matrices is allocated, and matrices are initialized with 1&rsquo;s.</li>
+<li>The matrix B is broadcasted to all processes to ensure each process has the full matrix B.</li>
+<li>Matrix A is scattered among all processes so that each process receives a portion (submatrix).</li>
+<li>Each process performs the multiplication on its portion of the matrix.</li>
+<li>The resulting submatrices are gathered back into the full matrix C on the root process.</li>
+<li>The root process verifies and prints the result, and all allocated memory is freed.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org4bf7eac" class="outline-2">
+<h2 id="org4bf7eac"><span class="section-number-2">4.</span> OpenMP Tasking</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org4da025b" class="outline-3">
+<h3 id="org4da025b"><span class="section-number-3">4.1.</span> Introduction to OpenMP Tasking</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>OpenMP tasking is a powerful feature introduced to handle irregular and dynamic workloads.</li>
+<li>It allows the creation of tasks, which are units of work that can be executed independently.</li>
+<li>Tasks are distributed among threads for execution, enabling efficient parallelization of applications with unpredictable workloads.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1c14354" class="outline-3">
+<h3 id="org1c14354"><span class="section-number-3">4.2.</span> Key Concepts</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><b><b>Task:</b></b>
+<ul class="org-ul">
+<li>A unit of work created using the `#pragma omp task` directive.</li>
+<li>Contains code that can be executed independently.</li>
+</ul></li>
+<li><b><b>Tasking Constructs:</b></b>
+<ul class="org-ul">
+<li>`#pragma omp task`</li>
+<li>`#pragma omp taskwait`</li>
+<li>`#pragma omp taskgroup`</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org83b151d" class="outline-3">
+<h3 id="org83b151d"><span class="section-number-3">4.3.</span> When to Use Tasking</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>Divide-and-conquer algorithms (e.g., quicksort, mergesort).</li>
+<li>Recursive computations.</li>
+<li>Workloads with dynamically varying tasks.</li>
+<li>Problems where work cannot be evenly divided in advance.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgadc33d3" class="outline-3">
+<h3 id="orgadc33d3"><span class="section-number-3">4.4.</span> Task Directive: Syntax</h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp task [clauses]
+   structured-block
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><b><b>Clauses:</b></b>
+<ul class="org-ul">
+<li>`if(expression)`: Specifies whether the task should be created based on the condition.</li>
+<li>`default(shared | none)`: Specifies variable sharing.</li>
+<li>`private(list)`, `firstprivate(list)`, `shared(list)`: Data-sharing clauses.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga2eb159" class="outline-3">
+<h3 id="orga2eb159"><span class="section-number-3">4.5.</span> Example 1: Simple Task Creation</h3>
+<div class="outline-text-3" id="text-4-5">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #986801;">void</span> <span style="color: #a626a4;">work</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">id</span>) {
+    printf(<span style="color: #50a14f;">"Task %d is being executed by thread %d\n"</span>, id, omp_get_thread_num());
+}
+
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel num_threads(<span style="color: #da8548; font-weight: bold;">5</span>)
+    {
+<span style="color: #4078f2; font-weight: bold;">        #pragma</span> omp single
+        {
+            printf(<span style="color: #50a14f;">"%d is creating the task\n"</span>, omp_get_thread_num());
+            <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">5</span>; i++) {
+<span style="color: #4078f2; font-weight: bold;">                #pragma</span> omp task
+                work(i);
+            }
+        }
+    }
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc task1.c -fopenmp
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./a.out
+</pre>
+</div>
+
+<pre class="example">
+1 is creating the task
+Task 1 is being executed by thread 1
+Task 0 is being executed by thread 0
+Task 3 is being executed by thread 3
+Task 2 is being executed by thread 1
+Task 4 is being executed by thread 3
+</pre>
+</div>
+</div>
+<div id="outline-container-org33aa035" class="outline-3">
+<h3 id="org33aa035"><span class="section-number-3">4.6.</span> Explanation:</h3>
+<div class="outline-text-3" id="text-4-6">
+<ul class="org-ul">
+<li>The `single` construct ensures that only one thread creates tasks.</li>
+<li>Tasks are executed by any available thread in the team.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org54c86d6" class="outline-3">
+<h3 id="org54c86d6"><span class="section-number-3">4.7.</span> Taskwait Directive</h3>
+<div class="outline-text-3" id="text-4-7">
+<ul class="org-ul">
+<li>Ensures that all tasks created in the current context are completed before proceeding.</li>
+<li>Syntax:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp taskwait
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb7f9761" class="outline-3">
+<h3 id="orgb7f9761"><span class="section-number-3">4.8.</span> Example 2: Task Synchronization</h3>
+<div class="outline-text-3" id="text-4-8">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #986801;">void</span> <span style="color: #a626a4;">work</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">id</span>) {
+    printf(<span style="color: #50a14f;">"Task %d is being executed by thread %d\n"</span>, id, omp_get_thread_num());
+}
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel
+    {
+<span style="color: #4078f2; font-weight: bold;">        #pragma</span> omp single
+        {
+            <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">5</span>; i++) {
+<span style="color: #4078f2; font-weight: bold;">                #pragma</span> omp task
+                work(i);
+            }
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp taskwait
+            printf(<span style="color: #50a14f;">"All tasks are completed.\n"</span>);
+        }
+    }
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc task2.c -fopenmp
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./a.out
+</pre>
+</div>
+
+<pre class="example">
+Task 0 is being executed by thread 1
+Task 2 is being executed by thread 9
+Task 1 is being executed by thread 3
+Task 3 is being executed by thread 4
+Task 4 is being executed by thread 6
+All tasks are completed.
+</pre>
+</div>
+</div>
+<div id="outline-container-orgb0e9236" class="outline-3">
+<h3 id="orgb0e9236"><span class="section-number-3">4.9.</span> Taskgroup Directive</h3>
+<div class="outline-text-3" id="text-4-9">
+<ul class="org-ul">
+<li>Groups tasks together for synchronization.</li>
+<li>Ensures that all tasks in the group are completed before proceeding.</li>
+<li>Syntax:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp taskgroup
+   structured-block
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d8b2ae" class="outline-3">
+<h3 id="org2d8b2ae"><span class="section-number-3">4.10.</span> Example 3: Using Taskgroup</h3>
+<div class="outline-text-3" id="text-4-10">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #986801;">void</span> <span style="color: #a626a4;">work</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">id</span>) {
+    printf(<span style="color: #50a14f;">"Task %d is being executed by thread %d\n"</span>, id, omp_get_thread_num());
+}
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel
+    {
+<span style="color: #4078f2; font-weight: bold;">        #pragma</span> omp single
+        {
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp taskgroup
+            {
+                <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; <span style="color: #da8548; font-weight: bold;">5</span>; i++) {
+<span style="color: #4078f2; font-weight: bold;">                    #pragma</span> omp task
+                    work(i);
+                }
+            }
+            printf(<span style="color: #50a14f;">"All tasks in the group are completed.\n"</span>);
+        }
+    }
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc task3.c -fopenmp
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./a.out
+</pre>
+</div>
+
+<pre class="example">
+Task 4 is being executed by thread 11
+Task 2 is being executed by thread 4
+Task 3 is being executed by thread 3
+Task 0 is being executed by thread 5
+Task 1 is being executed by thread 6
+All tasks in the group are completed.
+</pre>
+</div>
+</div>
+<div id="outline-container-org5e700e0" class="outline-3">
+<h3 id="org5e700e0"><span class="section-number-3">4.11.</span> Advanced Features</h3>
+<div class="outline-text-3" id="text-4-11">
+<ul class="org-ul">
+<li><b><b>Task Dependencies:</b></b>
+<ul class="org-ul">
+<li>Allows you to specify dependencies between tasks using the `depend` clause.</li>
+<li>Syntax:</li>
+</ul></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#pragma</span> omp task depend(dependency-type : list)
+   structured-block
+</pre>
+</div>
+<ul class="org-ul">
+<li><b><b>Dependency Types:</b></b>
+<ul class="org-ul">
+<li>`in`: Task depends on the data being available.</li>
+<li>`out`: Task produces data required by another task.</li>
+<li>`inout`: Task both consumes and produces data.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7823e20" class="outline-3">
+<h3 id="org7823e20"><span class="section-number-3">4.12.</span> Example 4: Task Dependencies</h3>
+<div class="outline-text-3" id="text-4-12">
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">data</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel
+    {
+<span style="color: #4078f2; font-weight: bold;">        #pragma</span> omp single
+        {
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp task depend(out: data)
+            {
+                data = <span style="color: #da8548; font-weight: bold;">42</span>;
+                printf(<span style="color: #50a14f;">"Task 1: Produced data = %d\n"</span>, data);
+            }
+
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp task depend(in: data)
+            {
+                printf(<span style="color: #50a14f;">"Task 2: Consumed data = %d\n"</span>, data);
+            }
+        }
+    }
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org80cbd11" class="outline-3">
+<h3 id="org80cbd11"><span class="section-number-3">4.13.</span> Best Practices</h3>
+<div class="outline-text-3" id="text-4-13">
+<ul class="org-ul">
+<li>Use `if` clauses to limit task creation overhead for small tasks.</li>
+<li>Combine tasks with `taskgroup` for efficient synchronization.</li>
+<li>Use `depend` clauses for precise dependency management.</li>
+<li>Avoid excessive task creation to reduce runtime overhead.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org03fea2f" class="outline-2">
+<h2 id="org03fea2f"><span class="section-number-2">5.</span> test</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-C">
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">10000</span>
+
+<span style="color: #986801;">void</span> <span style="color: #a626a4;">sum</span>(<span style="color: #986801;">int</span>* <span style="color: #6a1868;">arr</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">start</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">end</span>, <span style="color: #986801;">int</span>* <span style="color: #6a1868;">result</span>) {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = start; i &lt; end; i++) {
+        sum += arr[i];
+    }
+    *result = sum;
+}
+
+<span style="color: #986801;">void</span> <span style="color: #a626a4;">totalSum</span>(<span style="color: #986801;">int</span>* <span style="color: #6a1868;">result1</span>, <span style="color: #986801;">int</span>* <span style="color: #6a1868;">result2</span>, <span style="color: #986801;">int</span>* <span style="color: #6a1868;">total</span>) {
+    *total = *result1 + *result2;
+}
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">arr</span> = (<span style="color: #986801;">int</span>*) malloc(N * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">result1</span> = <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #6a1868;">result2</span> = <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #6a1868;">total</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the array</span>
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+        arr[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+    }
+
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel
+    {
+<span style="color: #4078f2; font-weight: bold;">        #pragma</span> omp single
+        {
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp task
+            sum(arr, <span style="color: #da8548; font-weight: bold;">0</span>, N/<span style="color: #da8548; font-weight: bold;">2</span>, &amp;result1);
+
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp task
+            sum(arr, N/<span style="color: #da8548; font-weight: bold;">2</span>, N, &amp;result2);
+
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp taskwait
+
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp task
+            totalSum(&amp;result1, &amp;result2, &amp;total);
+        }
+
+    }
+
+    printf(<span style="color: #50a14f;">"Total sum: %d\n"</span>, total);
+
+    free(arr);
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc test.c -fopenmp
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./a.out
+</pre>
+</div>
+
+<pre class="example">
+Total sum: 50005000
+</pre>
+</div>
+</div>
+<div id="outline-container-orgbc396c0" class="outline-2">
+<h2 id="orgbc396c0"><span class="section-number-2">6.</span> test2</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-C">
+<span style="color: #9ca0a4;">/* </span><span style="color: #9ca0a4;">Try to read and analyze the code and also change some of the parameters</span>
+<span style="color: #9ca0a4;"> * according to your needs. I have also added comments to make you aware of my</span>
+<span style="color: #9ca0a4;"> * thought process while doing the code.</span><span style="color: #9ca0a4;">*/</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;math.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">10000</span>
+
+<span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">function to calculate sum</span>
+<span style="color: #986801;">void</span> <span style="color: #a626a4;">sum</span>(<span style="color: #986801;">int</span>* <span style="color: #6a1868;">arr</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">start</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">end</span>, <span style="color: #986801;">int</span>* <span style="color: #6a1868;">result</span>) {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = start; i &lt; end; i++) {
+        sum += arr[i];
+    }
+    *result = sum;
+}
+
+<span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">function to calculate totalSum</span>
+<span style="color: #986801;">void</span> <span style="color: #a626a4;">totalSum</span>(<span style="color: #986801;">int</span>* <span style="color: #6a1868;">result</span>, <span style="color: #986801;">int</span> <span style="color: #6a1868;">size</span>, <span style="color: #986801;">int</span>* <span style="color: #6a1868;">total</span>) {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; size; i++){
+        sum+= result[i];
+    }
+    *total = sum;
+}
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    omp_set_num_threads(<span style="color: #da8548; font-weight: bold;">5</span>); <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">setting total number of threads</span>
+    <span style="color: #986801;">int</span>* <span style="color: #6a1868;">arr</span> = (<span style="color: #986801;">int</span>*) malloc(N * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));  <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">creating and allocating array</span>
+    <span style="color: #986801;">int</span> *<span style="color: #6a1868;">result</span>, <span style="color: #6a1868;">total</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">start</span> = <span style="color: #da8548; font-weight: bold;">0</span>, <span style="color: #6a1868;">end</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+
+    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">allocating spaces for resultant sum array</span>
+    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">I want to store the sum by each task at a specific thread index</span>
+    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">Here size of resultant array will be equal to total_no_of_threads</span>
+    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">because each thread will do task of calculating there some and store</span>
+    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">it in there location which will be result[threadId]</span>
+    result = (<span style="color: #986801;">int</span>*) malloc(omp_get_num_threads() * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the array</span>
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; N; i++) {
+        arr[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+    }
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel
+    {
+        <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">here chunksize will be equal to N / total number of threads</span>
+        chunksize = N / omp_get_num_threads();
+<span style="color: #4078f2; font-weight: bold;">        #pragma</span> omp single
+        {
+            <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; omp_get_num_threads(); i++){
+                <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">first task will start from 0 to chunksize</span>
+                <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">second task will start from 1 * chunsize to its (start + chunksize)</span>
+                start = i * chunksize;
+                <span style="color: #e45649;">if</span>(i == omp_get_num_threads() - <span style="color: #da8548; font-weight: bold;">1</span>){
+                    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">if your thread is last thread then we want to give all the remaining</span>
+                    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">iterations to last threads if there's any reminder threads</span>
+                    end = N;
+                }
+                <span style="color: #e45649;">else</span>{
+                    end = start + chunksize;
+                }
+                <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">creating tasks here and storing the result in result[i]</span>
+<span style="color: #4078f2; font-weight: bold;">                #pragma</span> omp task
+                sum(arr, start, end, &amp;result[i]);
+            }
+            <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">taskwait for synchronization</span>
+            <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">try to remove taskwait and analyze the result</span>
+            <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">your code more likely to be involved in race condition</span>
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp taskwait
+            <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">task for final sum calculation</span>
+            <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">below I used omp_get_num_threads to give the total size of result array</span>
+            <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">which in my case will be equal to total number of threads</span>
+            <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">bcz I created tasks equal to total number of threads</span>
+<span style="color: #4078f2; font-weight: bold;">            #pragma</span> omp task
+            totalSum(result, omp_get_num_threads(), &amp;total);
+        }
+
+    }
+
+    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">printing total sum by tasking and by natural number sum formula</span>
+    printf(<span style="color: #50a14f;">"Total sum by tasking: %d\n"</span>, total);
+    printf(<span style="color: #50a14f;">"Total sum by formula: %ld\n"</span>, ((N * <span style="color: #da8548; font-weight: bold;">1L</span>) * (N + <span style="color: #da8548; font-weight: bold;">1</span>)) / <span style="color: #da8548; font-weight: bold;">2</span>);
+
+    <span style="color: #9ca0a4;">//</span><span style="color: #9ca0a4;">resources deallocation</span>
+    free(arr);
+    free(result);
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">gcc test2.c -fopenmp
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">./a.out
+</pre>
+</div>
+
+<pre class="example">
+Total sum by tasking: 50005000
+Total sum by formula: 50005000
+</pre>
+</div>
+</div>
+<div id="outline-container-orgee45fde" class="outline-2">
+<h2 id="orgee45fde"><span class="section-number-2">7.</span> MPI Initialization: MPI_Init vs. MPI_Init_thread</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+MPI provides two main functions to initialize the MPI environment: `MPI_Init` and `MPI_Init_thread`. The primary difference is that `MPI_Init_thread` allows you to specify the desired level of thread support.
+</p>
+</div>
+<div id="outline-container-org8da9e85" class="outline-3">
+<h3 id="org8da9e85"><span class="section-number-3">7.1.</span> Levels of Thread Support</h3>
+<div class="outline-text-3" id="text-7-1">
+<ul class="org-ul">
+<li>`MPI_THREAD_SINGLE`: Only one thread will execute.</li>
+<li>`MPI_THREAD_FUNNELED`: The process may be multi-threaded, but only the main thread will make MPI calls.</li>
+<li>`MPI_THREAD_SERIALIZED`: Multiple threads may make MPI calls, but only one at a time.</li>
+<li>`MPI_THREAD_MULTIPLE`: Multiple threads may make MPI calls with no restrictions.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgacb73b2" class="outline-3">
+<h3 id="orgacb73b2"><span class="section-number-3">7.2.</span> MPI_Init Example</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+This example uses `MPI_Init` to initialize the MPI environment.
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the MPI environment</span>
+    MPI_Init(&amp;argc, &amp;argv);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Get the number of processes</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">world_size</span>;
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;world_size);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Get the rank of the process</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Print off a hello world message</span>
+    printf(<span style="color: #50a14f;">"Hello world from processor %d out of %d processors\n"</span>, rank, world_size);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Finalize the MPI environment.</span>
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7b0fd40" class="outline-3">
+<h3 id="org7b0fd40"><span class="section-number-3">7.3.</span> Compilation and Execution (MPI_Init)</h3>
+<div class="outline-text-3" id="text-7-3">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash compile.sh mpi_init.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_init.c -o mpi_init.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at mpi_init.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">  bash run.sh ./mpi_init.out <span style="color: #da8548; font-weight: bold;">6</span>
+</pre>
+</div>
+
+<pre class="example" id="orgbdcb0ea">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 6 ./mpi_init.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Hello world from processor 2 out of 6 processors
+  Hello world from processor 3 out of 6 processors
+  Hello world from processor 4 out of 6 processors
+  Hello world from processor 5 out of 6 processors
+  Hello world from processor 0 out of 6 processors
+  Hello world from processor 1 out of 6 processors
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga5207e9" class="outline-3">
+<h3 id="orga5207e9"><span class="section-number-3">7.4.</span> MPI_Init_thread Example</h3>
+<div class="outline-text-3" id="text-7-4">
+<p>
+This example uses `MPI_Init_thread` to initialize the MPI environment with thread support.
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">provided</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the MPI environment with thread support</span>
+    MPI_Init_thread(&amp;argc, &amp;argv, MPI_THREAD_FUNNELED, &amp;provided);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Check the level of thread support provided</span>
+    <span style="color: #e45649;">if</span> (provided !=  MPI_THREAD_FUNNELED) {
+        printf(<span style="color: #50a14f;">"MPI does not provide required thread support\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Get the number of processes</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">world_size</span>;
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;world_size);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Get the rank of the process</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Print off a hello world message</span>
+    printf(<span style="color: #50a14f;">"Hello world from processor %d out of %d processors with thread support level %d\n"</span>, rank, world_size, provided);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Finalize the MPI environment.</span>
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7a739f9" class="outline-3">
+<h3 id="org7a739f9"><span class="section-number-3">7.5.</span> Compilation and Execution (MPI_Init_thread)</h3>
+<div class="outline-text-3" id="text-7-5">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash compile.sh mpi_init_thread.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_init_thread.c -o mpi_init_thread.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at mpi_init_thread.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash run.sh ./mpi_init_thread.out <span style="color: #da8548; font-weight: bold;">5</span>
+</pre>
+</div>
+
+<pre class="example" id="orgf8d2a54">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 5 ./mpi_init_thread.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Hello world from processor 1 out of 5 processors with thread support level 1
+  Hello world from processor 0 out of 5 processors with thread support level 1
+  Hello world from processor 3 out of 5 processors with thread support level 1
+  Hello world from processor 2 out of 5 processors with thread support level 1
+  Hello world from processor 4 out of 5 processors with thread support level 1
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb30cf50" class="outline-3">
+<h3 id="orgb30cf50"><span class="section-number-3">7.6.</span> Summary</h3>
+<div class="outline-text-3" id="text-7-6">
+<ul class="org-ul">
+<li>`MPI_Init` is used for standard MPI initialization without considering threading.</li>
+<li>`MPI_Init_thread` allows the program to specify and check the level of thread support.
+<ul class="org-ul">
+<li>Important for applications that require multi-threading in conjunction with MPI.</li>
+<li>Ensures that the required thread support is available.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcd84efa" class="outline-3">
+<h3 id="orgcd84efa"><span class="section-number-3">7.7.</span> hybrid</h3>
+<div class="outline-text-3" id="text-7-7">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">provided</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize the MPI environment with thread support</span>
+    MPI_Init_thread(&amp;argc, &amp;argv, MPI_THREAD_MULTIPLE, &amp;provided);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Check the level of thread support provided</span>
+    <span style="color: #e45649;">if</span> (provided !=  MPI_THREAD_MULTIPLE) {
+        printf(<span style="color: #50a14f;">"MPI does not provide required thread support\n"</span>);
+        MPI_Abort(MPI_COMM_WORLD, <span style="color: #da8548; font-weight: bold;">1</span>);
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Get the number of processes</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">world_size</span>;
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;world_size);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Get the rank of the process</span>
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+
+
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel num_threads(<span style="color: #da8548; font-weight: bold;">5</span>)
+    {
+        printf(<span style="color: #50a14f;">"thread %d inside rank %d\n"</span>, omp_get_thread_num(), rank);
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Finalize the MPI environment.</span>
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcc186bc" class="outline-3">
+<h3 id="orgcc186bc"><span class="section-number-3">7.8.</span> Compilation and Execution (MPI_Init_thread)</h3>
+<div class="outline-text-3" id="text-7-8">
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash compile.sh h1.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc h1.c -o h1.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at h1.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash run.sh ./h1.out <span style="color: #da8548; font-weight: bold;">5</span>
+</pre>
+</div>
+
+<pre class="example" id="org8591738">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 5 ./h1.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  thread 1 inside rank 0
+  thread 4 inside rank 0
+  thread 2 inside rank 0
+  thread 3 inside rank 0
+  thread 0 inside rank 0
+  thread 1 inside rank 1
+  thread 4 inside rank 1
+  thread 2 inside rank 1
+  thread 3 inside rank 1
+  thread 0 inside rank 1
+  thread 4 inside rank 3
+  thread 1 inside rank 3
+  thread 2 inside rank 3
+  thread 3 inside rank 3
+  thread 0 inside rank 3
+  thread 4 inside rank 2
+  thread 1 inside rank 2
+  thread 2 inside rank 2
+  thread 3 inside rank 2
+  thread 0 inside rank 2
+  thread 4 inside rank 4
+  thread 1 inside rank 4
+  thread 2 inside rank 4
+  thread 3 inside rank 4
+  thread 0 inside rank 4
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org0b4602a" class="outline-2">
+<h2 id="org0b4602a"><span class="section-number-2">8.</span> test3</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-C">
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span>** <span style="color: #6a1868;">argv</span>) {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">data_size</span> = <span style="color: #da8548; font-weight: bold;">1000000000</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">num_threads</span> = <span style="color: #da8548; font-weight: bold;">10</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> *<span style="color: #6a1868;">data</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">chunksize</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> *<span style="color: #6a1868;">local_data</span> = <span style="color: #b751b6;">NULL</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">local_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">global_sum</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">provided</span>;
+    MPI_Init_thread(&amp;argc, &amp;argv, MPI_THREAD_FUNNELED, &amp;provided);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span>(provided != MPI_THREAD_FUNNELED){
+        printf(<span style="color: #50a14f;">"MPI_THREAD_FUNNELED not supported\n"</span>);
+        MPI_Finalize();
+        <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+    }
+    chunksize = data_size / size;
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        data = (<span style="color: #986801;">long</span> <span style="color: #986801;">long</span> *)malloc(data_size * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">long</span> <span style="color: #986801;">long</span>));
+        <span style="color: #e45649;">for</span> (<span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; data_size; i++) {
+            data[i] = i + <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+
+    local_data = (<span style="color: #986801;">long</span> <span style="color: #986801;">long</span> *)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">long</span> <span style="color: #986801;">long</span> ));
+
+    MPI_Scatter(data, chunksize, MPI_LONG_LONG, local_data, chunksize, MPI_LONG_LONG, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+<span style="color: #4078f2; font-weight: bold;">    #pragma</span> omp parallel <span style="color: #e45649;">for</span> num_threads(num_threads) reduction(+:local_sum)
+    <span style="color: #e45649;">for</span> (<span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++) {
+        local_sum += local_data[i];
+    }
+
+    MPI_Reduce(&amp;local_sum, &amp;global_sum, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_LONG_LONG, MPI_SUM, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        printf(<span style="color: #50a14f;">"Final sum: %lld\n"</span>, global_sum);
+    }
+
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        free(data);
+    }
+    free(local_data);
+    MPI_Finalize();
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+
+
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash compile.sh test3.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc test3.c -o test3.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at test3.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash run.sh ./test3.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="orgf9ed095">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 10 ./test3.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+  Final sum: 500000000500000000
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Abhishek Raj</p>
+<p class="date">Created: 2025-01-13 Mon 17:42</p>
+</div>
+</body>
+</html>

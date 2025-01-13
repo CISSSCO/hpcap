@@ -1,0 +1,1126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2025-01-13 Mon 17:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day18</title>
+<meta name="author" content="Abhishek Raj" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Day18</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org18b974b">1. Scripts</a>
+<ul>
+<li><a href="#org5c77e64">1.1. compile script</a></li>
+<li><a href="#orgcdd225c">1.2. run script</a></li>
+</ul>
+</li>
+<li><a href="#org1e15ef1">2. PI calculator serial</a></li>
+<li><a href="#orgcb726a1">3. PI calculator serial long long</a></li>
+<li><a href="#org6f88fb0">4. PI calculator parallel</a></li>
+<li><a href="#org93236ae">5. Prime number count</a></li>
+<li><a href="#org1671a56">6. Prime number count parallel</a></li>
+<li><a href="#org3d3cedf">7. Serial Matrix Addition</a></li>
+<li><a href="#org85656ce">8. Serial Matrix Addition static memory allocation</a></li>
+<li><a href="#org7e99f4f">9. Parallel Matrix Addition</a></li>
+<li><a href="#orge8ff299">10. Parallel Matrix Addition Using MPI_Scatter and MPI_Gather</a></li>
+<li><a href="#org3fb711e">11. Serial Matrix Multiplication</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org18b974b" class="outline-2">
+<h2 id="org18b974b"><span class="section-number-2">1.</span> Scripts</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org5c77e64" class="outline-3">
+<h3 id="org5c77e64"><span class="section-number-3">1.1.</span> compile script</h3>
+<div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
+
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">source /opt/ohpc/pub/apps/spack/share/spack/setup-env.sh</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load gcc/5i5y5cb</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load openmpi/c7kvqyq</span>
+<span style="color: #a626a4;">source</span> ~/git/spack/share/spack/setup-env.sh
+spack load openmpi
+
+<span style="color: #6a1868;">inputFile</span>=$<span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #6a1868;">outputFile</span>=<span style="color: #50a14f;">"</span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">{1%.*}</span><span style="color: #50a14f;">.out"</span>      <span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">extract the name of the file without extension and adding extension .out</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">cmd=`mpicc $inputFile -o $outputFile`</span>
+<span style="color: #6a1868;">cmd</span>=<span style="color: #50a14f;">"mpicc </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">inputFile</span><span style="color: #50a14f;"> -o </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">outputFile</span><span style="color: #50a14f;"> -lm -fopenmp"</span>     <span style="color: #9ca0a4;"># </span><span style="color: #9ca0a4;">running code using MPI</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Command executed: </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">cmd</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+$<span style="color: #6a1868;">cmd</span>
+
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Compilation successful. Check at </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">outputFile</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcdd225c" class="outline-3">
+<h3 id="orgcdd225c"><span class="section-number-3">1.2.</span> run script</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">!/bin/</span><span style="color: #e45649;">sh</span>
+
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">source /opt/ohpc/pub/apps/spack/share/spack/setup-env.sh</span>
+<span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">spack load gcc/5i5y5cbc</span>
+<span style="color: #a626a4;">source</span> ~/git/spack/share/spack/setup-env.sh
+spack load openmpi
+
+<span style="color: #6a1868;">cmd</span>=<span style="color: #50a14f;">"mpirun -np </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">2</span><span style="color: #50a14f;"> </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">1</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"Command executed: </span><span style="color: #b751b6;">$</span><span style="color: #6a1868;">cmd</span><span style="color: #50a14f;">"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"------------------------------------------------------------------"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##########                    OUTPUT                    ##########"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span>
+mpirun -np $<span style="color: #da8548; font-weight: bold;">2</span> $<span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #986801;">echo</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##########                     DONE                     ##########"</span>
+<span style="color: #986801;">echo</span> <span style="color: #50a14f;">"##################################################################"</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1e15ef1" class="outline-2">
+<h2 id="org1e15ef1"><span class="section-number-2">2.</span> PI calculator serial</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;math.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;sys/time.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">999999999</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>()
+{
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">area</span>, <span style="color: #6a1868;">pi</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">dx</span>, <span style="color: #6a1868;">y</span>, <span style="color: #6a1868;">x</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">exe_time</span>;
+    <span style="color: #e45649;">struct</span> <span style="color: #986801;">timeval</span> <span style="color: #6a1868;">stop_time</span>, <span style="color: #6a1868;">start_time</span>;
+    dx = <span style="color: #da8548; font-weight: bold;">1.0</span>/N;
+    x = <span style="color: #da8548; font-weight: bold;">0.0</span>;
+    area = <span style="color: #da8548; font-weight: bold;">0.0</span>;
+    gettimeofday(&amp;start_time, <span style="color: #b751b6;">NULL</span>);
+    <span style="color: #e45649;">for</span>(i=<span style="color: #da8548; font-weight: bold;">0</span>;i&lt;N;i++){
+        x = i*dx;
+        y = sqrt(<span style="color: #da8548; font-weight: bold;">1</span>-x*x);
+        area += y*dx;
+    }
+    gettimeofday(&amp;stop_time, <span style="color: #b751b6;">NULL</span>);
+    exe_time = (stop_time.tv_sec+(stop_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>)) - (start_time.tv_sec+(start_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>));
+    pi = <span style="color: #da8548; font-weight: bold;">4.0</span>*area;
+    printf(<span style="color: #50a14f;">"\n Value of pi is = %.16lf\n Execution time is = %lf seconds\n"</span>, pi, exe_time);
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">    gcc pi_serial.c -o pi_serial.out -lm
+</pre>
+</div></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">    ./pi_serial.out
+</pre>
+</div>
+
+<pre class="example">
+
+Value of pi is = 3.1415926555902138
+Execution time is = 2.033164 seconds
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcb726a1" class="outline-2">
+<h2 id="orgcb726a1"><span class="section-number-2">3.</span> PI calculator serial long long</h2>
+<div class="outline-text-2" id="text-3">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;math.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;sys/time.h&gt;</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>()
+{
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">N</span> = <span style="color: #da8548; font-weight: bold;">99999999999</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">area</span>, <span style="color: #6a1868;">pi</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">dx</span>, <span style="color: #6a1868;">y</span>, <span style="color: #6a1868;">x</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">exe_time</span>;
+    <span style="color: #e45649;">struct</span> <span style="color: #986801;">timeval</span> <span style="color: #6a1868;">stop_time</span>, <span style="color: #6a1868;">start_time</span>;
+    dx = (<span style="color: #da8548; font-weight: bold;">1.0</span> * <span style="color: #da8548; font-weight: bold;">1L</span>)/N;
+    x = <span style="color: #da8548; font-weight: bold;">0.0</span>;
+    area = <span style="color: #da8548; font-weight: bold;">0.0</span>;
+    gettimeofday(&amp;start_time, <span style="color: #b751b6;">NULL</span>);
+    <span style="color: #e45649;">for</span>(i=<span style="color: #da8548; font-weight: bold;">0</span>;i&lt;N;i++){
+        x = i*dx;
+        y = sqrt(<span style="color: #da8548; font-weight: bold;">1</span>-x*x);
+        area += y*dx;
+    }
+    gettimeofday(&amp;stop_time, <span style="color: #b751b6;">NULL</span>);
+    exe_time = (stop_time.tv_sec+(stop_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>)) - (start_time.tv_sec+(start_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>));
+    pi = <span style="color: #da8548; font-weight: bold;">4.0</span>*area;
+    printf(<span style="color: #50a14f;">"\n Value of pi is = %.16lf\n Execution time is = %lf seconds\n"</span>, pi, exe_time);
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">    gcc pi_serial_ll.c -o pi_serial_ll.out -lm
+</pre>
+</div></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">    ./pi_serial_ll.out
+</pre>
+</div>
+
+<pre class="example">
+
+Value of pi is = 3.1415926535490444
+Execution time is = 197.083734 seconds
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6f88fb0" class="outline-2">
+<h2 id="org6f88fb0"><span class="section-number-2">4.</span> PI calculator parallel</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;math.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;sys/time.h&gt;</span>
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>()
+{
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">N</span> = <span style="color: #da8548; font-weight: bold;">99999999999</span>;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">area</span>, <span style="color: #6a1868;">pi</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">dx</span>, <span style="color: #6a1868;">y</span>, <span style="color: #6a1868;">x</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">exe_time</span>;
+    <span style="color: #e45649;">struct</span> <span style="color: #986801;">timeval</span> <span style="color: #6a1868;">stop_time</span>, <span style="color: #6a1868;">start_time</span>;
+    dx = <span style="color: #da8548; font-weight: bold;">1.0</span>/N;
+    x = <span style="color: #da8548; font-weight: bold;">0.0</span>;
+    area = <span style="color: #da8548; font-weight: bold;">0.0</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">chunksize</span> = N / size;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">start</span> = rank * chunksize;
+    <span style="color: #986801;">long</span> <span style="color: #986801;">long</span> <span style="color: #6a1868;">end</span> = start + chunksize;
+    <span style="color: #e45649;">if</span>(rank == size - <span style="color: #da8548; font-weight: bold;">1</span>) end = N;
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>)
+        gettimeofday(&amp;start_time, <span style="color: #b751b6;">NULL</span>);
+    <span style="color: #e45649;">for</span>(i=start;i&lt;end;i++){
+        x = i*dx;
+        y = sqrt(<span style="color: #da8548; font-weight: bold;">1</span>-x*x);
+        area += y*dx;
+    }
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">finalarea</span>;
+    MPI_Reduce(&amp;area, &amp;finalarea, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_DOUBLE, MPI_SUM, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>){
+        gettimeofday(&amp;stop_time, <span style="color: #b751b6;">NULL</span>);
+        exe_time = (stop_time.tv_sec+(stop_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>)) - (start_time.tv_sec+(start_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>));
+        pi = <span style="color: #da8548; font-weight: bold;">4.0</span>*finalarea;
+        printf(<span style="color: #50a14f;">"\n Value of pi is = %.16lf\n Execution time is = %lf seconds\n"</span>, pi, exe_time);
+    }
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Compile the program
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash compile.sh pi_parallel.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc pi_parallel.c -o pi_parallel.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at pi_parallel.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash run.sh ./pi_parallel.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="org40db2f5">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 10 ./pi_parallel.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+
+   Value of pi is = 3.1415926536117809
+   Execution time is = 77.906474 seconds
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org93236ae" class="outline-2">
+<h2 id="org93236ae"><span class="section-number-2">5.</span> Prime number count</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;math.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;time.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;sys/time.h&gt;</span>
+
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">1000000</span>
+<span style="color: #9ca0a4;">/*</span>
+<span style="color: #9ca0a4;">                N  PRIME_NUMBER</span>
+
+<span style="color: #9ca0a4;">                1           0</span>
+<span style="color: #9ca0a4;">               10           4</span>
+<span style="color: #9ca0a4;">              100          25</span>
+<span style="color: #9ca0a4;">            1,000         168</span>
+<span style="color: #9ca0a4;">           10,000       1,229</span>
+<span style="color: #9ca0a4;">          100,000       9,592</span>
+<span style="color: #9ca0a4;">        1,000,000      78,498</span>
+<span style="color: #9ca0a4;">       10,000,000     664,579</span>
+<span style="color: #9ca0a4;">      100,000,000   5,761,455</span>
+<span style="color: #9ca0a4;">    1,000,000,000  50,847,534</span>
+
+<span style="color: #9ca0a4;">*/</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>()
+{
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #6a1868;">flag</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">exe_time</span>;
+    <span style="color: #e45649;">struct</span> <span style="color: #986801;">timeval</span> <span style="color: #6a1868;">stop_time</span>, <span style="color: #6a1868;">start_time</span>;
+
+    count = <span style="color: #da8548; font-weight: bold;">1</span>; <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">2 is prime. Our loop starts from 3</span>
+
+    gettimeofday(&amp;start_time, <span style="color: #b751b6;">NULL</span>);
+
+
+    <span style="color: #e45649;">for</span>(i=<span style="color: #da8548; font-weight: bold;">3</span>;i&lt;N;i++)
+    {
+        flag = <span style="color: #da8548; font-weight: bold;">0</span>;
+        <span style="color: #e45649;">for</span>(j=<span style="color: #da8548; font-weight: bold;">2</span>;j&lt;i;j++)
+        {
+            <span style="color: #e45649;">if</span>((i%j) == <span style="color: #da8548; font-weight: bold;">0</span>)
+            {
+                flag = <span style="color: #da8548; font-weight: bold;">1</span>;
+                <span style="color: #e45649;">break</span>;
+            }
+        }
+        <span style="color: #e45649;">if</span>(flag == <span style="color: #da8548; font-weight: bold;">0</span>)
+        {
+            count++;
+        }
+    }
+
+    gettimeofday(&amp;stop_time, <span style="color: #b751b6;">NULL</span>);
+    exe_time = (stop_time.tv_sec+(stop_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>)) - (start_time.tv_sec+(start_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>));
+
+    printf(<span style="color: #50a14f;">"\n Number of prime numbers = %d \n Execution time is = %lf seconds\n"</span>, count, exe_time);
+
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">    gcc prime_count_serial.c -o prime_count_serial.out -lm
+</pre>
+</div></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">    ./prime_count_serial.out
+</pre>
+</div>
+
+<pre class="example">
+
+Number of prime numbers = 78498 
+Execution time is = 52.188054 seconds
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1671a56" class="outline-2">
+<h2 id="org1671a56"><span class="section-number-2">6.</span> Prime number count parallel</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;math.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;time.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;sys/time.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+
+<span style="color: #4078f2; font-weight: bold;">#define</span> <span style="color: #6a1868;">N</span> <span style="color: #da8548; font-weight: bold;">100000</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>()
+{
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">count</span>, <span style="color: #6a1868;">flag</span>;
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">exe_time</span>;
+    <span style="color: #e45649;">struct</span> <span style="color: #986801;">timeval</span> <span style="color: #6a1868;">stop_time</span>, <span style="color: #6a1868;">start_time</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = N / size;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">start</span> = rank * chunksize;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">end</span> = start + chunksize;
+    <span style="color: #e45649;">if</span>(rank == size - <span style="color: #da8548; font-weight: bold;">1</span>) end = N;
+    count = <span style="color: #da8548; font-weight: bold;">0</span>;
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>){
+        count = <span style="color: #da8548; font-weight: bold;">1</span>;
+        start = <span style="color: #da8548; font-weight: bold;">3</span>;
+    }
+    gettimeofday(&amp;start_time, <span style="color: #b751b6;">NULL</span>);
+    <span style="color: #e45649;">for</span>(i=start;i&lt;end;i++)
+    {
+        flag = <span style="color: #da8548; font-weight: bold;">0</span>;
+        <span style="color: #e45649;">for</span>(j=<span style="color: #da8548; font-weight: bold;">2</span>;j&lt;i;j++)
+        {
+            <span style="color: #e45649;">if</span>((i%j) == <span style="color: #da8548; font-weight: bold;">0</span>)
+            {
+                flag = <span style="color: #da8548; font-weight: bold;">1</span>;
+                <span style="color: #e45649;">break</span>;
+            }
+        }
+        <span style="color: #e45649;">if</span>(flag == <span style="color: #da8548; font-weight: bold;">0</span>)
+        {
+            count++;
+        }
+    }
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">total_count</span> = <span style="color: #da8548; font-weight: bold;">0</span>;
+    MPI_Reduce(&amp;count, &amp;total_count, <span style="color: #da8548; font-weight: bold;">1</span>, MPI_INT, MPI_SUM, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>){
+        gettimeofday(&amp;stop_time, <span style="color: #b751b6;">NULL</span>);
+        exe_time = (stop_time.tv_sec+(stop_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>)) - (start_time.tv_sec+(start_time.tv_usec/<span style="color: #da8548; font-weight: bold;">1000000.0</span>));
+        printf(<span style="color: #50a14f;">"\n Number of prime numbers = %d \n Execution time is = %lf seconds\n"</span>, total_count, exe_time);
+    }
+    MPI_Finalize();
+
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Compile the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash compile.sh prime_count_parallel.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc prime_count_parallel.c -o prime_count_parallel.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at prime_count_parallel.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run the program:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">bash run.sh ./prime_count_parallel.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="orgfa30c68">
+  ------------------------------------------------------------------
+  Command executed: mpirun -np 10 ./prime_count_parallel.out
+  ------------------------------------------------------------------
+  ##################################################################
+  ##########                    OUTPUT                    ##########
+  ##################################################################
+
+
+   Number of prime numbers = 9592 
+   Execution time is = 0.190704 seconds
+
+  ##################################################################
+  ##########                     DONE                     ##########
+  ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3d3cedf" class="outline-2">
+<h2 id="org3d3cedf"><span class="section-number-2">7.</span> Serial Matrix Addition</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span> **<span style="color: #6a1868;">argv</span>){
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>, <span style="color: #6a1868;">n</span> = <span style="color: #da8548; font-weight: bold;">400</span>;
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">m1</span>, **<span style="color: #6a1868;">m2</span>, **<span style="color: #6a1868;">sumMat</span>;
+    m1 = (<span style="color: #986801;">int</span>**)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * n);
+    m2 = (<span style="color: #986801;">int</span>**)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * n);
+    sumMat = (<span style="color: #986801;">int</span>**)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * n);
+    <span style="color: #e45649;">for</span>(i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++){
+        sumMat[i] = (<span style="color: #986801;">int</span>*)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * n);
+        m1[i] = (<span style="color: #986801;">int</span>*)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * n);
+        m2[i] = (<span style="color: #986801;">int</span>*)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * n);
+        <span style="color: #e45649;">for</span>(j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++){
+            m1[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            m2[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            sumMat[i][j] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+    }
+
+    <span style="color: #e45649;">for</span>(i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++){
+        <span style="color: #e45649;">for</span>(j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++){
+            sumMat[i][j] = m1[i][j] + m2[i][j];
+        }
+    }
+
+    <span style="color: #e45649;">for</span>(i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++){
+        <span style="color: #e45649;">for</span>(j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++){
+            printf(<span style="color: #50a14f;">"%d "</span>,sumMat[i][j]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">bash compile.sh serial_mat_add.c</span>
+gcc serial_mat_add.c -fopenmp
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #9ca0a4;">#</span><span style="color: #9ca0a4;">bash run.sh ./serial_mat_add.out 10 &gt; output.txt</span>
+./a.out &gt; output2.txt
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org85656ce" class="outline-2">
+<h2 id="org85656ce"><span class="section-number-2">8.</span> Serial Matrix Addition static memory allocation</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span> **<span style="color: #6a1868;">argv</span>){
+    <span style="color: #e45649;">const</span> <span style="color: #986801;">int</span> <span style="color: #6a1868;">n</span> = <span style="color: #da8548; font-weight: bold;">400</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">m1</span>[n][n], <span style="color: #6a1868;">m2</span>[n][n], <span style="color: #6a1868;">sumMat</span>[n][n];
+    <span style="color: #e45649;">for</span>(i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++){
+        <span style="color: #e45649;">for</span>(j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++){
+            m1[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            m2[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+    <span style="color: #9ca0a4;">/*</span>
+<span style="color: #9ca0a4;">    for(i = 0; i &lt; n; i++){</span>
+<span style="color: #9ca0a4;">        for(j = 0; j &lt; n; j++){</span>
+<span style="color: #9ca0a4;">            printf("%d ",m1[i][j]);</span>
+<span style="color: #9ca0a4;">        }</span>
+<span style="color: #9ca0a4;">        printf("\n");</span>
+<span style="color: #9ca0a4;">    }</span>
+<span style="color: #9ca0a4;">    for(i = 0; i &lt; n; i++){</span>
+<span style="color: #9ca0a4;">        for(j = 0; j &lt; n; j++){</span>
+<span style="color: #9ca0a4;">            printf("%d ",m2[i][j]);</span>
+<span style="color: #9ca0a4;">        }</span>
+<span style="color: #9ca0a4;">        printf("\n");</span>
+<span style="color: #9ca0a4;">    }</span><span style="color: #9ca0a4;">*/</span>
+
+    <span style="color: #e45649;">for</span>(i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++){
+        <span style="color: #e45649;">for</span>(j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++){
+            sumMat[i][j] = m1[i][j] + m2[i][j];
+        }
+    }
+    <span style="color: #e45649;">for</span>(i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++){
+        <span style="color: #e45649;">for</span>(j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++){
+            printf(<span style="color: #50a14f;">"%d "</span>,sumMat[i][j]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash compile.sh serial_mat_add_static.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc serial_mat_add_static.c -o serial_mat_add_static.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at serial_mat_add_static.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-bash">bash run.sh ./serial_mat_add_static.out <span style="color: #da8548; font-weight: bold;">10</span> &gt; output1.txt
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7e99f4f" class="outline-2">
+<h2 id="org7e99f4f"><span class="section-number-2">9.</span> Parallel Matrix Addition</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">argc</span>, <span style="color: #986801;">char</span> **<span style="color: #6a1868;">argv</span>){
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">n</span> = <span style="color: #da8548; font-weight: bold;">400</span>;
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">m1</span>, **<span style="color: #6a1868;">m2</span>, **<span style="color: #6a1868;">sumMat</span>;
+    m1 = (<span style="color: #986801;">int</span>**)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * n);
+    m2 = (<span style="color: #986801;">int</span>**)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * n);
+    sumMat = (<span style="color: #986801;">int</span>**)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * n);
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>;
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+
+    <span style="color: #e45649;">if</span>(rank == <span style="color: #da8548; font-weight: bold;">0</span>){
+        <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++){
+            sumMat[i] = (<span style="color: #986801;">int</span>*)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * n);
+            m1[i] = (<span style="color: #986801;">int</span>*)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * n);
+            m2[i] = (<span style="color: #986801;">int</span>*)malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * n);
+            <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++){
+                m1[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+                m2[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+                sumMat[i][j] = <span style="color: #da8548; font-weight: bold;">0</span>;
+            }
+        }
+    }
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = n / size;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">start</span> = rank * chunksize;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">end</span> = start + chunksize;
+    <span style="color: #e45649;">if</span>(rank == size - <span style="color: #da8548; font-weight: bold;">1</span>) end = n;
+
+    <span style="color: #986801;">MPI_Datatype</span> <span style="color: #6a1868;">contiguous_type</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Create a contiguous datatype</span>
+    MPI_Type_contiguous(count, MPI_INT, &amp;contiguous_type);
+    MPI_Type_commit(&amp;contiguous_type);
+
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">localArr1</span> = (<span style="color: #986801;">int</span>**) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * chunksize);
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">localArr2</span> = (<span style="color: #986801;">int</span>**) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * chunksize);
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">sumArr</span>= (<span style="color: #986801;">int</span>**) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>*) * chunksize);
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++){
+        localArr1[i] = (<span style="color: #986801;">int</span>*) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * n);
+        localArr2[i] = (<span style="color: #986801;">int</span>*) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * n);
+        sumArr[i] = (<span style="color: #986801;">int</span>*) malloc(<span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>) * n);
+    }
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = start; i &lt; end; i++){
+        MPI_Scatter(m1[i], n, MPI_INT, localArr1[i], n, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+        MPI_Scatter(m2[i], n, MPI_INT, localArr2[i], n, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    }
+
+
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = start; i &lt; end; i++){
+        <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++){
+            sumArr[i][j] = localArr1[i][j] + localArr2[i][j];
+        }
+    }
+    <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++){
+        MPI_Gather(sumArr[i], chunksize, MPI_INT, sumMat, chunksize * n, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    }
+
+
+        <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span> = start; i &lt; end; i++){
+            <span style="color: #e45649;">for</span>(<span style="color: #986801;">int</span> <span style="color: #6a1868;">j</span> = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++){
+                printf(<span style="color: #50a14f;">"%d "</span>,sumMat[i][j]);
+            }
+            printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+
+
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-bash">bash compile.sh parallel_matrix_add.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc parallel_matrix_add.c -o parallel_matrix_add.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at parallel_matrix_add.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-bash">bash run.sh ./parallel_matrix_add.out <span style="color: #da8548; font-weight: bold;">10</span> &gt; output3.txt
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge8ff299" class="outline-2">
+<h2 id="orge8ff299"><span class="section-number-2">10.</span> Parallel Matrix Addition Using MPI_Scatter and MPI_Gather</h2>
+<div class="outline-text-2" id="text-10">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;mpi.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>, <span style="color: #6a1868;">rank</span>, <span style="color: #6a1868;">size</span>, <span style="color: #6a1868;">n</span> = <span style="color: #da8548; font-weight: bold;">10000</span>;
+    <span style="color: #986801;">int</span> *<span style="color: #6a1868;">m1</span>, *<span style="color: #6a1868;">m2</span>, *<span style="color: #6a1868;">sumMat</span>, *<span style="color: #6a1868;">sub_m1</span>, *<span style="color: #6a1868;">sub_m2</span>, *<span style="color: #6a1868;">sub_sumMat</span>;
+
+    MPI_Init(<span style="color: #b751b6;">NULL</span>, <span style="color: #b751b6;">NULL</span>);
+    MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+    MPI_Comm_rank(MPI_COMM_WORLD, &amp;rank);
+
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">chunksize</span> = (n * n) / size;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Allocate memory for the full matrices on the root process</span>
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        m1 = (<span style="color: #986801;">int</span>*)malloc(n * n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        m2 = (<span style="color: #986801;">int</span>*)malloc(n * n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        sumMat = (<span style="color: #986801;">int</span>*)malloc(n * n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n * n; i++) {
+            m1[i] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            m2[i] = <span style="color: #da8548; font-weight: bold;">1</span>;
+        }
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Allocate memory for the submatrices on each process</span>
+    sub_m1 = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    sub_m2 = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    sub_sumMat = (<span style="color: #986801;">int</span>*)malloc(chunksize * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">startTime</span> = MPI_Wtime();
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Scatter the elements of the matrices to all processes</span>
+    MPI_Scatter(m1, chunksize, MPI_INT, sub_m1, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+    MPI_Scatter(m2, chunksize, MPI_INT, sub_m2, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Perform the addition on the submatrices</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; chunksize; i++) {
+        sub_sumMat[i] = sub_m1[i] + sub_m2[i];
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Gather the results from all processes</span>
+    MPI_Gather(sub_sumMat, chunksize, MPI_INT, sumMat, chunksize, MPI_INT, <span style="color: #da8548; font-weight: bold;">0</span>, MPI_COMM_WORLD);
+
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">endTime</span> = MPI_Wtime();
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Print the result on the root process</span>
+    <span style="color: #e45649;">if</span> (rank == <span style="color: #da8548; font-weight: bold;">0</span>) {
+        <span style="color: #986801;">int</span> <span style="color: #6a1868;">flag</span> = <span style="color: #da8548; font-weight: bold;">1</span>;
+        <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n * n; i++) {
+            <span style="color: #e45649;">if</span> (sumMat[i] != <span style="color: #da8548; font-weight: bold;">2</span>) {
+                flag = <span style="color: #da8548; font-weight: bold;">0</span>;
+                <span style="color: #e45649;">break</span>;
+            }
+        }
+        <span style="color: #e45649;">if</span> (flag){
+          printf(<span style="color: #50a14f;">"_____PASS_____\n"</span>);
+          printf(<span style="color: #50a14f;">"Execution time: %lf\n"</span>, endTime - startTime);
+        }
+        <span style="color: #e45649;">else</span> printf(<span style="color: #50a14f;">"_____FAIL_____\n"</span>);
+        <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Free the allocated memory</span>
+        free(m1);
+        free(m2);
+        free(sumMat);
+    }
+    free(sub_m1);
+    free(sub_m2);
+    free(sub_sumMat);
+    MPI_Finalize();
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+Compile
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">   bash compile.sh mpi_matrix_addition1.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc mpi_matrix_addition1.c -o mpi_matrix_addition1.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at mpi_matrix_addition1.out
+------------------------------------------------------------------
+</pre></li>
+
+<li><p>
+Run
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">   bash run.sh ./mpi_matrix_addition1.out <span style="color: #da8548; font-weight: bold;">10</span>
+</pre>
+</div>
+
+<pre class="example" id="org60a76ca">
+   ------------------------------------------------------------------
+   Command executed: mpirun -np 10 ./mpi_matrix_addition1.out
+   ------------------------------------------------------------------
+   ##################################################################
+   ##########                    OUTPUT                    ##########
+   ##################################################################
+
+   _____PASS_____
+   Execution time: 0.513867
+
+   ##################################################################
+   ##########                     DONE                     ##########
+   ##################################################################
+</pre></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3fb711e" class="outline-2">
+<h2 id="org3fb711e"><span class="section-number-2">11.</span> Serial Matrix Multiplication</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+<pre class="src src-C"><span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdio.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span> <span style="color: #50a14f;">&lt;stdlib.h&gt;</span>
+<span style="color: #4078f2; font-weight: bold;">#include</span><span style="color: #50a14f;">&lt;omp.h&gt;</span>
+
+<span style="color: #986801;">int</span> <span style="color: #a626a4;">main</span>() {
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">n</span> = <span style="color: #da8548; font-weight: bold;">2000</span>;
+    <span style="color: #986801;">int</span> <span style="color: #6a1868;">i</span>, <span style="color: #6a1868;">j</span>, <span style="color: #6a1868;">k</span>;
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Allocate memory for matrices</span>
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">A</span> = (<span style="color: #986801;">int</span> **)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span> *));
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">B</span> = (<span style="color: #986801;">int</span> **)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span> *));
+    <span style="color: #986801;">int</span> **<span style="color: #6a1868;">C</span> = (<span style="color: #986801;">int</span> **)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span> *));
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        A[i] = (<span style="color: #986801;">int</span> *)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        B[i] = (<span style="color: #986801;">int</span> *)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+        C[i] = (<span style="color: #986801;">int</span> *)malloc(n * <span style="color: #e45649;">sizeof</span>(<span style="color: #986801;">int</span>));
+    }
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Initialize matrices</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        <span style="color: #e45649;">for</span> (j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++) {
+            A[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            B[i][j] = <span style="color: #da8548; font-weight: bold;">1</span>;
+            C[i][j] = <span style="color: #da8548; font-weight: bold;">0</span>;
+        }
+    }
+
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">starttime</span> = omp_get_wtime();
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Matrix multiplication</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        <span style="color: #e45649;">for</span> (j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++) {
+            <span style="color: #e45649;">for</span> (k = <span style="color: #da8548; font-weight: bold;">0</span>; k &lt; n; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    <span style="color: #986801;">double</span> <span style="color: #6a1868;">endtime</span> = omp_get_wtime();
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Print result</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        <span style="color: #e45649;">for</span> (j = <span style="color: #da8548; font-weight: bold;">0</span>; j &lt; n; j++) {
+            printf(<span style="color: #50a14f;">"%d "</span>, C[i][j]);
+        }
+        printf(<span style="color: #50a14f;">"\n"</span>);
+    }
+    printf(<span style="color: #50a14f;">"execution time: %lf\n"</span>, endtime - starttime);
+
+    <span style="color: #9ca0a4;">// </span><span style="color: #9ca0a4;">Free allocated memory</span>
+    <span style="color: #e45649;">for</span> (i = <span style="color: #da8548; font-weight: bold;">0</span>; i &lt; n; i++) {
+        free(A[i]);
+        free(B[i]);
+        free(C[i]);
+    }
+    free(A);
+    free(B);
+    free(C);
+
+    <span style="color: #e45649;">return</span> <span style="color: #da8548; font-weight: bold;">0</span>;
+}
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-sh">bash compile.sh serial_matrix_multiplication.c
+</pre>
+</div>
+
+<pre class="example">
+------------------------------------------------------------------
+Command executed: mpicc serial_matrix_multiplication.c -o serial_matrix_multiplication.out -lm -fopenmp
+------------------------------------------------------------------
+Compilation successful. Check at serial_matrix_multiplication.out
+------------------------------------------------------------------
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-sh">bash run.sh ./serial_matrix_multiplication.out <span style="color: #da8548; font-weight: bold;">10</span> &gt; output.txt
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Abhishek Raj</p>
+<p class="date">Created: 2025-01-13 Mon 17:36</p>
+</div>
+</body>
+</html>
